@@ -1,0 +1,305 @@
+<!-- CSS Position
+              ==========
+- Static
+- Absolute
+- Fixed
+- Sticky
+- Relative :
+  It sets position according to normal flow of document.
+  It can change its position with relative to parent.
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Frames</title>
+        <style>
+            .parent-box {
+                width: 400px;
+                height: 300px;
+                border:2px solid red;
+                margin-left: 100px;
+            }
+            .child-box {
+                width: 90px;
+                height: 90px;
+                border:2px solid blue;
+                position: relative;
+                left: 50px;
+                top:100px;
+            }
+        </style>
+    </head>
+   <body>
+      <div class="parent-box">
+          Parent
+         <div class="child-box">
+             Child
+         </div>
+      </div>      
+   </body>
+</html>
+
+                 CSS Z-Index
+                ===========
+- It is used control the content that overlap.
+- You can send backward, bring forward.
+
+    Z = 0 = Back
+    Z = 1 = Forward
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Frames</title>
+        <style>
+            div {
+                position: absolute;
+            }
+           .red-box {
+               width: 200px;
+               height: 400px;
+               background-color: red;
+               margin-left: 280px;
+               z-index: 3;
+           }
+           .green-box {
+               width: 600px;
+               height: 100px;
+               background-color: green;
+               margin-top: 50px;
+               z-index: 1;
+           }
+           .blue-box {
+               width: 350px;
+               height: 500px;
+               background-color: blue;
+               margin-left: 200px;
+               z-index: 2;
+           }
+           .yellow-box {
+               width: 750px;
+               height: 560px;
+               background-color: yellow;
+               margin-top: 0px;
+               z-index: 0;
+           }
+        </style>
+    </head>
+   <body>
+      <div class="red-box">Red</div>
+      <div class="green-box">Green</div>
+      <div class="blue-box">Blue</div>
+      <div class="yellow-box">Yellow</div>
+   </body>
+</html>
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Frames</title>
+        <style>
+            .container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                background-color: rgba(255,255,255,0.4);
+            }
+            .card {
+                width: 300px;
+                height: 300px;
+                background-color: rgba(255,255,255,0.6);
+                border:1px solid black;
+                box-shadow: 2px 2px 2px gray;
+                margin-right: 20px;
+            }
+            header {
+                position: absolute;
+                z-index: 0;
+            }
+            section {
+                position: absolute;
+                z-index: 1;
+                margin-top: 300px;
+            }
+        </style>
+    </head>
+   <body>
+      <header>
+          <img src="../public/assets/matrix.jpg" width="100%">
+      </header>
+      <section>
+          <div class="container">
+              <div class="card">
+
+              </div>
+              <div class="card">
+               
+            </div>
+            <div class="card">
+               
+            </div>
+          </div>
+      </section>
+   </body>
+</html>
+
+                   CSS Display
+                   ==========
+display
+- none        Hide the container
+- block        Display the container in block style [line by line]
+- inline        Display the container using inline style
+- grid
+- flex
+
+
+FAQ: What is difference between Display None and Visibility Hidden?
+Ans:  Display:None  will hide and remove the space allocated for
+         element in page.
+
+         Visibility:Hidden will hide the content but the space allocated
+         for element will remain same.
+
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Display</title>
+        <style>
+            img {
+                visibility: hidden;
+            }
+            h2 {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <img src="../public/assets/jacket.jpg" width="200" height="200">
+        <h2>Display Demo</h2>
+        <h3>Welcome</h3>
+    </body>
+</html>
+
+
+FAQ: What is difference between inline and flex?
+Ans:  Flex is defined for container that contains items.
+         Inline is defined for items.
+         Flex is display in row and column.
+         Inline is for row.
+
+
+          Display Flex
+          ------------------
+- flex-wrap     : To control the wrapping of items
+           no-wrap  - display in one line.
+           wrap     - wrap to next line after border.
+
+- flex-direction    : To control the direction row or column.
+          row-reverse, column-reverse
+- just-content    : horizontal alignment
+- align-items    : vertical alignments
+
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Display</title>
+        <style>
+           .box {
+               width: 200px;
+               height: 150px;
+               border:2px solid black;
+           }
+           .container {
+               display: flex;
+               flex-wrap: wrap;
+               flex-direction:row-reverse;
+           }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="box">
+                Box-1
+            </div>
+            <div class="box">
+                Box-2
+            </div>
+            <div class="box">
+                Box-3
+            </div>
+            <div class="box">
+                Box-4
+            </div>
+            <div class="box">
+                Box-5
+            </div>
+            <div class="box">
+                Box-6
+            </div>
+            <div class="box">
+                Box-7
+            </div>
+            <div class="box">
+                Box-8
+            </div>
+        </div>
+    </body>
+</html>
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Display</title>
+        <style>
+           .box {
+               width: 200px;
+               height: 150px;
+               border:2px solid black;
+           }
+           .container {
+               display: flex;
+               flex-wrap: wrap;
+               flex-direction:row;
+               justify-content: space-between;
+               align-items: center;
+               height: 500px;
+           }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="box">
+                Box-1
+            </div>
+            <div class="box">
+                Box-2
+            </div>
+            <div class="box">
+                Box-3
+            </div>
+            <div class="box">
+                Box-4
+            </div>
+            <div class="box">
+                Box-5
+            </div>
+            <div class="box">
+                Box-6
+            </div>
+            <div class="box">
+                Box-7
+            </div>
+            <div class="box">
+                Box-8
+            </div>
+        </div>
+    </body>
+</html> -->

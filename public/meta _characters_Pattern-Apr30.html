@@ -1,0 +1,81 @@
+<!-- Text Box Attributes
+
+14. pattern      :  It is used to verify the format of input value.
+           Pattern uses regular expression to verify
+           the format of input value.
+
+           Regular expression is built by using meta
+           characters and quantifiers.
+
+
+Meta Character    Description
+----------------------------------------------------------------------------------------------
+?        zero or one occurance of char.
+
+        Syntax:
+        pattern="colou?r"    =>  color, colour
+
++        one or more occurances of char
+
+        Syntax:
+        pattern="colou+r"    => colour, colouur, colouuur
+                   color - not allowed
+
+*        zero or more occurances of char
+
+        Syntax:
+        pattern="colou*r"   => color, colour, colouur
+
+.        Any single char [a-zA-Z0-9!@#$%^&]
+
+        Syntax:
+        pattern=".o."   => dos, toy, cow
+        pattern=".at"   =>  cat, bat, rat, mat, $at, 1at
+        pattern=".o.?"  =>  dos, boy, to, do  
+
+|        OR - It is used to define multiple values or chars
+                 you can choose between.
+
+        Syntax:
+        pattern="color|colour";
+        pattern="red|green|blue|yellow"
+
+\        It is used as escape sequence char for meta
+        chars.
+        Few meta characters are required to use as
+        symbols in pattern. Hence "\" can escape the
+        functionality of meta character and use it as         symbol.
+
+        Syntax:
+        pattern="gmail\.com"
+        pattern="\+91"
+
+^        Used in expression to exclude specified set of
+        chars. It is also used to define pattern starts with.
+
+        ^    exclude   [charat]
+        \^    starts with
+
+\$        It defines ends with. It is also used in expression.
+
+[ ]        It defines range.
+
+( )        It defines priority and union.
+
+\d        It defines numeric, any number single digit.
+       
+        Syntax:
+        pattern="\d"   =>  0 - 9
+        pattern="\d\d" => 22, 45, any 2 digits number
+
+\D        It defines non-numeric, other than number all are
+        allowed.
+        A,a,!@#$  
+
+\w        It defines word [A-Z,a-z,0-9,_ ]  
+
+        syntax:
+        pattern="\w"  => A-Z,a-z,0-9,_
+
+\W        It defines non-word, all special chars only
+        [A-Z,a-z0-9_ not allowed] -->

@@ -1,0 +1,201 @@
+<!-- CSS Selectors
+CSS Rules
+                CSS Inheritance
+                ----------------------
+- Inheritance is the process of extending the logic or effects.
+- CSS inheritance values
+    a) inherit
+    b) initial
+    c) unset
+- "inherit" will implement the parent effects.  You can implement
+   specific effect or all.
+        p {
+           border:inherit;
+          }
+        p{
+           all:inherit;
+        }
+- "initial"  will set the effects to default. Before implementing what effects are being used those set of effects are applied.
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Frames</title>
+        <style>
+           .container {
+               padding: 20px;
+               border:2px solid red;
+               color:red;
+           }
+           p{
+               border:inherit;
+               padding: inherit;
+               color:initial;
+           }
+        </style>
+    </head>
+   <body>
+       <div class="container">
+            CSS Inheritance
+            <p>Inheritance is extending effects.</p>
+       </div>
+   </body>
+</html>
+
+- "unset" it is used to remove all default effects defined for HTML
+   elements
+
+        h2 {
+             all:unset;
+        }
+
+FAQ: Can we remove any specific effect of HTML element?
+
+       h2 {
+           font-weight:unset;
+         }
+
+       
+                CSS Units
+                ---------------
+- Unit defines the dimension.
+- Units are classified into 2 types
+    a) Absolute Units
+    b) Relative Units
+
+- Absolute units are individual and independent.
+    px        ] screen
+    %        ] based on browser
+    in        ]
+    cm        ] hard copies / print
+    pt        ]
+   
+- Relative units will change according to parent.
+    em    element
+    rem    root element
+
+- "em" defines size of its parent.
+- "rem" defines the size of root element.
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Frames</title>
+        <style>
+            body{
+                font-size: 30px;
+            }
+            .container{
+                font-size: 80px;
+            }
+            p {
+                font-size: 0.5em;
+            }
+        </style>
+    </head>
+   <body>
+       <div class="container">
+            CSS Inheritance
+            <p>Inheritance is extending effects.</p>
+       </div>
+   </body>
+</html>
+
+                  CSS Colors
+                  ----------------
+- Color Name
+    {
+     color:red;
+    }
+- Color Hexa Code
+    {
+     color: #ff0000;   or  #f00;
+    }
+- RGB
+    {
+     color:rgb(0-255, 0-255, 0-255);
+    }
+
+    rgb(red, green, blue);
+
+- RGBA
+    {
+      color: rgba(red, green, blue, alpha);
+    }
+    alpha from 0 to 1;
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Frames</title>
+        <style>
+           .container {
+               width: 100%;
+               height: 600px;
+               background-color: rgba(0,0,0,0.7);
+           }
+        </style>
+    </head>
+   <body background="../public/assets/netflixback.png">
+       <div class="container">
+         
+       </div>
+   </body>
+</html>
+
+- HSL   [Hue, Saturation, Lightness]
+
+  Hue - It is a degree of color  0 = red,  120 = green, 240=blue  360=red
+  Sat  - It adds gray to color     0 to 100%
+  light - It adds whiteness         0 to 100%
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Frames</title>
+        <style>
+           .container {
+               width: 100%;
+               height: 600px;
+               background-color: hsl(240, 40%, 90%);
+           }
+        </style>
+    </head>
+   <body background="../public/assets/netflixback.png">
+       <div class="container">
+         
+       </div>
+   </body>
+</html>
+
+- HSLA (alpha)
+
+EX:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Frames</title>
+        <style>
+           .container {
+               width: 100%;
+               height: 600px;
+               background-color: hsla(240, 40%, 70%,0.6);
+           }
+        </style>
+    </head>
+   <body background="../public/assets/netflixback.png">
+       <div class="container">
+         
+       </div>
+   </body>
+</html>
+
+Color rule for website deisgn:   60 / 30 / 10  rule
+
+Super market, Veg, Organic ,   - Green
+- Don't use more than 3 color shades in your main page.
+- One color must have 60% , 2nd color 30%, 3rd 10 % -->

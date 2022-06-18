@@ -1,0 +1,162 @@
+<!-- Primitive Types
+1. number
+2. string
+3. boolean
+
+                                   Boolean Type
+                                  ----------------------
+
+- Boolean types are used in decision making.
+- Decision making is the process of controlling the execution flow.
+- Boolean type can handle 2 values
+        a) true
+        b) false
+- JavaScript boolean can handle numeric values
+        1    = true
+        0    = false
+
+Ex:
+<script>
+    var stock = false;
+    if(stock==1) {
+        document.write("Available");
+    } else {
+        document.write("Out of Stock");
+    }
+</script>
+
+- Always recommended to use boolean true or false as keywords for constructing boolean expression.
+
+            if ( stock == 1)        // not good
+            if ( stock == true)  // good
+
+
+                true + true = ? 2
+
+FAQ: what are the form element attributes that use boolean state?
+Ans :
+                checked        : boolean
+                readonly        : boolean
+                disabled        : boolean
+                selected        : boolean         <option selected>
+
+
+Ex:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Boolean</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script>
+        function ChangeLabel(){
+            var optStock = document.getElementById("optStock");
+            var lblCheckBox = document.getElementById("lblCheckBox");
+            if(optStock.checked==true) {
+                lblCheckBox.innerHTML = "Available";
+            } else {
+                lblCheckBox.innerHTML = "Out of Stock";
+            }
+        }
+        function VerifyCard(){
+            var card = document.getElementById("txtCard").value;
+            if(card=="4444555566667890") {
+                document.getElementById("txtCvv").disabled = false;
+                document.getElementById("txtCvv").focus();
+            }
+        }
+        function VerifyCvv(){
+            var cvv = document.getElementById("txtCvv").value;
+            if(cvv=="4321") {
+                document.getElementById("btnPay").disabled = false;
+            }
+        }
+    </script>
+</head>
+<body class="container-fluid">
+    <h2>Stock</h2>
+    <div class="form-switch">
+        <input type="checkbox" id="optStock" onchange="ChangeLabel()" checked class="form-check-input"> <span id="lblCheckBox">Available</span>
+    </div>
+    <h2>Payment Details</h2>
+    <dl>
+        <dt>Card Number</dt>
+        <dd><input type="text" onkeyup="VerifyCard()" id="txtCard"></dd>
+        <dt>CVV</dt>
+        <dd><input disabled type="text" onkeyup="VerifyCvv()" id="txtCvv" size="4"> </dd>
+    </dl>
+    <button disabled class="btn btn-primary" id="btnPay">Pay</button>
+</body>
+</html>
+
+                                undefined type
+                                --------------------
+- It is a type of JavaScript which specifies that value is not defined into any given reference.
+
+- Undefined is the type configured at compile time.
+
+FAQ: What is difference between undefined and not-defined?
+Ans:
+            undefined is to verify the value.
+            not-defined is to verify the reference.
+
+Ex:
+<script>
+    var price;
+    if(price==undefined) {
+        document.write("Price required - No value defined in price");
+    }
+    else {
+        document.write("Price=" + price);
+    }
+</script>
+
+                   
+                                   Null Type
+                                   -------------
+- Null is the type defined for any reference that is expecting value during run time.
+- If value is not supplied into a reference during run time then it returns "null".
+
+Ex:
+<script>
+    var price = prompt("Enter Price");
+    if(price==null) {
+        document.write("You canceled..");
+    }
+    else if(price=="") {
+        document.write("Price Required");
+    }
+    else {
+        document.write("Price=" + price);
+    }
+</script>
+
+Summary
+- Primitive Types are immutable types
+- number
+- string
+- boolean
+- null
+- undefined
+
+                                Non-Primitive Types
+                                ---------------------------
+- They are mutable.
+- You can change the structure according to state and situation.
+- No fixed range for value.
+- Value range varies according to memory available.
+- They are store in "heap" memory. [no order of accessing and storing]
+- JavaScript non-primitive types are
+
+        a) Array
+        b) Object
+        c) Map
+
+
+                                Array Types
+                                ----------------
+- Arrays are used in computer programming to reduce overhead and complexity.
+- Array can reduce overhead by storing values in sequential order.
+- You can access the value in any order.
+- Array can reduce complexity by storing many values under one name.
+- Array can store various types of values.
+- Array size can change dynamically. -->

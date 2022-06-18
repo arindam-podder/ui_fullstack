@@ -1,0 +1,149 @@
+<!-- Variables
+- Declaration
+- Assignment
+- Initialization
+
+Variables are declared by using
+a) var
+b) let
+c) const
+
+var
+- It defines a function scope variable.
+- You can access from any location [block] in function.
+- You can declare in any block and can access from any another block.
+- It supports declaring, assigning and intialization.
+   
+<script>
+    function f1(){
+        var x;                  // Declaring
+        x = 10;                 // Assigning
+        if(x==10)
+        {
+            var y = 20;         // Initialization
+        }
+        document.write("x=" + x + "<br>" + "y=" + y);
+    }
+    f1();
+</script>
+
+- It support shadowing.
+- Shadowing is a technique where you re-declare the same name identifier.
+
+Ex:
+<script>
+    function f1(){
+        var x;                  // Declaring
+        x = 10;                 // Assigning
+        if(x==10)
+        {
+            var y = 20;         // Initialization
+            y = 30;
+            y = 40;
+            var y = 50;         // Shadowing
+        }
+        document.write("x=" + x + "<br>" + "y=" + y);
+    }
+    f1();
+</script>
+
+- It supports hoisting.
+- You can declare after using.
+
+<script>
+    function f1(){
+         "use strict";
+          x = 10;
+          document.write("x=" + x);
+          var x;        // hoisting
+    }
+    f1();
+</script>
+
+
+let :
+- It defines block scope variable.
+- It is accessible to the same block and its inner blocks.
+- It is not accessible to outer block.
+- It will support declaring, assigning, initialization.
+- It will not support shadowing.
+- It will not support hoisting.
+
+Ex:
+<script>
+    function f1(){
+        let x;
+        x = 10;
+        if(x==10) {
+            let y = 20;
+            y = 30;
+            document.write("x=" + x + "<br>" + "y=" + y);
+        }
+       
+    }
+    f1();
+</script>
+
+const:
+- It is also block scope.
+- const will not allow declaring and assigning.
+- It will allow only initialization.
+- It will not allow shadowing and hoisting.
+
+const x ;            // invalid
+const x = 10;    // valid
+x = 20;            // invalid
+
+
+- Global Scope for variable
+- If you declare a variable outside function then it is global.
+    var , let, const
+
+
+ex:
+<script>
+    var x = 10;
+    let y = 20;
+    const z = 30;
+
+    function f1(){
+        document.write("f1 x, y , z : " + x + "," + y + "," + z + "<br>");
+    }
+    function f2(){
+        document.write("f2 x, y , z : " + x + "," + y + "," + z);
+    }
+    f1();
+    f2();
+</script>
+
+FAQ: Can we declare a variable inside function and make it global?
+Ans: By using JavaScript "window"
+
+<script>
+    var x = 10;
+    let y = 20;
+    const z = 30;
+
+    function f1(){
+        window.msg = "hello !";
+        document.write("f1 x, y , z : " + x + "," + y + "," + z + "<br>");
+        document.write("f1 Message :" + msg + "<br>");
+    }
+    function f2(){
+        document.write("f2 x, y , z : " + x + "," + y + "," + z + "<br>");
+        document.write("f2 Message :" + msg);
+    }
+    f1();
+    f2();
+</script>
+
+Variable Naming
+- Name must start with alphabet or _
+- Name can have numbers and special chars
+- Can't start with number or other special chars.
+- No spaces and no periods [.]
+- Length must be max 255 chars
+
+        _price                [need to implement]
+        Price_2022
+        Price2022 -->

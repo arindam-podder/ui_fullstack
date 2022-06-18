@@ -1,0 +1,194 @@
+<!-- Display Grid
+              ==========
+- It is used to design responsive layout.
+- Layout changes according to device and orientation.
+- Attribute
+    display: grid
+    grid-template-columns
+    grid-row
+    grid-column
+    column-gap
+- To create responsive layout, you have to use "@media queries".
+- Grid allows to re-arrange the components in page. You can change their position.
+
+Ex: Layout.html
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Responsive Page</title>
+        <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+        <style>
+            header, section, nav, main, aside, footer {
+                border:2px solid black;
+                padding: 5px;
+                margin: 5px;
+            }
+            @media screen and (orientation: landscape){
+                .container {
+                display: grid;
+                grid-template-columns: 3fr 7fr 2fr;
+                }
+                header {
+                    grid-row: 1;
+                    grid-column: 1/4;
+                    text-align: center;
+                }
+                nav {
+                    grid-row: 2;
+                    grid-column: 1;
+                }
+                main {
+                    grid-row: 2;
+                    grid-column: 2;
+                    height: 400px;
+                }
+                aside {
+                    grid-row: 2;
+                    grid-column: 3;
+                }
+                footer {
+                    grid-row: 3;
+                    grid-column: 1/4;
+                    text-align: center;
+                }
+                .nav-toggler {
+                    display: none;
+                }
+            }
+            @media screen and (orientation: portrait) {
+                .container {
+                    display: grid;
+                    grid-template-columns: 12fr;
+                }
+                header {
+                    grid-row: 1;
+                }
+                nav {
+                    grid-row: 2;
+                }
+                main {
+                    grid-row: 3;
+                    height: 300px;
+                }
+                aside {
+                    grid-row: 4;
+                }
+                footer {
+                    grid-row: 5;
+                }
+                ul {
+                    list-style: none;
+                    display: flex;
+                }
+                li {
+                    display: none;
+                }
+                .nav-toggler {
+                    display: inline;
+                    height: 80px;
+                    width: 100%;
+                    font-size: 40px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+       <div class="container">
+        <header>
+            <h2>Header</h2>
+        </header>
+            <nav>
+                <button class="nav-toggler">
+                    <span class="bi bi-card-list"></span>
+                </button>
+                <ul>
+                    <li>Home</li>
+                    <li>About</li>
+                    <li>Contact</li>
+                </ul>
+            </nav>
+            <main>
+                <h2>Home</h2>
+                <p>Page main content</p>
+            </main>
+            <aside>
+                <p>Ads here</p>
+            </aside>
+        <footer>
+            &copy; copyright 2022
+        </footer>
+       </div>
+    </body>
+</html>
+
+FAQ: What is difference between Grid Columns and "Columns" ?
+Ans : Grid defines discreet columns [dis connected]
+          contents in one cloumn will not span to next column.
+
+          Columns define continous columns, content will span to next
+          column.
+
+Attributes:
+    columns
+    column-gap
+    column-width
+    column-rule
+    column-span
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>News</title>
+        <style>
+            header {
+                font-size: 70px;
+                font-weight: bold;
+                text-align: center;
+                background-color: black;
+                color:white;
+                padding: 10px;
+            }
+            section {
+                columns: 6;
+                margin-top: 20px;
+                column-gap: 40px;
+                column-rule: 2px dotted black;
+            }
+            p {
+                text-align: justify;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            THE HINDU
+        </header>
+        <section>
+            <p>Your use of this software is subject to the terms and conditions of the license agreement by which you acquired this software.  If you are a volume license customer, use of this software is subject to your volume license agreement.  You may not use this software if you have not validly acquired a license for the software from Microsoft or its licensed distributors.</p>
+            <p>Your use of this software is subject to the terms and conditions of the license agreement by which you acquired this software.  If you are a volume license customer, use of this software is subject to your volume license agreement.  You may not use this software if you have not validly acquired a license for the software from Microsoft or its licensed distributors.</p>
+             <h2 style="background-color: black;color:white">Sports Update</h2>
+            <p>Your use of this software is subject to the terms and conditions of the license agreement by which you acquired this software.  If you are a volume license customer, use of this software is subject to your volume license agreement.  You may not use this software if you have not validly acquired a license for the software from Microsoft or its licensed distributors.</p>
+            <p>Your use of this software is subject to the terms and conditions of the license agreement by which you acquired this software.  If you are a volume license customer, use of this software is subject to your volume license agreement.  You may not use this software if you have not validly acquired a license for the software from Microsoft or its licensed distributors.</p>
+            <p>Your use of this software is subject to the terms and conditions of the license agreement by which you acquired this software.  If you are a volume license customer, use of this software is subject to your volume license agreement.  You may not use this software if you have not validly acquired a license for the software from Microsoft or its licensed distributors.</p>
+            <p>Your use of this software is subject to the terms and conditions of the license agreement by which you acquired this software.  If you are a volume license customer, use of this software is subject to your volume license agreement.  You may not use this software if you have not validly acquired a license for the software from Microsoft or its licensed distributors.</p>
+            <p>Your use of this software is subject to the terms and conditions of the license agreement by which you acquired this software.  If you are a volume license customer, use of this software is subject to your volume license agreement.  You may not use this software if you have not validly acquired a license for the software from Microsoft or its licensed distributors.</p>
+            <p>Your use of this software is subject to the terms and conditions of the license agreement by which you acquired this software.  If you are a volume license customer, use of this software is subject to your volume license agreement.  You may not use this software if you have not validly acquired a license for the software from Microsoft or its licensed distributors.</p>
+            <p>Your use of this software is subject to the terms and conditions of the license agreement by which you acquired this software.  If you are a volume license customer, use of this software is subject to your volume license agreement.  You may not use this software if you have not validly acquired a license for the software from Microsoft or its licensed distributors.</p>
+            <p>Your use of this software is subject to the terms and conditions of the license agreement by which you acquired this software.  If you are a volume license customer, use of this software is subject to your volume license agreement.  You may not use this software if you have not validly acquired a license for the software from Microsoft or its licensed distributors.</p>
+            <p>Your use of this software is subject to the terms and conditions of the license agreement by which you acquired this software.  If you are a volume license customer, use of this software is subject to your volume license agreement.  You may not use this software if you have not validly acquired a license for the software from Microsoft or its licensed distributors.</p>
+            <p>Your use of this software is subject to the terms and conditions of the license agreement by which you acquired this software.  If you are a volume license customer, use of this software is subject to your volume license agreement.  You may not use this software if you have not validly acquired a license for the software from Microsoft or its licensed distributors.</p>
+            <p>Your use of this software is subject to the terms and conditions of the license agreement by which you acquired this software.  If you are a volume license customer, use of this software is subject to your volume license agreement.  You may not use this software if you have not validly acquired a license for the software from Microsoft or its licensed distributors.</p>
+            <p>Your use of this software is subject to the terms and conditions of the license agreement by which you acquired this software.  If you are a volume license customer, use of this software is subject to your volume license agreement.  You may not use this software if you have not validly acquired a license for the software from Microsoft or its licensed distributors.</p>
+            <p>Your use of this software is subject to the terms and conditions of the license agreement by which you acquired this software.  If you are a volume license customer, use of this software is subject to your volume license agreement.  You may not use this software if you have not validly acquired a license for the software from Microsoft or its licensed distributors.</p>
+            <p>Your use of this software is subject to the terms and conditions of the license agreement by which you acquired this software.  If you are a volume license customer, use of this software is subject to your volume license agreement.  You may not use this software if you have not validly acquired a license for the software from Microsoft or its licensed distributors.</p>
+            <p>Your use of this software is subject to the terms and conditions of the license agreement by which you acquired this software.  If you are a volume license customer, use of this software is subject to your volume license agreement.  You may not use this software if you have not validly acquired a license for the software from Microsoft or its licensed distributors.</p>
+            <p>Your use of this software is subject to the terms and conditions of the license agreement by which you acquired this software.  If you are a volume license customer, use of this software is subject to your volume license agreement.  You may not use this software if you have not validly acquired a license for the software from Microsoft or its licensed distributors.</p>
+
+        </section>
+    </body>
+</html>
+
+Background
+TextEffects -->

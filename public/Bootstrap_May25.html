@@ -1,0 +1,114 @@
+<!-- Bootstrap - 5
+                                   ------------------
+- Bootstrap is a component library.
+- Component comprises
+    a) Markup
+    b) Styles
+    c) Functionality
+- Bootstrap provides templates which you implement and customize according to requirements.
+- Other 3rd party libraries like bootstrap
+    a) Twitter Bootstrap
+    b) Material UI
+    c) Telerik
+    d) DevExpress etc..
+- Bootstrap comprises of
+    Markup            HTML
+    Styles                CSS
+    Functionality    jQuery
+
+Setup and Install Bootstrap for your project
+-----------------------------------------------------------
+>npm install bootstrap --save
+>npm install bootstrap-icons --save
+>npm install jquery --save
+
+
+To use bootstrap in any page you have to include following files:
+- bootstrap.css
+- bootstrap-icons.css
+- jquery.js
+- bootstrap.bundle.js
+
+- Bootstrap comprises of CSS classes, which are pre-defined with design.
+- Bootstrap also comprises jquery attributes, which are pre-defined with functionality.
+- Bootstrap default effects include
+        a) Padding and Margin for body
+        b) "Robotic" font is used as default for body.
+         c)  Effects for headings, data list, fieldset, details etc..
+
+
+                         Bootstrap Container Classes
+                        ----------------------------------------
+.container-lg            desktop
+.container-md        tab
+.container-xl            laptop
+.container-sm        mobile
+.container            PC and Desktop
+.container-fluid        Responsive
+
+
+                        Bootstrap Box Model Classes
+                        ----------------------------------------
+.m            margin
+.p            padding
+t            top
+b            bottom
+s            left
+e            right
+
+Syntax:
+            .mt            margin-top
+            .m                margin all directions
+            .me            margin right
+            .p                padding all directions
+            .pt                padding top
+
+- Margin and Padding values can be from 1 to 4
+            .mt-4
+            .m-4
+            .p-4
+            .pt-4
+- Border
+            .border
+            .border-{size}  0 to 4
+            .rounded
+            .rounded-{size}
+            .border-{contextual}    [primary, secondary, danger, success]
+- Width/ height
+            .w-{size}    25, 50, 75, 100
+            .h-{size}    25, 50, 75, 100
+
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home</title>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+       
+    </head>
+    <body class="container-fluid">
+        <button class="w-100 mt-2">Back to top</button>
+        <img class="mt-3 w-100" src="../public/assets/netflixback.png" height="300">
+        <div class="container-fluid">
+            <p class="m-4 border border-4 border-danger p-4 rounded rounded-3">Your Privacy. Your privacy is important to us. Please read the Microsoft Privacy Statement (https://go.microsoft.com/fwlink/?LinkId=521839) (the "Privacy Statement") as it describes the types of data we collect from you and your devices ("Data"), how we use your Data, and the legal bases we have to process your Data. The Privacy Statement also describes how Microsoft uses your content, which is your communications with others; postings submitted by you to Microsoft via the Services; and the files, photos, documents, audio, digital works, livestreams and videos that you upload, store, broadcast or share through the Services ("Your Content"). Where processing is based on consent and to the extent permitted by law, by agreeing to these Terms, you consent to Microsoft’s collection, use and disclosure of Your Content and Data as described in the Privacy Statement. In some cases, we will provide separate notice and request your consent as referenced in the Privacy Statement.</p>
+        </div>
+       
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    </body>
+</html>
+
+
+                             Bootstrap Positions
+                            ---------------------------
+.position-static
+.position-relative
+.position-absolute
+.position-fixed
+.position-sticky
+.top
+.start
+.end
+.bottom -->

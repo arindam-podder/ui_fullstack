@@ -1,0 +1,215 @@
+<!-- 1. Primary Selectors
+    - Id
+    - Type
+    - Class
+2. Rational Selectors
+    - Child          parent  child
+    - Direct Child      parent > child
+    - Decendent      root + adjacent
+    - All Decendents      root ~ elements
+
+3. Attribute Selectors
+
+     element[attribute=value]  {
+
+     }
+
+     input [ type="text" ]
+     {
+     }
+
+     input [type="button"]
+     {
+     }
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CDN</title>
+        <style>
+            input[type="text"] {
+                background-color: yellow;
+            }
+        </style>
+    </head>
+    <body>
+        <form>
+            <dl>
+                <dt>User Name</dt>
+                <dd><input type="text"></dd>
+                <dt>Mobile</dt>
+                <dd><input type="text"></dd>
+            </dl>
+            <input type="button" value="Login">
+            <input type="button" value="Cancel">
+        </form>
+    </body>
+</html>
+
+- You can apply effects based on attribute name without value.
+
+Syntax:
+    element [attribute]
+    {
+    }
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CDN</title>
+        <style>
+            p[id] {
+                color:red;
+            }
+        </style>
+    </head>
+    <body>
+        <p>Para-1</p>
+        <p id="p2">Para-2</p>
+        <p>Para-3</p>
+        <p id="p4">Para-4</p>
+    </body>
+</html>
+
+
+- Attribute can use various condition with value.
+
+ [attribute=value]    Equal To -  Exact Match
+ [attribute$=value]     Ends with    
+ [attribute^=value]     Starts with
+ [attribute|=value]    Equal To and Starts with specified value
+         but can be separate only with "-"
+         ex:   Effects-para
+                Effects
+ [attribute~=value]     Equal to and starts with specified value
+        but separated with blank space.
+        ex:  Effects
+               Effects para
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CDN</title>
+        <style>
+            p[class~="Effects"]{
+                color:red;
+            }
+        </style>
+    </head>
+    <body>
+        <p class="Effects">Para-1</p>
+        <p class="paraEffects">Para-2</p>
+        <p class="EffectsPara">Para-3</p>
+        <p class="Effects Para">Para-4</p>
+        <p class="para-Effects">Para-5</p>
+        <p class="Effects-para">Para-6</p>
+    </body>
+</html>    
+
+4. Structrual Selectors [based on occurance]  - Structural Classes
+    They use class reference.
+    Class is implemented by using ":"
+
+Selector        Description
+--------------------------------------------------------------------------------
+first-child        It is a class that finds first occurrance of child
+last-child        It finds the last occurance
+nth-child        It uses specific occurance number or
+        occurance type.
+        number = 1, 2, 3
+        type = even, odd
+   
+        Syntax:
+          nth-child(2) { }
+          nth-child(even) { }
+
+nth-of-type    It defines every nth occurance for child and also
+        start with.
+
+        Syntax:
+        nth-of-type(2)    // only 2nd
+        nth-of-type(2n)    // every 2nd occurance
+                   starts with 2.
+        nth-of-type(2n+1)    // every 2nd occurance
+                   starts with 1.
+nth-last-of-type    From bottom
+
+:root        It define the root element - root of all elements
+        [when body is not defined in page]
+
+
+
+
+
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CDN</title>
+        <style>
+            li:nth-last-of-type(2n+1) {
+                color:red;
+            }
+         
+        </style>
+    </head>
+    <body>
+        <ol>
+            <li>Item-1</li>
+            <li>Item-2</li>
+            <li>Item-3</li>
+            <li>Item-4</li>
+            <li>Item-5</li>
+            <li>Item-6</li>
+            <li>Item-7</li>
+            <li>Item-8</li>
+        </ol>
+    </body>
+</html>
+
+
+5. Dynamic Pseudo Classes
+
+- Dynamic will change according to state and situation.
+- Pseudo uses a different name for same behaviour
+- Class is a program template.
+
+
+:hover        actions on mouse over
+:active        when link is active [hyper link]
+:link        <a> in default state
+:visited        <a> when visited
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Frames</title>
+        <style>
+            img {
+                width: 50px;
+                height: 50px;
+                transition: 2s;
+            }
+            img:hover {
+                width: 150px;
+                height: 150px;
+                transition: 2s;
+                margin-left: 200px;
+            }
+        </style>
+    </head>
+   <body>
+       <img  src="../public/assets/shoe.jpg">
+   </body>
+</html>
+
+6. Element State Pseudo Classes
+
+7. Element Validation State Pseudo Classes
+
+8. Behaviour Pseudo classes -->

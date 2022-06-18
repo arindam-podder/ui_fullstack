@@ -1,0 +1,335 @@
+<!-- Tables in HTML
+---------------------
+- Tables arrange information into rows and columns.
+- Tables are used for designing Grids in web application.
+- Table Elements
+<table> Start and end of table
+    <caption> Sets caption to make table SEO friendly
+    <thead> Header section
+    <tbody> Body Section
+    <tfoot> Footer Section
+        <colgroup> Groups columns to define style
+        <tr> Table row
+            <td> Table cell ordinary [table data]
+            <th> Table cell heading style [table heading]
+
+
+Ex:  1 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tables</title>
+</head>
+
+<body>
+    <table width="400" border="1">
+        <caption>Products Table</caption>
+        <colgroup span="1"></colgroup>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Preview</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Sony Speaker</td>
+                <td>5600.55</td>
+                <td>Available</td>
+                <td>
+                    <img src="../public/assets/speaker.jpg" width="80" height="80">
+                </td>
+            </tr>
+            <tr>
+                <td>Nike Casuals</td>
+                <td>7773.55</td>
+                <td>Available</td>
+                <td>
+                    <img src="../public/assets/shoe.jpg" width="80" height="80">
+                </td>
+            </tr>
+            <tr>
+                <td>Winter Jacket</td>
+                <td>2600.55</td>
+                <td>Out of Stock</td>
+                <td>
+                    <img src="../public/assets/jacket.jpg" width="80" height="80">
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&copy; copyright</td>
+                <td>2022</td>
+                <td>&nbsp;</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+
+</html>
+
+
+<!-- Table Attributes:
+---------------------
+1. Frame, Rules, Border
+
+Frame : sets frame for table. It can have values
+box, above, below, rhs, lhs, void.
+
+Frame can't take multiple values.
+
+
+Rules : sets rules for rows and columns. It can have
+values: all, rows, cols, groups, none.
+
+
+Border : sets border for cells, It can have values
+1 = true, 0=false
+
+Syntax:
+<table frame="box">
+<table frame="void">
+<table frame="rhs">
+<table rules="all">
+<table frame="box" rules="all">
+<table frame="void" rules="all">
+<table border="1" frame="void">
+
+Note: Table can't display border if rules are defined. Rules will dominate
+      border. You have to remove rules attribute to display border.
+
+Border have only 2 values to defined
+1 = sets border
+0 = removes border
+
+Border colors, effects can be changed by using CSS.
+
+Ex:  2 -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tables</title>
+</head>
+
+<body>
+    <table width="700" frame="void" border="1">
+        <caption>Products Table</caption>
+        <colgroup span="3"></colgroup>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Preview</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Sony Speaker</td>
+                <td>5600.55</td>
+                <td>Available</td>
+                <td>
+                    <img src="../public/assets/speaker.jpg" width="80" height="80">
+                </td>
+            </tr>
+            <tr>
+                <td>Nike Casuals</td>
+                <td>7773.55</td>
+                <td>Available</td>
+                <td>
+                    <img src="../public/assets/shoe.jpg" width="80" height="80">
+                </td>
+            </tr>
+            <tr>
+                <td>Winter Jacket</td>
+                <td>2600.55</td>
+                <td>Out of Stock</td>
+                <td>
+                    <img src="../public/assets/jacket.jpg" width="80" height="80">
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&copy; copyright</td>
+                <td>2022</td>
+                <td>&nbsp;</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+
+</html>
+
+<!-- 2. cellspacing and cellpadding
+
+cellspacing : sets space between cells in table.
+cellpadding : sets space between cell border and content.
+
+Syntax:
+<table width="400" border="1" cellspacing="10" cellpadding="15">
+
+    3. bgcolor and background
+
+    bgcolor : sets background color for table, group, tr, td, th.
+
+    background : sets background image
+
+    Syntax:
+    <table bgcolor="yellow">
+        <thead bgcolor="yellow">
+            <tr bgcolor="yellow">
+                <td bgcolor="yellow">
+                    <table background="./assets/shoe.jpg">
+
+ 4. width and height:
+
+    width : it is defined for table or td and th.     
+    height : it is defined for table[without group] or tr
+
+                        You can't set random size for rows and columns.
+                        all cell in a row will have same height.
+
+                        Syntax:
+                        <tr height="200">
+                            <td width="300">
+                            <th width="300">
+                                <table width="340">                       
+
+5. align and valign
+
+    align : Horizontally left, center, right
+    or justify
+                                    valign : Vertically top, center, bottom.
+
+                                    <table align="center">
+                                        <tr align="center">
+                                            <td align="right">
+                                        <tr align="center" valign="center">                                                              
+
+
+6. colspan and rowspan
+
+    colspan : It merges all specified number of columns into single cell.
+
+    rowspan : It merges all specified number rows rows into single cell.
+
+    Syntax:
+    <th colspan="4">
+    <td rowspan="3"> 
+    
+    Ex:  3 -->
+    
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Table</title>
+</head>
+
+<body>
+    <table width="600" border="1">
+        <thead>
+            <tr>
+                <th colspan="5">
+                    Products
+                    Table
+                </th>
+            </tr>
+            <tr>
+                <th colspan="2">
+                    Name
+                </th>
+                <th colspan="3">
+                    Address
+                </th>
+            </tr>
+            <tr>
+                <th>First
+                </th>
+                <th>Last
+                    Name
+                </th>
+                <th>City
+                </th>
+                <th>State
+                </th>
+                <th>Postal
+                    Code
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>&nbsp;
+                </td>
+                <td>&nbsp;
+                </td>
+                <td rowspan="5" align="center" valign="center">
+                    D<br>e<br>l<br>h<br>i
+                </td>
+                <td>&nbsp;
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>&nbsp;
+                </td>
+                <td>&nbsp;
+                </td>
+                <td>&nbsp;
+                </td>
+                <td>&nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;
+                </td>
+                <td>&nbsp;
+                </td>
+                <td>&nbsp;
+                </td>
+                <td>&nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;
+                </td>
+                <td>&nbsp;
+                </td>
+                <td>&nbsp;
+                </td>
+                <td>&nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;
+                </td>
+                <td>&nbsp;
+                </td>
+                <td>&nbsp;
+                </td>
+                <td>&nbsp;
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td align="center" colspan="5">
+                    &copy;
+                    copyright
+                    2022
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+
+</html>

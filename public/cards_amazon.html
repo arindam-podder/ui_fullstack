@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cards design like amazon </title>
+    <style>
+        .container{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .card{
+            width: 370px;
+            padding: 5px;
+            margin-right: 20px;
+            box-shadow: 5px 3px 4px grey;
+        }
+        .head{
+            font-size: 25px;
+            text-align: left;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .body{
+            display: grid;
+            grid-template-columns: 6fr 6fr;
+            margin-bottom: 20px;
+        }
+        .foot{
+            color: blue;
+        }
+        img{
+            height: 100px;
+            width: 170px;
+        }
+        p{
+            font-size: 15px;
+            margin-top: 0px;
+        }
+    </style>
+
+</head>
+<body>
+    
+    <div class="container">
+        <div class="card">
+            <div class="head">Up to 60% off | Styles for <br> Men</div>
+            <div class="body">
+                <div>
+                    <img src="../assets/clothing.jpg" alt="men cloth">
+                    <p>Men Clothing</p>
+                </div>
+                <div>
+                    <img src="../assets/footwear.jpg" alt="">
+                    <p>Men Footwear</p>
+                </div>
+                <div>
+                    <img src="../assets/watches.jpg" alt="">
+                    <p>Men Watches</p>
+                </div>
+                <div>
+                    <img src="../assets/bags.jpg" alt="">
+                    <p>Men bags & luggages</p>
+                </div>
+            </div>
+            <div class="foot">
+                <p>see all offers</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="head">Up to 60% off | Styles for <br> Women</div>
+            <div class="body">
+                <div>
+                    <img src="../assets/women_clothing.jpg" alt="">
+                    <p>Women Clothing</p>
+                </div>
+                <div>
+                    <img src="../assets/women_footwear.jpg" alt="">
+                    <p>Women Footwear</p>
+                </div>
+                <div>
+                    <img src="../assets/women_watches.jpg" alt="">
+                    <p>Women Watches</p>
+                </div>
+                <div>
+                    <img src="../assets/women_jewellery.jpg" alt="">
+                    <p>Fashion Jewellery</p>
+                </div>
+            </div>
+            <div class="foot">
+                <p>see all offers</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

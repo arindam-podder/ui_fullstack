@@ -1,0 +1,173 @@
+<!-- JavaScript Data Types
+
+- Data Type defines the data structure.
+- It specifies the type of data and range of data.
+- The data types are implicitly typed for JavaScript.
+- JavaScript is not strongly typed.
+- Data Type is determined according to the value assigned.
+
+                var x;            => data type is "undefined"
+                x = 10;        => data type is number
+                x = true;        => data type is boolean
+
+- JavaScript is not strongly typed but it can handle various data types which are classified into 2 groups
+
+            a) Primitive Types
+            b) Non-Primitive Types
+
+Primitive Types
+- They are immutable types.
+- Structure will not change.
+- We have fixed range for values.
+- JavaScript primitive types are
+
+        a) number
+        b) string
+        c) boolean
+        d) null
+        e) undefined
+
+- Primitive types are store in memory stack.
+- Stack uses "LIFO" [Last In First Out]
+
+
+                              Number Type
+- It is used to configure a numeric value which can be
+        signed integer            -10
+        unsigned interger        10
+        floating point            34.42
+        double                    452.34, 56.543
+        decimal                    4560.33, 34.4442 [ 29 places ]
+        exponent                    2e3  [2x10{3}]  = 2000
+        binary                        0b1010
+        hexa                        0f356
+        octa                        0o734
+
+- The min and max range of number is
+
+    Min =  -9007199254740991
+     Max = 9007199254740991
+
+- Every input from HTML is considered as string.
+
+- You have to convert string into number to handle manipulations of number.
+
+- JavaScript provides following methods for converting a string into number
+            a) parseInt()            45
+            b) parseFloat()        45.67
+
+Syntax:
+            var age = parseInt(textboxValue);
+
+
+Ex:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Number Type</title>
+    <script>
+        function SubmitClick(){
+            var age = parseFloat(document.getElementById("txtAge").value);
+            document.write("You will be " + (age+1) + " Next Year");
+        }
+    </script>
+</head>
+<body>
+    Age: <input type="number" id="txtAge"> <button onclick="SubmitClick()">Submit</button>
+</body>
+</html>
+
+- JavaScript parsing method can parse any value starting with number, even if it contains a string expression.
+  [It can read upto the numeric occurance]
+
+                a = 20AB
+                b = 40
+                parseInt(a) + b  =  60;
+
+                a = AB20
+                b = 40
+                parseInt(a) + b  =  NaN;   [Not a Number]
+
+- You can verify and allow only number as input by using the method
+                "isNaN()" [boolean true if value is not number]
+
+Ex:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Number Type</title>
+    <script>
+        function SubmitClick(){
+            var age = parseFloat(document.getElementById("txtAge").value);
+            if(isNaN(age)){
+                document.write("Age must be a number");
+            } else {
+            document.write("You will be " + (age+1) + " Next Year");
+            }
+        }
+    </script>
+</head>
+<body>
+    Age: <input type="text" id="txtAge"> <button onclick="SubmitClick()">Submit</button>
+</body>
+</html>
+
+FAQ: How to know the data type is number or not?
+Ans:  You can use
+            a) isNaN()
+            b) typeof       [operator]
+
+
+                                String Type
+                                ----------------
+- String is a literal with group of chars enclosed in
+        a) Double Quotes      "  "
+        b) Single Quotes        '    '
+        c) Back Tick                `    `  
+
+- Double and Single Quotes are used to switch between inner and outer string. They will not allow embeded expressions.
+
+Syntax:
+<script>
+    var link = "<a href='home.html'>Home</a>";
+    var newLink = '<a href="about.html">About</a>';
+    document.write(link + "<br>" + newLink);
+</script>
+
+- JavaScript ES5+ version allows embedded expression using
+                "${ }"
+
+- You can use JavaScript embedded expression only in backtick.
+
+
+Ex:
+<script>
+   var username = "John";
+   var age = 20;
+   var msg1 = "Hello!" + " " + username + " " + "You will be" + " " + (age+1) + " " + "Next Year";
+   var msg2 = `Hello! ${username} You will be ${age+1} Next Year`;
+   document.write(msg1 + "<br>");
+   document.write(msg2);
+</script>
+
+
+Ex:
+<script>
+   var title = "Admin Login";
+   var login = `
+      <h2>${title}</h2>
+      <dl>
+        <dt>User Name</dd>
+        <dd><input type="text"></dd>
+        <dt>Password</dt>
+        <dd><input type="password"></dd>
+       
+      </dl>
+      <button>${title}</button>
+   `;
+   document.write(login);
+</script>
+
+Note: String as per ECMA can be max 2GB.
+
+- JavaScript String Manipulations  [Methods] -->

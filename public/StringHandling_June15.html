@@ -1,0 +1,205 @@
+<!-- String Formatting Methods
+String Manipulation Methods
+- charAt()
+- charCodeAt()
+- substring()
+- substr()
+- slice()
+- length
+- indexOf()        : It returns the index number of specified char.
+                      If char not found then it returns -1.
+- lastIndexOf()    : It finds the last occurance index number of char.
+
+            str = "Welcome";
+
+            str.indexOf("e")            1
+            str.lastIndexOf("e")    6
+
+Ex:
+<script>
+    var msg = "weLCOme to JavaScrIPT";
+    var firstChar = msg.charAt(0);
+    var restChars = msg.substring(1);
+    var sentence = firstChar.toUpperCase() + restChars.toLowerCase();
+    document.write(msg + "<br>");
+    document.write(sentence);
+</script>
+
+
+Ex:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Email</title>
+    <script>
+        function VerifyEmail(){
+            var email = document.getElementById("txtEmail").value;
+            var msg = document.getElementById("msg");
+            if(email.indexOf("@")==-1) {
+                msg.innerHTML = "Please Include @ in Email";
+            } else {
+                msg.innerHTML = "Email Verfied";
+            }
+        }
+    </script>
+</head>
+<body>
+    Email :
+    <input type="text" id="txtEmail"> <button onclick="VerifyEmail()">Submit</button>
+    <div id="msg"></div>
+</body>
+</html>
+
+- startsWith()        : It returns true if string starts with specified chars.
+- endsWith()            : It returns true if string ends with specified chars.
+
+
+Ex:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Email</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script>
+       function VerifyCard(){
+         var cardnumber = document.getElementById("txtCard").value;
+         var pic = document.getElementById("pic");
+         if(cardnumber.startsWith("4444")) {
+            pic.src= "../public/assets/visa.png";
+         } else if(cardnumber.startsWith("5555")) {
+            pic.src = "../public/assets/master.png";
+         } else {
+            pic.src="";
+            pic.alt = "Invalid";
+         }
+       }
+       function VerifySkype(){
+        var skype = document.getElementById("txtSkype").value;
+        var msg = document.getElementById("msg");
+        if(skype.endsWith("outlook.com")) {
+            msg.innerHTML = "";
+        } else {
+            msg.innerHTML = "Skype Address must have outlook domain";
+            msg.className = "text-danger";
+        }
+       }
+    </script>
+</head>
+<body class="container-fluid">
+    <h3>Payment Details</h3>
+    <dl>
+        <dt>Card Number</dt>
+        <dd class="input-group">
+            <input type="text" onkeyup="VerifyCard()" id="txtCard" class="form-control">
+            <img width="80" id="pic" height="40" class="input-group-text">
+        </dd>
+        <dt>Your Skype Address</dt>
+        <dd>
+            <input type="text" id="txtSkype" onblur="VerifySkype()" class="form-control">
+        </dd>
+        <dd id="msg">
+
+        </dd>
+    </dl>
+</body>
+</html>
+
+- trim()                : It is used to remove leading spaces.
+                            [space before and after string]
+- split()                : It splits the string at specified delimeter.
+                          It returns an array.
+
+EX:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Trim</title>
+    <script>
+        function VerifyUser(){
+            var userid = document.getElementById("txtUserId").value;
+            if(userid.trim()=="john_nit") {
+                document.write("User Verified");
+            } else {
+                document.querySelector("div").innerHTML = "Invalid User Id";
+            }
+        }
+    </script>
+</head>
+<body>
+    User Id:
+    <input type="text" id="txtUserId" onblur="VerifyUser()">
+    <div></div>
+</body>
+</html>
+
+
+Ex:
+<script>
+    var userDetails = "John-9684838212, David-9995848382";
+    var [john, david] = userDetails.split(',');
+    document.write(john);
+</script>
+
+- match()   : It is used to verify the given string with a regular                
+                  expression.
+                Regular Expression in JavaScript is defined by using
+                        "/ /"
+
+Ex:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <title>Password</title>
+     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+     <script>
+         function VerifyPassword(){
+            var password = document.getElementById("txtPassword").value;
+            var regExp = /(?=.*[A-Z])\w{4,10}/;
+            var statusBar = document.getElementById("statusBar");
+            var statusText = document.getElementById("statusText");
+            if(password.match(regExp)) {
+                statusBar.style.width = "100%";
+                statusBar.className = "bg-success text-center progress-bar-striped progress-bar-animated";
+                statusText.innerHTML = "Strong Password";
+            } else {
+                if(password.length<4) {
+                    statusBar.style.width = "20%";
+                    statusText.innerHTML = "Poor Password";
+                    statusBar.className = "bg-danger text-center progress-bar-striped progress-bar-animated";
+                } else {
+                    statusBar.style.width = "70%";
+                    statusText.innerHTML = "Weak Password";
+                    statusBar.className = "bg-warning text-center progress-bar-striped progress-bar-animated";
+                }
+            }
+         }
+     </script>
+</head>
+<body class="container-fluid">
+    <dl>
+        <dt>Password</dt>
+        <dd><input type="password" class="form-control" onkeyup="VerifyPassword()" id="txtPassword"></dd>
+        <dd>
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-animated" id="statusBar">
+                    <span id="statusText"></span>
+                </div>
+            </div>
+        </dd>
+    </dl>
+
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>
+
+
+Note: You have to use escape sequence char for string.
+
+            var path = "d:\images\pic.jpg";     => d:imagespic.jpg
+            var path = "d:\\images\\pic.jpg;    => d:\images\pic.jpg
+
+<script>
+    var path = "\"d:\\images\\pic.jpg\"";
+    document.write(path);
+</script> -->

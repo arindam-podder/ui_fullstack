@@ -1,0 +1,309 @@
+<!-- How to integrate style into HTML Page?
+- Inline
+- Embedded
+- External File
+    Minification
+   
+FAQ: What is CDN?
+Ans: Content Delivery Network
+         You can access stylesheet from external remote servers and
+         use in your project without downloading.
+
+         It is good for live development.
+
+
+FAQ: How styles will take control over HTML?
+Ans:  We have 2 techniques
+
+    a) Inline styles
+
+     <button  style="color:red; text-align:center">
+
+    b) Selector is required while using embedded and external
+
+    selector
+    {
+      attribute:value;
+      attribute:value;
+    }
+
+FAQ: What is a selector?
+Ans:  It is marker that defines where to apply the given set of effects.
+         Selectors are classified into various types
+
+1. Primary Selectors
+    a) Type Selector
+    b) Id Selector
+    c) Class Selector
+
+Type Selector:  It defines the element node name to apply effects.
+        <h2> Tag
+          h2    node
+          p
+          table
+Syntax:
+    h2 {   }
+    table {  }
+    dd {   }
+    td {   }
+
+            It can apply effect for every occurance in page.
+            You can't ignore for any specific occurance.
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CDN</title>
+        <style>
+            p {
+                font-size: 24px;
+                color:red;
+            }
+        </style>
+    </head>
+    <body class="container-fluid">
+        <p>Para-1</p>
+        <p>Para-2</p>
+        <p>Para-3</p>
+
+    </body>
+</html>
+
+
+ID Selector:  
+- It uses "id" reference for accessing set of effects.
+- It allows to apply only to the required element.
+- Id selector is defined by using "#" and it is accessed by using "id" attribute.
+    #effects {
+
+    }
+   
+    <button  id="effects">
+
+- Every element can have only one "id" reference.
+- If you have styles categorized into various groups, then you can't apply them.
+
+    <p  id="ref1"  id="ref2">  // invalid
+    <p  id="ref1  ref2">         //  invalid
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CDN</title>
+        <style>
+            #text-effects {
+                font-family: Arial;
+                text-align: center;
+                font-size: 20px;
+                color:red;
+            }
+            #back-effects {
+                background-color: yellow;
+            }
+            #border-effects {
+                border:2px solid red;
+                padding: 10px;
+            }
+        </style>
+    </head>
+    <body class="container-fluid">
+        <h2 id="back-effects">Selectors in CSS</h2>
+        <p id="border-effects">Para-1</p>
+        <p>Para-2</p>
+        <p>Para-3</p>
+
+    </body>
+</html>
+
+
+Class Selector:
+- Class supports multiple inheritence.
+- One element can implement multiple categories of effects.
+- Class is defined by using "."  and accessed by using "class" attribute.
+
+    .className {
+
+    }
+
+    <p   class="className1  className2  className3">
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CDN</title>
+        <style>
+            .text-effects {
+                font-family: Arial;
+                text-align: center;
+                font-size: 20px;
+                color:red;
+            }
+            .back-effects {
+                background-color: yellow;
+            }
+            .border-effects {
+                border:2px solid red;
+                padding: 10px;
+            }
+        </style>
+    </head>
+    <body class="container-fluid">
+        <h2 class="border-effects back-effects text-effects">Selectors in CSS</h2>
+        <p>Para-1</p>
+        <p class="text-effects border-effects">Para-2</p>
+        <p>Para-3</p>
+
+    </body>
+</html>
+
+
+FAQ's:
+1. If we define effects for element using type, id and class then which set of effects will apply?
+A. If same set of effects are written
+    1st Priority    Id selector
+    2nd         class selector
+    3rd        type selector
+
+    if different set of effects are written then all will apply.
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CDN</title>
+        <style>
+           h2 {
+               color:red;
+               border:2px solid red;
+           }
+           #head {
+               color:green;
+               text-align: center;
+           }
+           .heading {
+               color:blue;
+               background-color: yellow;
+           }
+        </style>
+    </head>
+    <body class="container-fluid">
+        <h2 class="heading" id="head" >Selectors in CSS</h2>
+        <p>Para-1</p>
+        <p>Para-2</p>
+        <p>Para-3</p>
+
+    </body>
+</html>
+
+2. If ID selector is used in embeded and external file then which one will apply?
+A.  Embedded Id will apply.
+
+
+3. Can We group Selectors? How to group selectors?
+A. Yes. By using "," delimeter.
+
+    h2, #head, .heading
+    {
+      color:red;
+    }
+
+
+2.  Rational Selectors [Child and Decendent]
+
+    Selector        Description
+    ---------------------------------------------------------------------------------
+    Child Selector          It is defined by using space.
+
+            Syntax:    
+                div p {  }
+                ol  li  {  }
+           
+            It will apply to all child elements at
+            any level of hierarchy.
+
+    Direct Child Selector    It is defined by using ">"
+
+            Syntax:
+               div > p {  }
+
+   Decendent Selector    It is parent and its decendents, which
+            are after the parent.
+           
+            +  Adjacent decendent.
+            ~  All decendents.
+
+            div+p {  }    only to first para
+            div~p {  }    all para
+            div  p  {  }  para is not child
+           
+
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CDN</title>
+        <style>
+           div > p {
+               color:red;
+           }
+        </style>
+    </head>
+    <body class="container-fluid">
+        <div>
+            <p>Para-1</p>
+            <p>Para-2</p>
+            <main>
+                <p>Para-3</p>
+            </main>
+            <p>Para-4</p>
+        </div>
+        <p>Para-5</p>
+    </body>
+</html>
+
+       
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CDN</title>
+        <style>
+           h2~p {
+               color:red;
+           }
+        </style>
+    </head>
+    <body class="container-fluid">
+        <h2>Heading</h2>
+        <p>para-1</p>
+        <p>para-2</p>
+        <p>para-3</p>
+    </body>
+</html>
+
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CDN</title>
+        <style>
+           h2~p {
+               color:red;
+           }
+           h2+p {
+               color:green;
+           }
+        </style>
+    </head>
+    <body class="container-fluid">
+        <h2>Heading</h2>
+        <p>para-1</p>
+        <p>para-2</p>
+        <p>para-3</p>
+    </body>
+</html> -->

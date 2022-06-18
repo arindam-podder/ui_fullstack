@@ -1,0 +1,251 @@
+<!-- String Formatting Functions
+--------------------------------------
+
+- JavaScript string is considered as an object.
+- You can format the string object dynamically by using following methods.
+
+Method                    Description
+--------------------------------------------------------------------------------
+fontcolor()                Sets text color
+fontsize()                    Sets text size
+bold()                        Bold
+italics()                    Italic
+sup()                        Super Script
+sub()                        Sub Script
+toUpperCase()            Converts all chars to uppercase
+toLowerCase()            Converts all chars to lowercase
+
+Note: All string formatting methods render HTML.
+fontcolor('red')   = <font color='red'>
+
+Ex:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>String</title>
+<script>
+function VerifyUser(){
+
+var username = document.getElementById("UserName").value;
+
+var userMsg = document.getElementById("userMsg");
+if(username.length<4) {
+userMsg.innerHTML = "Name too short".fontcolor('red').bold().italics();
+} else {
+userMsg.innerHTML = "Name Verified..".fontcolor('green').bold();
+}
+}
+function ChangeCase(){
+var username = document.getElementById("UserName").value;
+document.getElementById("UserName").value = username.toUpperCase();
+}
+</script>
+</head>
+<body>
+<dl>
+<dt>User Name</dt>
+<dd><input placeholder="Name Block Letters Only" type="text" onblur="ChangeCase()" onkeyup="VerifyUser()" id="UserName"></dd>
+<dd id="userMsg"></dd>
+</dl>
+</body>
+</html>
+
+Formatting String using Styles
+-----------------------------------------
+- JavaScript allows to define styles dynamically for any HTML element.
+- Style attributes are reffered in CamelCase.
+background-color     :  backgroundColor
+font-size                 :  fontSize
+
+- Style attributes are not applied to string, they are applied to element that handles string.
+
+Syntax:
+userMsg.style.backgroundColor = "red";
+userMsg.style.color="white";
+
+Ex:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>String</title>
+<script>
+function VerifyUser(){
+
+var username = document.getElementById("UserName").value;
+
+var userMsg = document.getElementById("userMsg");
+if(username.length<4) {
+userMsg.innerHTML = "Name too short";
+userMsg.style.color = "red";
+} else {
+userMsg.innerHTML = "Name Verified..";
+userMsg.style.color = "green";
+userMsg.style.fontStyle = "italic";
+}
+}
+function ChangeCase(){
+var username = document.getElementById("UserName").value;
+document.getElementById("UserName").value = username.toUpperCase();
+}
+</script>
+</head>
+<body>
+<dl>
+<dt>User Name</dt>
+<dd><input placeholder="Name Block Letters Only" type="text" onblur="ChangeCase()" onkeyup="VerifyUser()" id="UserName"></dd>
+<dd id="userMsg"></dd>
+</dl>
+</body>
+</html>
+
+
+Ex: You can apply effects by using CSS class.
+You have to use the property "className".
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>String</title>
+<style>
+.invalid-style {
+border: 2px solid red;
+box-shadow: 2px 2px 3px red;
+}
+.valid-style {
+border: 2px solid green;
+box-shadow: 2px 2px 3px green;
+}
+</style>
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+<script>
+function VerifyUser(){
+
+var username = document.getElementById("UserName");
+
+var userMsg = document.getElementById("userMsg");
+if(username.value.length<4) {
+userMsg.innerHTML = "Name too short";
+userMsg.className = "text-danger";
+username.className = "invalid-style";
+} else {
+userMsg.innerHTML = "Name Verified..";
+userMsg.className = "text-success";
+username.className = "valid-style";
+}
+}
+function ChangeCase(){
+var username = document.getElementById("UserName").value;
+document.getElementById("UserName").value = username.toUpperCase();
+}
+</script>
+</head>
+<body class="container-fluid">
+<dl>
+<dt>User Name</dt>
+<dd><input placeholder="Name Block Letters Only" type="text" onblur="ChangeCase()" onkeyup="VerifyUser()" id="UserName"></dd>
+<dd id="userMsg"></dd>
+</dl>
+</body>
+</html>
+
+
+Ex: Dynamically Changing the Classes
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>String Formatting</title>
+<link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+<script>
+function ChangeTheme(){
+var frmRegister = document.getElementById("frmRegister");
+var theme = document.getElementById("theme");
+var button = document.querySelector("button");
+if(theme.checked) {
+frmRegister.className = "bg-dark text-white border border-2 p-2 m-2 w-25";
+button.className = "w-100 btn btn-light";
+} else {
+frmRegister.className = "bg-light text-dark border border-2 p-2 m-2 w-25";
+button.className = "w-100 btn btn-dark";
+}
+}
+</script>
+</head>
+<body class="container-fluid">
+<form id="frmRegister" class="border border-2 p-2 m-2 w-25">
+<h2>Register User</h2>
+<div class="form-switch">
+<input type="checkbox" id="theme" onchange="ChangeTheme()" class="form-check-input"> Dark Mode
+</div>
+<dl>
+<dt>User Name</dt>
+<dd><input type="text"></dd>
+<dt>Password</dt>
+<dd><input type="password"></dd>
+<dt>Email</dt>
+<dd><input type="email"></dd>
+</dl>
+<button class="btn btn-dark w-100">Register</button>
+</form>
+</body>
+</html>
+
+ String Manipulation Methods & Property
+-------------------------------------------------------
+
+1. length        : It returns total number of chars in string.
+
+2. charAt()    : It returns the chars at specified index number
+
+3. charCodeAt(): It returns the code of character at specified index.
+[ASCII Code  :  A=65, Z=90]
+
+var str = "Arun";
+
+str.charAt(0);        = A
+str.charCodeAt(0) = 65
+
+
+Ex:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>String Manipulations</title>
+<script>
+function VerifyUser(){
+var username = document.getElementById("UserName").value;
+var userMsg = document.getElementById("userMsg");
+if(username.charCodeAt(0)>=65 && username.charCodeAt(0)<=90) {
+userMsg.innerHTML = "";
+} else {
+userMsg.innerHTML = "Name must start with Uppercase Letter".fontcolor('red');
+}
+}
+</script>
+</head>
+<body>
+<dl>
+<dt>User Name</dt>
+<dd><input type="text" onkeyup="VerifyUser()" id="UserName"></dd>
+<dd id="userMsg"></dd>
+</dl>
+</body>
+</html>
+
+4. substring()   : It reads from start to end index bi-directional.
+Syntax:
+  str.substring(start, end)
+  str.sunstring(7,0)  or (7)  or  (7,14)
+
+5. substr()        : It reads the specified number of chars from given
+index.
+
+Syntax:   str.substr(index, length);
+
+6. slice()            : It can read from start index to end index.
+End index must be a number that is greater than
+start index.
+
+Syntax:  str.slice(startIndex, endIndex); -->

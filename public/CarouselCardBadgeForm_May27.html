@@ -1,0 +1,341 @@
+<!-- Alerts
+Button
+Card
+                                    Bootstrap Badge
+                                    -----------------------
+ - It is used for dynamic containers that can change value and display along with other contents in element.
+
+.badge
+.bg-{contextual}
+.rounded
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Alerts</title>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    </head>
+    <body class="container-fluid">
+        <h2>Badge</h2>
+        <button class="btn btn-primary position-relative"><span class="bi bi-bell"></span> Notifications <span class="badge bg-danger rounded rounded-circle position-absolute top-0 end-0">4</span> </button>
+        <h2>Table of Contents</h2>
+        <ul class="list-unstyled">
+            <li class="d-flex justify-content-between mb-2"><span>HTML (Introduction to HTML)</span><span class="badge bg-dark">1</span></li>
+            <li class="d-flex justify-content-between"><span>CSS Tutorial (Introduction to CSS)</span><span class="badge bg-dark">4</span></li>
+        </ul>
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    </body>
+</html>
+                                Bootstrap Carousel
+                                --------------------------
+- It sets sliding and fading banners in page.
+
+Basic Classes:
+.carousel
+.carousel-inner
+.carouse-item
+.active
+
+1. Carousel Item can display only when set to "active".
+2. Only one carousel item must be active.
+
+    <div class="carousel-item active">
+
+3. Carousel will not have any animation by default, you have to define jquery attribute  for carousel to start animation.
+                        "data-bs-ride"
+
+     <div class="carousel"  data-bs-ride="carousel">
+
+4. The default carousel animation is fade, you can change to "slide".
+
+      <div class="carousel slide" data-bs-ride="carousel">
+
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Alerts</title>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    </head>
+    <body class="container-fluid">
+        <div class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="../public/assets/slide1.png" class="w-100 d-block">
+                </div>
+                <div class="carousel-item">
+                    <img src="../public/assets/slide2.png" class="w-100 d-block">
+                </div>
+                <div class="carousel-item">
+                    <img src="../public/assets/slide3.png" class="w-100 d-block">
+                </div>
+            </div>
+        </div>
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    </body>
+</html>
+
+
+Configure Carousel Controls
+- They allow navigation to previous and next.
+
+.carousel-control-prev
+.carousel-control-prev-icon
+.carousel-control-next
+.carousel-control-next-icon
+.carousel-dark [theme]
+
+- jQuery attribute for previous and next button
+
+.data-bs-slide="prev"
+.data-bs-slide="next"
+.data-bs-target="#carouseId"
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Alerts</title>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    </head>
+    <body class="container-fluid">
+        <div id="topBanner" class="carousel slide carousel-dark" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="../public/assets/slide1.png" class="w-100 d-block">
+                </div>
+                <div class="carousel-item">
+                    <img src="../public/assets/slide2.png" class="w-100 d-block">
+                </div>
+                <div class="carousel-item">
+                    <img src="../public/assets/slide3.png" class="w-100 d-block">
+                </div>
+            </div>
+            <button data-bs-slide="prev" data-bs-target="#topBanner" class="carousel-control-prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button data-bs-slide="next" data-bs-target="#topBanner" class="carousel-control-next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    </body>
+</html>
+
+
+Carousel Indicators
+- Indicator allows to slide to any specific position.
+
+.carousel-indicators
+
+.data-bs-slide-to="0|1|2"
+
+.active
+
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Alerts</title>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    </head>
+    <body class="container-fluid">
+        <div id="topBanner" class="carousel slide carousel-dark" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="../public/assets/slide1.png" class="w-100 d-block">
+                </div>
+                <div class="carousel-item">
+                    <img src="../public/assets/slide2.png" class="w-100 d-block">
+                </div>
+                <div class="carousel-item">
+                    <img src="../public/assets/slide3.png" class="w-100 d-block">
+                </div>
+            </div>
+            <button data-bs-slide="prev" data-bs-target="#topBanner" class="carousel-control-prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button data-bs-slide="next" data-bs-target="#topBanner" class="carousel-control-next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+            <div class="carousel-indicators">
+                <button class="active" data-bs-slide-to="0" data-bs-target="#topBanner"></button>
+                <button data-bs-slide-to="1" data-bs-target="#topBanner"></button>
+                <button data-bs-slide-to="2" data-bs-target="#topBanner"></button>
+            </div>
+        </div>
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    </body>
+</html>
+
+Carousel Time Intervals
+- For every carousel item you can set time interval in milli seconds.
+                1000 ms = 1 s
+- It is defined by using jQuery attribute
+                data-bs-interval=""
+
+    <div class="carousel-item" data-bs-interval="1000">
+
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Alerts</title>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    </head>
+    <body class="container-fluid">
+        <div id="topBanner" class="carousel slide carousel-dark" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="3000">
+                    <img src="../public/assets/slide1.png" class="w-100 d-block">
+                </div>
+                <div class="carousel-item" data-bs-interval="1000">
+                    <img src="../public/assets/slide2.png" class="w-100 d-block">
+                </div>
+                <div class="carousel-item" data-bs-interval="4000">
+                    <img src="../public/assets/slide3.png" class="w-100 d-block">
+                </div>
+            </div>
+            <button data-bs-slide="prev" data-bs-target="#topBanner" class="carousel-control-prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button data-bs-slide="next" data-bs-target="#topBanner" class="carousel-control-next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+            <div class="carousel-indicators">
+                <button class="active" data-bs-slide-to="0" data-bs-target="#topBanner"></button>
+                <button data-bs-slide-to="1" data-bs-target="#topBanner"></button>
+                <button data-bs-slide-to="2" data-bs-target="#topBanner"></button>
+            </div>
+        </div>
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    </body>
+</html>
+
+Ex: Text as Carousel Item
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Alerts</title>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    </head>
+    <body class="container-fluid">
+        <div id="topBanner" class="carousel slide carousel-dark" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="3000">
+                    <img src="../public/assets/slide1.png" class="w-100 d-block">
+                </div>
+                <div class="carousel-item" data-bs-interval="1000">
+                    <img src="../public/assets/slide2.png" class="w-100 d-block">
+                </div>
+                <div class="carousel-item" data-bs-interval="3000">
+                    <div style="height: 200px;" class="d-flex justify-content-center align-items-center">
+                        <div class="text-center">
+                            <h1>Get More offers</h1>
+                            <button class="btn btn-primary">Register</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="4000">
+                    <img src="../public/assets/slide3.png" class="w-100 d-block">
+                </div>
+            </div>
+            <button data-bs-slide="prev" data-bs-target="#topBanner" class="carousel-control-prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button data-bs-slide="next" data-bs-target="#topBanner" class="carousel-control-next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+            <div class="carousel-indicators">
+                <button class="active" data-bs-slide-to="0" data-bs-target="#topBanner"></button>
+                <button data-bs-slide-to="1" data-bs-target="#topBanner"></button>
+                <button data-bs-slide-to="2" data-bs-target="#topBanner"></button>
+                <button data-bs-slide-to="3" data-bs-target="#topBanner"></button>
+            </div>
+        </div>
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    </body>
+</html>
+
+                                  Bootstrap Forms
+                                  -----------------------
+
+.form-control        : text, number, password, email, url, date
+.form-range            : range
+.form-input-file        : file
+.form-color            : color
+.form-label            : labels
+.form-select            : dropdown
+.form-check-input    : radio and checkbox
+.form-switch            : switch style for checkbox and radio
+.form-check-label    : label for radio and checkbox
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Alerts</title>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    </head>
+    <body class="container-fluid">
+        <h2>Register User</h2>
+        <form class="w-25 p-2 border border-2 border-dark">
+            <div class="mb-2">
+                <label class="form-label" for="UserName">User Name</label>
+                <div>
+                    <input type="text" class="form-control" name="UserName">
+                <div class="text-danger">User Name Required</div>
+                </div>
+            </div>
+            <div class="mb-2">
+                <label class="form-label" for="Password">Password</label>
+                <div>
+                    <input type="password" class="form-control" name="Password">
+                    <div class="text-warning">4 to 15 chars</div>
+                </div>
+            </div>
+            <div class="mb-2">
+                <label class="form-label" for="City">Your City</label>
+                <div>
+                    <select class="form-select">
+                        <option>Choose City</option>
+                        <option>Delhi</option>
+                        <option>Hyd</option>
+                    </select>
+                </div>
+            </div>
+            <div class="mb-2">
+                <label class="form-label" for="City">Price Range</label>
+                <div>
+                  <input class="form-range" type="range">
+                </div>
+            </div>
+            <div class="mb-2 form-switch">
+                <input class="form-check-input" type="checkbox"> <label class="form-check-label">Subscribe</label>
+            </div>
+            <div class="mb-2">
+                <button class="btn btn-primary w-100">Register</button>
+            </div>
+        </form>
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    </body>
+</html> -->

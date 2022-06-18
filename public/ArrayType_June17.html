@@ -1,0 +1,184 @@
+<!-- Array
+- Reduce Overhead and Complexity
+- By storing values in sequential order, reduce complexity by storing multiple values under one name.
+- JavaScript array can store various types of values.
+- JavaScript array size can change dynamically.
+
+Configuring Array
+-------------------------
+
+- Array configuration comprises of 2 phases
+        a) Declaration
+        b) Initialization or Assignment of Memory
+
+- Declaration is same as general variables
+
+        var products;
+        let categories;
+
+- Initialization or Assignment of memory is mandatory.
+- Memory is assigned or initialized for array by using 2 methods
+
+        a) [ ]            meta character
+        b) Array()    constructor
+
+        var products = [];         // initialization
+        var products = new Array();
+
+                           (or)
+        var products;
+        products = [ ];                    // assignment
+        products = new Array();
+           
+- [ ]  allows range of values | allows multiple values
+- new Array()
+
+        new         => Dynamic Memory Allocating Operator
+        Array()      => Create an array in memory
+        ()              => Constructor
+        (size)        => You can define size, but size is not constant.
+
+
+Syntax:
+        var products = [];
+        var categories = new Array();
+
+Storing Values in Array
+--------------------------------
+- Values are stored in array with reference of its property.
+- Array Property maps to its index number
+                   
+            Property  "0"    =>  Index  0
+
+            values[0]            
+            values["0"]
+
+
+Ex:
+<script>
+    var values = new Array();
+    values[0] = 10;
+    values["1"] = true;
+    values[2] = "A";
+    values["3"] = "David";
+    values[4] = 20;
+    for(var property in values){
+        document.write(`${property} [${typeof property}] - ${values[property]}[${typeof values[property]}]<br>`);
+    }
+</script>
+
+- You can store any type of values in array, it can be primitive or non-primitive or function.
+
+Ex:
+<script>
+   var values = [10, "TV", true, ["Delhi", "Hyd"], function(){document.write("Hello !")}];
+   document.write(values[3][1] + "<br>");
+   values[4]();
+</script>
+
+                        Array Manipulations
+                        ---------------------------
+Read Array Elements
+1. toString()  : It uses "," delimeter.
+
+Ex:
+<script>
+   var categories = ["Electronics", "Footwear", "Fashion"];
+   document.write(categories.toString());
+</script>
+
+
+2. join()    : It uses custom delimeter.
+
+<script>
+   var categories = ["Electronics", "Footwear", "Fashion"];
+   document.write(categories.join("->"));
+</script>
+
+
+3. slice()
+
+<script>
+   var categories = ["Electronics", "Footwear", "Fashion"];
+   document.write(categories.slice(1,2));
+</script>
+
+
+
+4. find()  : It will search for value based on given condition and
+              return the first occurance value.
+
+<script>
+   var categories = [34000, 43200, 46000, 23000];
+   var value = categories.find(function(value){
+        return value > 40000;
+   });
+   document.write(value);
+</script>
+
+
+
+5. filter() : It is similar to find but returns all values that match the
+             condition.
+
+<script>
+   var categories = [34000, 43200, 46000, 23000];
+   var values = categories.filter(function(value){
+        return value > 40000;
+   });
+   document.write(values.toString());
+</script>
+
+6. map() : It is implicit iterator, reads every element and presents using markup.
+
+<script>
+   var categories = ["Electronics","Footwear", "Fashion"];
+   categories.map(function(value){
+        document.write(`<li>${value}</li>`);
+   });
+</script>
+
+
+
+
+7. for iterator
+
+        for..in        [ It is used to read all properties ]
+        for..of        [ It is used to read all values]
+
+
+8. for loop
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <script>
+        var categories = ["All","Electronics", "Footwear", "Fashion"];
+        function bodyload(){
+            for(var item of categories)
+            {
+                var li = document.createElement("li");
+                li.innerHTML = item;
+                document.querySelector("ol").appendChild(li);
+
+                var option = document.createElement("option");
+                option.text = item;
+                option.value = item;
+                document.querySelector("select").appendChild(option);
+            }
+        }
+    </script>
+</head>
+<body onload="bodyload()">
+    <ol>
+
+    </ol>    
+    <select>
+
+    </select>
+</body>
+</html> -->

@@ -1,0 +1,97 @@
+<!-- FAQ: How to change the colors for Hyperlinks?
+Ans: You can set in body section
+
+<body alink="" vlink="">
+    You can set with CSS
+    a:link { } => Normal Link
+    a:active{ } => Active Link
+    a:visited{ } => Visited
+
+    Ex:    -->
+
+    <!DOCTYPE html>
+    <html>
+
+    <head>
+        <title>Intra Links</title>
+        <style>
+            ul {
+                list-style: none;
+                display: flex;
+            }
+
+            
+            li {
+                margin-right: 50px;
+                border: 2px solid black;
+                padding: 5px;
+                width: 200px;
+                text-align: center;
+            }
+
+            .box {
+                border: 1px solid black;
+                background-color: gray;
+                color: white;
+                padding: 10px;
+                margin: 20px;
+
+            }
+
+            .box:target {
+                background-color: black;
+                color: white;
+            }
+
+            .box:hover {
+                background-color: green;
+                color: white;
+            }
+
+            .container {
+                display: grid;
+                grid-template-columns: 3fr 3fr 3fr 3fr;
+            }
+
+            a:link {
+                color: green;
+            }
+
+            a:visited {
+                color: gray;
+            }
+
+            a:active {
+                color: red;
+            }
+        </style>
+    </head>
+
+    <body>
+        <ul>
+            <li><a href="#html">HTML</a></li>
+            <li><a href="#css">CSS</a></li>
+            <li><a href="#js">JavaScript</a></li>
+            <li><a href="#react">React</a></li>
+        </ul>
+        <div class="container">
+            <div id="html" class="box">
+                <h2>HTML</h2>
+                <p>It is a markup language.</p>
+            </div>
+            <div id="css" class="box">
+                <h2>CSS</h2>
+                <p>It defines styles for HTML.</p>
+            </div>
+            <div id="js" class="box">
+                <h2>JavaScript</h2>
+                <p>It is a client side scripting language.</p>
+            </div>
+            <div id="react" class="box">
+                <h2>React JS</h2>
+                <p>It is a JavaScript Library.</p>
+            </div>
+        </div>
+    </body>
+
+    </html>

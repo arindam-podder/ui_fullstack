@@ -1,0 +1,250 @@
+<!-- Bootstrap Input Group
+.input-group
+.input-group-lg
+.input-group-text
+.input-group-append  [4]
+.input-group-prepend [4]
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Alerts</title>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    </head>
+    <body class="container-fluid">
+        <h2>Amazon Search Bar</h2>
+        <div class="input-group">
+            <select class="input-group-text">
+                <option>All</option>
+                <option>Electronics</option>
+                <option>Footwear</option>
+            </select>
+            <input type="text" class="form-control">
+            <button class="btn btn-warning">
+                <span class="bi bi-search"></span>
+            </button>
+        </div>
+        <h2>Netflix</h2>
+        <div class="input-group input-group-lg">
+            <input type="email" class="form-control" placeholder="Your email address">
+            <button class="btn btn-danger">
+                Get Started <span class="bi bi-chevron-right"></span>
+            </button>
+        </div>
+        <h2>Append and Prepend</h2>
+        <div class="input-group">
+            <span class="input-group-text">&#8377;</span>
+            <input type="text" class="form-control">
+            <span class="input-group-text">.00</span>
+        </div>
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    </body>
+</html>
+
+								  Bootstrap Modals
+								  -------------------------
+.modal
+	.fade
+.modal-dialog
+	.modal-dialog-centered
+	.modal-dialog-fullscreen
+.modal-content
+.modal-header
+.modal-footer
+.modal-body
+
+Syntax:
+			<div class="modal">
+			   <div class="modal-dialog">
+					<div class="modal-content">
+
+					</div>
+			   </div>
+			</div>
+Note: A page can have multiple modals.
+         Bootstrap 5 have disabled nested modals.
+			[Modal with in modal]
+
+	     Links can also hook the modals by using "href"
+
+		<a href="#login" data-bs-toggle="modal">
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Alerts</title>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    </head>
+    <body class="container-fluid">
+        <h2>Modals</h2>
+        <button data-bs-target="#login" data-bs-toggle="modal" class="btn btn-primary">Login</button>
+        <button data-bs-target="#register" data-bs-toggle="modal" class="btn btn-primary">Register</button>
+        <a data-bs-toggle="modal" href="#login">Signin</a>
+        <div class="modal fade" id="login">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>User Login</h2>
+                        <button data-bs-dismiss="modal" class="btn-close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <dl>
+                            <dt>User Name</dt>
+                            <dd><input type="text" class="form-control"></dd>
+                            <dt>Password</dt>
+                            <dd><input type="password" class="form-control"></dd>
+                        </dl>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary">Login</button>
+                        <button data-bs-dismiss="modal" class="btn btn-danger">Cancel</button>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+            <div class="modal fade" id="register">
+                <div class="modal-dialog modal-fullscreen modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2>Register User</h2>
+                            <button data-bs-dismiss="modal" class="btn-close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <dl>
+                                <dt>User Name</dt>
+                                <dd><input type="text" class="form-control"></dd>
+                                <dt>Password</dt>
+                                <dd><input type="password" class="form-control"></dd>
+                                <dt>User Name</dt>
+                                <dd><input type="text" class="form-control"></dd>
+                                <dt>Password</dt>
+                                <dd><input type="password" class="form-control"></dd>
+                                <dt>User Name</dt>
+                                <dd><input type="text" class="form-control"></dd>
+                                <dt>Password</dt>
+                                <dd><input type="password" class="form-control"></dd>
+                                <dt>User Name</dt>
+                                <dd><input type="text" class="form-control"></dd>
+                                <dt>Password</dt>
+                                <dd><input type="password" class="form-control"></dd>
+                                <dt>User Name</dt>
+                                <dd><input type="text" class="form-control"></dd>
+                                <dt>Password</dt>
+                                <dd><input type="password" class="form-control"></dd>
+                                <dt>User Name</dt>
+                                <dd><input type="text" class="form-control"></dd>
+                                <dt>Password</dt>
+                                <dd><input type="password" class="form-control"></dd>
+                                <dt>User Name</dt>
+                                <dd><input type="text" class="form-control"></dd>
+                                <dt>Password</dt>
+                                <dd><input type="password" class="form-control"></dd>
+                                <dt>User Name</dt>
+                                <dd><input type="text" class="form-control"></dd>
+                                <dt>Password</dt>
+                                <dd><input type="password" class="form-control"></dd>
+                                <dt>User Name</dt>
+                                <dd><input type="text" class="form-control"></dd>
+                                <dt>Password</dt>
+                                <dd><input type="password" class="form-control"></dd>
+                                <dt>User Name</dt>
+                                <dd><input type="text" class="form-control"></dd>
+                                <dt>Password</dt>
+                                <dd><input type="password" class="form-control"></dd>
+                            </dl>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary">Register</button>
+                            <button data-bs-dismiss="modal" class="btn btn-danger">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    </body>
+</html>
+
+								Bootstrap Collapse
+								--------------------------
+.collapse
+.show
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Alerts</title>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    </head>
+    <body class="container-fluid">
+        <h2>Collapse</h2>
+        <button data-bs-target="#pic" data-bs-toggle="collapse" class="btn btn-primary">Toggle Preview</button>
+        <div id="pic" class="collapse mt-2 show">
+            <img src="../public/assets/jacket.jpg" width="100" height="100">
+        </div>
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    </body>
+</html>
+						
+							Bootstrap Accordion
+						     ---------------------------
+.accordion
+.accordion-collapse
+.accordion-header
+.accordion-body
+.accordion-footer
+.accordion-item
+.accordion-button
+
+data-bs-parent="accordionName"
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Alerts</title>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    </head>
+    <body class="container-fluid">
+        <h1>Frequently Asked Questions</h1>
+        <div class="accordion" id="faq">
+            <div class="accordion-item" >
+                <div class="accordion-header">
+                    <button data-bs-target="#q1" data-bs-toggle="collapse" class="accordion-button">What is Netflix?</button>
+                </div>
+                <div class="accordion-collapse" id="q1" data-bs-parent="#faq">
+                    <div class="accordion-body">
+                        <p>Netflix is a streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries and more – on thousands of internet-connected devices.</p>
+                        <p>
+                            You can watch as much as you want, whenever you want, without a single ad – all for one low monthly price. There's always something new to discover, and new TV shows and movies are added every week!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item" >
+                <div class="accordion-header">
+                    <button data-bs-target="#q2" data-bs-toggle="collapse" class="accordion-button">How to Register?</button>
+                </div>
+                <div class="accordion-collapse" id="q2" data-bs-parent="#faq">
+                    <div class="accordion-body">
+                        <p>Netflix is a streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries and more – on thousands of internet-connected devices.</p>
+                        <p>
+                            You can watch as much as you want, whenever you want, without a single ad – all for one low monthly price. There's always something new to discover, and new TV shows and movies are added every week!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    </body>
+</html> -->

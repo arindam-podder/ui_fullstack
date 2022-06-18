@@ -1,0 +1,281 @@
+<!-- Variables
+- Variables are storage locations in memory where you can store a value and use it as a part of any expression.
+
+- Sass variables are declared by using "$"
+
+    Syntax:
+                $variableName : value
+
+                {
+                 box-shadow: $variableName;
+                 }
+
+                {
+                  text-shadow: $variableName;
+                }
+
+- Variable Naming conventions
+        * Variable name must start with $
+        * Name can't contains special chars, only "_" allowed.
+        * No blank spaces
+        * Name must be unique with in the scope.
+
+- Every variable is scope based.
+- If you declare in a block, then it is called block scope variable.
+
+            block1
+            {
+              $variableName: value;            // block scope
+            }
+
+- If you declare outside block then it is global variable.
+           
+              $variableName: value;            // global scope
+            block1
+            {
+            }        
+            block2
+            {
+            }    
+
+
+Ex:
+effects.scss
+
+$shadow: 3px 2px 3px yellow;
+$border: 4px solid red;
+
+.container {
+    $padding: 25px;         //block scope
+    border: $border;
+    padding: $padding;
+    box-shadow: $shadow;
+    h2 {
+        text-align: center;
+        font-size: 60px;
+        text-shadow: $shadow;
+        color:red;
+    }
+}
+.box {
+    border: $border;
+    margin-top: 20px;
+    box-shadow: $shadow;
+    padding: 20px;          
+}
+
+> sass  effects.scss  effects.css
+
+index.html
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sass</title>
+        <link rel="stylesheet" href="../sass/effects.css">
+    </head>
+    <body>
+        <div class="container">
+            <h2>SASS</h2>
+            <p>CSS Pre-Processor</p>
+        </div>
+        <div class="box">
+            <h2>HTML</h2>
+            <p>It is a markup language</p>
+        </div>
+    </body>
+</html>
+
+
+Data Type:
+- Data type defines the data structure.
+- Data structure comprises of type of data and size of data.
+- Sass data type includes
+        a) number    
+                signed integer        -10
+                unsigned integer    10
+                floating point        34.23
+                double                346.678
+                decimal                34.4696823455
+        b) string
+                " "                        "absolute"
+                '  '                        'absolute'
+                without quotes        px, cm
+
+        c) color names, codes    red, green, #f00, #ff00ff
+
+        d) css units                    10px, 2cm, 1in, 50%
+
+        e) boolean                     true / false
+
+        f) list                             "a", "b", "c"
+                                        10px, 20px, 30px
+
+
+Syntax:
+            $padding : 25;
+
+            {
+             padding : $padding + "px";        // invalid    "25px"
+            }
+
+            {
+             padding : $padding + px;        // valid     25px
+            }
+
+
+Summary:
+- Variables are storage locations.
+- Data Type define the type of data stored in variables.
+
+Operators
+-------------
++            addition
+-            substraction
+*             multiplication
+/            division
+%            modulus division
+
+>            greater than
+>=            greater than or equal
+<            less than
+<=            less than or equal
+!=            not equal
+==            equal
+
+
+Functions:
+- A function configures set of statements or actions to perform.
+- Sass functions can control the execution flow.
+        a) @for()
+        b) @if()
+        c) @else
+- Function use data binding expression which is defined by using
+
+            #{ }
+
+for()        : It is an iterator used to perform a set of statement                
+                 repeatedly until the condition is satisfied.
+
+Syntax:
+            @for  $i  from 1 to 10
+            {
+                //statements
+            }
+
+Ex:
+effects.scss
+
+img {
+    width: 100px;
+    height: 100px;
+    border:1px solid red;
+}
+
+@for $i from 1 to 5
+{
+    .box-#{$i} {
+        margin-left: $i * 50px;
+    }
+}
+
+index.html
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sass</title>
+        <link rel="stylesheet" href="../sass/effects.css">
+    </head>
+    <body>
+        <div class="box-1">
+            <img src="../public/assets/jacket.jpg">
+        </div>
+        <div class="box-2">
+            <img src="../public/assets/backpack.jpg">
+        </div>
+        <div class="box-3">
+            <img src="../public/assets/shoe.jpg">
+        </div>
+        <div class="box-4">
+            <img src="../public/assets/shoe1.jpg">
+        </div>
+    </body>
+</html>
+
+
+
+
+Ex: IF condition
+
+effects.scss
+
+$theme : yellow;
+
+@if $theme==red
+{
+    .container {
+        padding: 30px;
+        background-color: rgb(244, 205, 205);
+        h2{
+            color:rgb(184, 4, 4)
+        }
+        p {
+            color:red;
+        }
+        button {
+            background-color: red;
+            color:white;
+        }
+    }
+}
+@else if $theme==green
+{
+    .container {
+        padding: 20px;
+        background-color: rgb(218, 252, 202);
+        h2{
+            color:rgb(3, 177, 58)
+        }
+        p {
+            color:rgb(27, 255, 19);
+        }
+        button {
+            background-color: rgb(4, 100, 19);
+            color:white;
+        }
+    }
+}
+@else {
+    .container {
+        background-color: rgb(202, 202, 202);
+        h2{
+            color:rgb(6, 1, 1)
+        }
+        p {
+            color:rgb(16, 16, 16);
+        }
+        button {
+            background-color: rgb(13, 13, 13);
+            color:white;
+        }
+    }
+}
+
+
+index.html
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sass</title>
+        <link rel="stylesheet" href="../sass/effects.css">
+    </head>
+    <body>
+       <div class="container">
+            <h2>Sass</h2>
+            <p>CSS Pre-processor</p>
+            <button>Login</button>
+       </div>
+    </body>
+</html> -->

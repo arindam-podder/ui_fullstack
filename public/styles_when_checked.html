@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>styles when checked , css selector :checked</title>
+    <style>
+        .condition+span{
+            color: red;
+        }
+        .condition:checked + span{
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    
+    <form action="">
+        <input type="checkbox" class="condition"> <span>terms & condition</span> <br>
+        <button>Submit</button>
+    </form>
+
+</body>
+</html>

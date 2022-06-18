@@ -1,0 +1,203 @@
+<!-- 
+FAQ:How JavaScript is integrated with HTML?
+Ans:
+        a) Inline JavaScript
+        b) Embedded  JavaScript
+        c) External File
+
+
+Inline JavaScript:  
+- JavaScript functions are written within the element.
+- Reusability Issues
+- Separation
+
+Ex:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Inline</title>
+</head>
+<body>
+    <h2>Click Print Button to Print Page.</h2>
+    <button onclick="window.print()">Print</button>
+</body>
+</html>
+
+2. Embedded
+- You can write JavaScript functions embedded within the page page by using
+        <script>
+
+        </script>
+- You can embed in <head> or <body>
+
+FAQ: What is the MIME type for JavaScript?
+        a) text/javascript
+        b) text/module
+        c) text/babel
+        d) text/jsx etc..
+
+        <script  type="text/javascript">
+
+        </script>
+                        (or)
+        <script language="javascript">
+
+        </script>
+
+Ex:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Embedded</title>
+    <script type="text/javascript">
+        function PrintPage(){
+            window.print();
+        }
+    </script>
+</head>
+<body>
+    <h2>Click Print Button to Print Page.</h2>
+    <button onclick="PrintPage()">Print</button>
+</body>
+</html>
+
+
+FAQ: What is JavaScript Strict Mode?
+Ans:  Strict mode will not allow developers to voilate the standards
+        of coding. It will reduce code inconsistency.
+
+        To turn on strict mode your have to write the following before
+        any function or statement. [As First Line]
+
+                            "use strict";
+
+Syntax:
+            <script type="text/javascript">
+                "use strict";
+                 x = 10;                                // invalid [x not defined]
+                 document.write("x=" + x);
+            </script>
+
+            <script type="text/javascript">
+                "use strict";
+                 var x;
+                 x = 10;                                // valid
+                 document.write("x=" + x);
+            </script>
+
+            <script type="text/javascript">
+                 x = 10;                                // valid [not  good]
+                 document.write("x=" + x);
+            </script>
+
+FAQ: How to target JavaScript for Legacy Browsers?
+Ans :  By writing the JavaScript code in HTML comments      -->
+            <!--  comments -->
+
+<!--           
+Ex:
+<script>
+    "use strict";
+    var x;
+    x = 30;
+    document.write("x=" + x);
+   
+</script>  
+
+
+
+3. External File
+- JavaScript functions are written in a separate file that have extention ".js"
+- You have to link script files by using <script> element.
+- You can access across pages.
+- It increases the number of requests and page load time.
+
+Ex:
+1. add a new file
+        "printing.js"
+
+"use strict";
+function PrintPage(){
+    window.print();
+}
+
+2. Demo.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Demo</title>
+    <script src="./printing.js"></script>
+</head>
+<body>
+    <h2>Click Print Button to Print Page</h2>
+    <button onclick="PrintPage()">Print</button>
+</body>
+</html>
+
+FAQ: What is Minification?
+Ans: It is the process of compressing JavaScript file.
+
+            printing.min.js
+
+FAQ: When to use minfied files?
+Ans:   Uncompressed files are used for "Development"
+          Minified files are used in "Production".
+
+
+FAQ: What are the issues with JavaScript?
+Ans:
+ - JavaScript is explicitly strictly typed.
+ - JavaScript is not strongly typed.
+            x = 10;        x is number
+            x = "A";        x is string
+            Age = "2A";     valid
+ - JavaScript will not support complete OOP.
+ - JavaScript is not an OOP language.
+ - Security Issues
+ - Extensibility Issues
+ - Depends on lot of DOM manipulations
+ - Lot of coding
+ - Heavy on application
+ - Explicitly handle browser compatibility.
+
+Solution:
+ - TypeScript
+
+
+FAQ: How JavaScript take control over HTML elements?
+Ans:  By using various reference methods
+
+1. By using DOM Hierarchy
+
+EX:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Demo</title>
+    <script>
+        function bodyload(){
+            window.document.images[0].src = "../public/assets/shoe.jpg";
+            window.document.forms[0].elements[1].value = "Register";
+            window.document.forms[1].elements[1].value = "Login";
+        }
+    </script>
+</head>
+<body onload="bodyload()">
+    <div>
+        <img width="100" height="100" border="1">
+    </div>
+    <div>
+        <form>
+            <h3>Register</h3>
+            User Name :  <input type="text"> <input type="button">
+        </form>
+    </div>
+    <div>
+        <form>
+            <h3>Login</h3>
+            Email : <input type="email"> <input type="button">
+        </form>
+    </div>
+</body>
+</html>

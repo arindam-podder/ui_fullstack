@@ -1,0 +1,269 @@
+<!-- CSS Float
+               --------------
+float:left
+float:right
+clear: left | right | all | both
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>News</title>
+        <style>
+           body {
+               background-color: black;
+               color:white;
+               font-family: Arial;
+           }
+           .right-panel {
+               float: right;
+           }
+           .left-panel {
+               float:left;
+               width: 400px;
+           }
+        </style>
+    </head>
+    <body>
+        <div>
+            <div class="left-panel">
+                <h2>Enjoy on your TV.</h2>
+                <p>Watch on smart TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray players and more.</p>
+            </div>
+            <div class="right-panel">
+                <img src="../public/assets/rightBanner.PNG" width="200" height="200">
+            </div>
+        </div>
+    </body>
+</html>
+
+Ex: Clear
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>News</title>
+        <style>
+            .title {
+                float: left;
+            }
+            .pic {
+                float: left;
+            }
+            p {
+                clear: left;
+            }
+        </style>
+    </head>
+    <body>
+         <div class="pic">
+            <img src="../public/assets/jacket.jpg" width="200" height="200">
+         </div>
+         <div class="title">
+            <h1>Winter Jacket</h1>
+         </div>
+         <p>Product details Your use of this software is subject to the terms and conditions of the license agreement by which you acquired this software.  If you are a volume license customer, use of this software is subject to your volume license agreement.  You may not use this software if you have not validly acquired a license for the software from Microsoft or its licensed distributors.</p>
+    </body>
+</html>
+
+
+           CSS Backgrounds
+           -------------------------
+background-color        : It defines color
+background-image        : It defines image, using url()
+background-position        :  Location of image along x and y
+background-size        : It define height and width
+background-repeat        : It defines repeat style,
+              no-repeat
+              repeat
+              repeat-x, y
+background-attachment    : You can fix or make scroll.
+
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>News</title>
+        <style>
+            body {
+                background-image: url("../public/assets/shoe.jpg");
+                background-size: 300px 300px;
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-attachment: fixed;
+                height: 500px;
+            }
+        </style>
+    </head>
+    <body>
+         <div class="title">
+            <h1>Winter Jacket</h1>
+         </div>
+    </body>
+</html>
+
+
+FAQ: Can we define multiple background colors?
+Ans:  - Yes
+         - You can define multiple colors by using "image" attribute not
+            "color" attribute.
+         - It requires gradient colors.
+       
+    a) Linear gradient
+    b) Radial gradient
+
+Syntax:
+    {
+    background-image: linear-gradient() | radial-gradient()
+    }
+
+Ex:
+  body {
+               background-image: linear-gradient( to top right, rgb(241, 184, 184), yellow);
+            }
+
+Ex:
+ body {
+               background-image: radial-gradient(red 20%, yellow 50%, green);
+            }
+
+
+FAQ: Can we define multiple background images?
+Ans:  Yes.
+
+Ex:
+body {
+               background-image: url("../public/assets/shoe.jpg"), url("../public/assets/border.png");
+               background-size: 400px 400px, 100px 100px;
+               background-repeat: no-repeat, repeat;
+               background-position: center center;
+               background-attachment: fixed, fixed;
+            }
+
+FAQ: Can we change background image dynamically?
+Ans:  Yes. By using media queries.
+
+
+EX:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>News</title>
+        <style>
+            body {
+                color:white;
+                text-align: center;
+                font-size: 50px;
+            }
+            @media screen and (orientation: landscape) {
+                body {
+                    background-image: url("../public/assets/netflixback.png");
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    width: 100%;
+                    height: 600px;
+                }
+            }
+            @media screen and (orientation: portrait) {
+                body {
+                    background-image: url("../public/assets/neflixportrait.jpg");
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    width: 100%;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Neflix Home</h1>
+    </body>
+</html>
+
+
+FAQ: Can we set background transparent?
+Ans : No. You have to define using image and color container with rgba().
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>News</title>
+        <style>
+            body {
+                background-image: url("../public/assets/netflixback.png");
+                background-size: cover;
+            }
+            .container {
+                background-color: rgba(0,0,0,0.6);
+                height: 800px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color:white;
+                text-align: center;
+                font-family: Arial;
+            }
+            h1 {
+                font-size: 50px;
+            }
+            h3 {
+                font-size: 30px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div style="width: 600px;">
+                <h1>Unlimited movies, TV shows and more.</h1>
+                <h3>Watch anywhere. Cancel anytime.</h3>
+            </div>
+        </div>
+    </body>
+</html>
+
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>News</title>
+        <style>
+            body {
+                background-image: url("../public/assets/netflixback.png");
+                background-size: cover;
+            }
+            .container {
+                background-color: rgba(0,0,0,0.6);
+                height: 800px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color:white;
+                text-align: center;
+                font-family: Arial;
+            }
+            h1 {
+                font-size: 50px;
+            }
+            h3 {
+                font-size: 30px;
+            }
+            .body-container {
+                height: 400px;
+                background-image: linear-gradient(rgba(0,0,0,0.6), white);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div style="width: 600px;">
+                <h1>Unlimited movies, TV shows and more.</h1>
+                <h3>Watch anywhere. Cancel anytime.</h3>
+            </div>
+        </div>
+        <div class="body-container">
+
+        </div>
+    </body>
+</html> -->

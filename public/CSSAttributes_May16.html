@@ -1,0 +1,243 @@
+<!-- CSS Attributes
+
+
+
+               CSS Box Model
+              =============
+
+    - Margins
+    - Padding
+    - Width
+    - Height
+    - Border
+
+Margin Attributes:
+    margin-left
+    margin-right
+    margin-top
+    margin-bottom
+    margin
+
+Padding Attributes
+    padding-left
+    padding-right
+    padding-top
+    padding-bottom
+    padding
+
+Width/Height Attributes
+    -width
+    -height
+
+Border Attributes
+    - border        : 2px solid red
+    - border-style
+    - border-width
+    - border-color
+    - border-left    : 2px solid red
+    - border-left-style
+    - border-left-color
+    - border-left-width
+    - border-right
+    - border-top
+    - border-bottom
+
+Border Radius
+    - border-radius
+    - border-top-right-radius
+    - border-top-left-radius
+    - border-bottom-right-radius
+    - border-bottom-left-radius
+
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Frames</title>
+        <style>
+            img {
+                border-left: 5px solid red;
+                border-top: 5px double red;
+                border-right: 5px double blue;
+                border-bottom: 5px solid blue;
+                border-top-right-radius: 120px;
+                border-bottom-left-radius: 120px;
+            }
+        </style>
+    </head>
+   <body>
+      <img src="../public/assets/netflixback.png" width="400" height="200">
+   </body>
+</html>
+
+Border Image
+1. You have to set border with transparent.
+    {
+     border: 2px solid transparent;
+    }
+2. Then you can set image as border.
+    {
+     border-image: url("path") style  offset;
+    }
+
+3. You can set image size from border size.
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Frames</title>
+        <style>
+            p {
+                text-align: justify;
+                padding: 20px;
+                border:10px solid transparent;
+                border-image: url("../public/assets/border.png") space 90;
+            }
+        </style>
+    </head>
+   <body>
+      <p>Your use of this software is subject to the terms and conditions of the license agreement by which you acquired this software.  If you are a volume license customer, use of this software is subject to your volume license agreement.  You may not use this software if you have not validly acquired a license for the software from Microsoft or its licensed distributors.</p>
+   </body>
+</html>
+
+
+                 CSS Positions
+                 ===========
+position-static
+position-relative
+position-fixed
+position-absolute
+position-sticky
+
+
+Static Position
+- It is the default position of element.
+- Element is kept along with the document flow.
+- You can't change its location.
+- It is not effected by left, right, top or bottom.
+
+Absolute Position:
+- It removes the element from normal flow of document.
+- You can position left, right, top or bottom at any specific axis.
+- It is attached to the content in page.
+
+Fixed Position:
+- Everything same as absolute but attached to page not content.
+
+Sticky Position:
+- It is according to the normal flow of document.
+- It is not removed from document flow.
+- It can fix to specific location after reaching the point.
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Frames</title>
+        <style>
+           .nav-container {
+               margin-top: 10px;
+               display: flex;
+               color:white;
+               border:2px solid black;
+               padding: 5px;
+               justify-content: space-between;
+               background-color: rgba(0,0,0,0.3);
+           }
+           .nav-container div {
+               margin-right: 20px;
+           }
+           select, button {
+               width: 120px;
+               height: 30px;
+               background-color: black;
+               color:white;
+               padding: 5px;
+           }
+           nav {
+               position: sticky;
+               top: 0px;
+           }
+        </style>
+    </head>
+   <body>
+       <header>
+           <img src="../public/assets/inox.PNG" width="100%">
+       </header>
+       <nav>
+           <div style="background-color:red; color:white; width:150px">Quick Booking</div>
+           <div class="nav-container">
+            <div>
+                <select>
+                    <option>Select Cinema</option>
+                </select>
+            </div>
+            <div>
+                <select>
+                    <option>Select Movie</option>
+                </select>
+            </div>
+            <div>
+                <select>
+                    <option>Select Date</option>
+                </select>
+            </div>
+            <div>
+                <select>
+                    <option>Show Time</option>
+                </select>
+            </div>
+            <div>
+                <select>
+                    <option>Seats</option>
+                </select>
+            </div>
+            <div>
+                <button style="background-color: red;">Book</button>
+            </div>
+           </div>
+       </nav>
+       <section style="margin-top: 30px;">
+          <p>Your use of this software is subject to the terms and conditions of the license agreement by which you acquired this software.  If you are a volume license customer, use of this software is subject to your volume license agreement.  You may not use this software if you have not validly acquired a license for the software from Microsoft or its licensed distributors.
+        </p>
+        <p>Your use of this software is subject to the terms and conditions of the license agreement by which you acquired this software.  If you are a volume license customer, use of this software is subject to your volume license agreement.  You may not use this software if you have not validly acquired a license for the software from Microsoft or its licensed distributors.
+        </p>
+        <p>Your use of this software is subject to the terms and conditions of the license agreement by which you acquired this software.  If you are a volume license customer, use of this software is subject to your volume license agreement.  You may not use this software if you have not validly acquired a license for the software from Microsoft or its licensed distributors.
+        </p>
+        <p>Your use of this software is subject to the terms and conditions of the license agreement by which you acquired this software.  If you are a volume license customer, use of this software is subject to your volume license agreement.  You may not use this software if you have not validly acquired a license for the software from Microsoft or its licensed distributors.
+        </p>
+        <p>Your use of this software is subject to the terms and conditions of the license agreement by which you acquired this software.  If you are a volume license customer, use of this software is subject to your volume license agreement.  You may not use this software if you have not validly acquired a license for the software from Microsoft or its licensed distributors.
+        </p>
+        <p>Your use of this software is subject to the terms and conditions of the license agreement by which you acquired this software.  If you are a volume license customer, use of this software is subject to your volume license agreement.  You may not use this software if you have not validly acquired a license for the software from Microsoft or its licensed distributors.
+        </p>
+        <p>Your use of this software is subject to the terms and conditions of the license agreement by which you acquired this software.  If you are a volume license customer, use of this software is subject to your volume license agreement.  You may not use this software if you have not validly acquired a license for the software from Microsoft or its licensed distributors.
+        </p>
+        <p>Your use of this software is subject to the terms and conditions of the license agreement by which you acquired this software.  If you are a volume license customer, use of this software is subject to your volume license agreement.  You may not use this software if you have not validly acquired a license for the software from Microsoft or its licensed distributors.
+        </p>
+        <p>Your use of this software is subject to the terms and conditions of the license agreement by which you acquired this software.  If you are a volume license customer, use of this software is subject to your volume license agreement.  You may not use this software if you have not validly acquired a license for the software from Microsoft or its licensed distributors.
+        </p>
+        <p>Your use of this software is subject to the terms and conditions of the license agreement by which you acquired this software.  If you are a volume license customer, use of this software is subject to your volume license agreement.  You may not use this software if you have not validly acquired a license for the software from Microsoft or its licensed distributors.
+        </p>
+        <p>Your use of this software is subject to the terms and conditions of the license agreement by which you acquired this software.  If you are a volume license customer, use of this software is subject to your volume license agreement.  You may not use this software if you have not validly acquired a license for the software from Microsoft or its licensed distributors.
+        </p>
+        <p>Your use of this software is subject to the terms and conditions of the license agreement by which you acquired this software.  If you are a volume license customer, use of this software is subject to your volume license agreement.  You may not use this software if you have not validly acquired a license for the software from Microsoft or its licensed distributors.
+        </p>
+        <p>Your use of this software is subject to the terms and conditions of the license agreement by which you acquired this software.  If you are a volume license customer, use of this software is subject to your volume license agreement.  You may not use this software if you have not validly acquired a license for the software from Microsoft or its licensed distributors.
+        </p>
+        <p>Your use of this software is subject to the terms and conditions of the license agreement by which you acquired this software.  If you are a volume license customer, use of this software is subject to your volume license agreement.  You may not use this software if you have not validly acquired a license for the software from Microsoft or its licensed distributors.
+        </p>
+        <p>Your use of this software is subject to the terms and conditions of the license agreement by which you acquired this software.  If you are a volume license customer, use of this software is subject to your volume license agreement.  You may not use this software if you have not validly acquired a license for the software from Microsoft or its licensed distributors.
+        </p>
+        <p>Your use of this software is subject to the terms and conditions of the license agreement by which you acquired this software.  If you are a volume license customer, use of this software is subject to your volume license agreement.  You may not use this software if you have not validly acquired a license for the software from Microsoft or its licensed distributors.
+        </p>
+        <p>Your use of this software is subject to the terms and conditions of the license agreement by which you acquired this software.  If you are a volume license customer, use of this software is subject to your volume license agreement.  You may not use this software if you have not validly acquired a license for the software from Microsoft or its licensed distributors.
+        </p>
+        <p>Your use of this software is subject to the terms and conditions of the license agreement by which you acquired this software.  If you are a volume license customer, use of this software is subject to your volume license agreement.  You may not use this software if you have not validly acquired a license for the software from Microsoft or its licensed distributors.
+        </p>
+        <p>Your use of this software is subject to the terms and conditions of the license agreement by which you acquired this software.  If you are a volume license customer, use of this software is subject to your volume license agreement.  You may not use this software if you have not validly acquired a license for the software from Microsoft or its licensed distributors.
+        </p>
+       </section>
+   </body>
+</html> -->

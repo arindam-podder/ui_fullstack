@@ -1,0 +1,188 @@
+<!-- JavaScript Output Methods
+- alert()
+- confirm()
+- console methods
+- document.write()
+- innerHTML
+- outerHTML
+- innerText
+
+JavaScript Input Techniques
+1.  prompt()
+2.  form input elements
+
+
+prompt():  It is similar to alert or configure, but it can allow user
+              to input a value. [string input]
+
+Syntax:
+            prompt("Your Message", "Default Value");
+            prompt("Your Message");
+
+            Click OK without value        :  returns empty string  " "
+            Click OK with value            :  returns value
+            Click Cancel                    :  returns  "null"
+
+
+Ex:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Prompt</title>
+    <script>
+        function CreateClick(){
+           foldername = prompt("Enter Folder Name","New_Folder");
+           if(foldername==null) {
+               alert("You canceled..");
+           } else if(foldername=="") {
+               alert("Please Enter Folder Name");
+           } else {
+               document.querySelector("p").innerHTML += "Folder Created : " + foldername + "<br>";
+           }
+        }
+    </script>
+</head>
+<body>
+    <button onclick="CreateClick()">Create Folder</button>
+    <p></p>
+</body>
+</html>
+
+
+Form Input Elements
+- You can use HTML form elements for input
+        a) TextBox
+        b) CheckBox
+        c) Radio
+        d) ListBox etc..
+
+Ex:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Form Input</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script>
+        function RegisterClick(){
+            document.getElementById("detailsContainer").style.display = "block";
+            document.getElementById("lblName").innerHTML = document.getElementById("Name").value;
+            document.getElementById("lblPrice").innerHTML = document.getElementById("Price").value;
+            document.getElementById("lblCity").innerHTML = document.getElementById("City").value;
+
+            stockCheckBox = document.getElementById("Stock");
+            status = "";
+            if(stockCheckBox.checked) {
+                status = "Available";
+            } else {
+                status = "Out of Stock";
+            }
+            document.getElementById("lblStock").innerHTML = status;
+        }
+    </script>
+</head>
+<body class="container-fluid">
+    <div class="mt-3">
+        <button class="btn btn-primary" data-bs-target="#register" data-bs-toggle="modal">Add New Product</button>
+        <div class="modal fade" id="register">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3>Register Product</h3>
+                        <button class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <dl>
+                            <dt>Product Name</dt>
+                            <dd>
+                                <input type="text" id="Name" class="form-control">
+                            </dd>
+                            <dt>Price</dt>
+                            <dd>
+                                <input type="text" id="Price" class="form-control">
+                            </dd>
+                            <dt>City</dt>
+                            <dd>
+                                <select id="City" class="form-select">
+                                    <option>Delhi</option>
+                                    <option>Hyd</option>
+                                </select>
+                            </dd>
+                            <dt>Stock</dt>
+                            <dd class="form-switch">
+                                <input id="Stock" class="form-check-input" type="checkbox"> Available
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" onclick="RegisterClick()" data-bs-dismiss="modal">Register</button>
+                        <button class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-3" id="detailsContainer" style="display:none ;">
+        <h3>Product Details</h3>
+        <dl class="row">
+            <dt class="col-3">Name</dt>
+            <dd class="col-9" id="lblName"></dd>
+            <dt class="col-3">Price</dt>
+            <dd class="col-9" id="lblPrice"></dd>
+            <dt class="col-3">City</dt>
+            <dd class="col-9" id="lblCity"></dd>
+            <dt class="col-3">Stock</dt>
+            <dd class="col-9" id="lblStock"></dd>
+        </dl>
+        <button data-bs-target="#register" data-bs-toggle="modal" class="btn btn-link">Edit</button>
+    </div>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>
+
+                        JavaScript Language Basics
+                        ---------------------------------------
+1. Variables
+2. Data Types
+3. Operators
+4. Statements
+5. Functions
+
+
+
+Variables in JavaScript
+--------------------------------
+- Variables are storage locations in memory where you can store a value and use it as a part of any expression.
+
+- Variable Configuration comprises of 3 phases
+
+    a) Declaration            var x ;
+    b) Assignment            x = 10;
+    c) Initialization            var y = 20;
+
+Ex:
+<script>
+   "use strict";
+   var username = prompt("Enter Name");     // Intialization
+   document.write("Hello ! " +  username + "<br>");
+   document.write("How are you ? " + username);
+</script>
+
+Ex:
+<script>
+   "use strict";
+   var username;                                // Declaration
+   username = prompt("Enter Name");     // Assignment
+   document.write("Hello ! " +  username + "<br>");
+   document.write("How are you ? " + username);
+</script>
+
+
+
+- JavaScript variables can be used directly without declaring  if strict mode is OFF.
+
+- JavaScript variables can be declared by using
+
+        a) var
+        b) let
+        c) const -->

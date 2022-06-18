@@ -1,0 +1,175 @@
+<!--
+Form Elements
+- TextBox
+- Password
+- Number
+
+                   Range Input
+                   -----------------
+
+- It is defined by using input type as "range".
+- It gives a slider to select numeric value.
+
+Syntax:
+    <input type="range">
+
+- Attributes same a number
+    min
+    max
+    step
+    value
+
+Ex:
+ <input type="range"  min="10000" max="500000" value="10000">
+
+
+              Color Input
+              ---------------
+- It defines a color picker, so that user can select any color.
+
+Syntax:
+  <input type="color">
+
+- To set default color define value with hexadecimal code.
+
+Syntax:
+  <input type="color"  value="#00ff00">
+
+
+            Email Input
+            ---------------
+- It validates the email format.
+
+Syntax:
+ <input type="email">
+
+- Attributes are same as textbox.
+
+         URL Input
+         --------------
+- It validates URL format.
+- URL requires  "protocol", "server", "domain"
+
+    http://
+    localhost or IP address
+    site.com
+
+Syntax:
+ <input type="url">
+
+
+                                 Date Input
+                               --------------
+- It allows to input date and time values
+- Input can be configure with type as
+    a) date
+    b) datetime-local
+    c) time
+    d) week
+    e) year       [ Obsolete ]
+    f)  month    
+    g) datetime [ Obsolete ]
+
+Syntax:
+    <input type="date">
+    <input type="time">
+    <input type="datetime-local">
+
+- The default date you can change by using value.
+- Date must be in "Year-Month-Day" format.
+
+Syntax:
+<input type="date" value="2022-05-04" name="departure">
+
+- You can set restriction for selection of Date by using "min" and "max".
+
+<input type="date" min="2022-05-04" max="2022-05-22" value="2022-05-04" name="departure">
+
+- You can't select range of dates.
+
+                   File Input
+                   ------------
+- It allows to user to select a file from local device.
+- It opens a file browser.
+
+Syntax:
+ <input type="file">
+
+- You can set filter for selection by using "accept" attribute, but it can be changed.
+
+Syntax:
+  <input type="file" accept=".png, .jpg">
+
+- You can allow to select multiple files by using "multiple" attribute
+
+<input type="file" name="files" accept=".jpg,.png" multiple>
+
+Note: It is not file uploader, it is only file selector. File Size and Type restriction is defined at Script level.
+
+
+                Radio Button
+                ------------------
+- A radio button allows to select one or multiple.
+- A radio button once checked can't be unchecked.
+- Radios are mostly used with "Mutex" mechansim.
+          [ Mutex   - Mutual Exclusion ]
+- To define mutex all radios must have a common name.
+- Radios are use when selection of any one option is mandatory and user can switch between selection.
+- You can make any radio selected by using "checked".
+
+Ex: -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Register</title>
+       
+    </head>
+    <body>
+        <form>
+            <fieldset>
+                <legend>
+                    Gender
+                </legend>
+                <input type="radio" name="gender"> Male
+                <input type="radio" checked name="gender"> Female
+            </fieldset>
+            <fieldset>
+                <legend>Payment</legend>
+                <input type="radio" checked name="pay"> Cash
+                <input type="radio" name="pay"> UPI
+            </fieldset>
+            <button>Submit</button>
+        </form>
+    </body>
+</html>
+
+<!--
+- By default radio button submits "on"  as value.
+- Every radio must have a value defined.
+
+Ex:
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Register</title>
+       
+    </head>
+    <body>
+        <form>
+            <fieldset>
+                <legend>
+                    Gender
+                </legend>
+                <input type="radio" value="Male" name="gender"> Male
+                <input type="radio" value="Female" checked name="gender"> Female
+            </fieldset>
+            <fieldset>
+                <legend>Payment</legend>
+                <input type="radio" value="Cash" checked name="pay"> Cash
+                <input type="radio" value="UPI" name="pay"> UPI
+            </fieldset>
+            <button>Submit</button>
+        </form>
+    </body>
+</html> -->

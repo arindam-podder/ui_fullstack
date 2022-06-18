@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Register</title>
+        <style>
+            .terms+span {
+                color:red;
+            }
+            .terms:checked+span {
+                color: green;
+            }
+        </style>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    </head>
+    <body class="container-fluid">
+         <h2>Select Options</h2>
+         <div class="form-switch">
+            <input class="form-check-input terms" type="checkbox"> <span>Brightness</span>  <br> <br>
+            <input class="form-check-input terms" checked type="checkbox"> <span> Opacity</span>
+         </div>
+    </body>
+</html>

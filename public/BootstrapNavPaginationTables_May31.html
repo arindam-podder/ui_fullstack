@@ -1,0 +1,275 @@
+<!-- Note: To hide use "collapse" and to display use "show"
+         To active use "active" and to disable use "disabled"
+
+                             Bootstrap Dropdown
+                             ----------------------------
+- HTML dropdown is designed by using "<select>".
+- It will not allow icons and symbols.
+- It is good for adding and removing items dynamically.
+- Bootstrap dropdown allows items with complex content.
+   [symbols, icons, forms, images etc..]
+- Bootstrap dropdown is not good for dynamically changing items.
+- Bootstrap classes
+
+.dropdown | dropup, dropstart, dropend
+.dropdown-menu
+.dropdown-item
+.dropdown-divider
+.dropdown-toggler [button]
+.dropdown-text
+
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Alerts</title>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    </head>
+    <body class="container-fluid">
+        <h2>Netflix</h2>
+        <h2>Netflix</h2>
+        <h2>Netflix</h2>
+        <h2>Netflix</h2>
+        <h2>Netflix</h2>
+        <div class="dropend">
+            <button data-bs-toggle="dropdown" class="btn btn-dark dropdown-toggle">
+                <span class="bi bi-globe"></span> Language
+            </button>
+            <div class="dropdown-menu">
+                <div class="dropdown-item"><a href="#" class="dropdown-text">English</a></div>
+                <div class="dropdown-item disabled"><a href="#" class="dropdown-text">हिन्दी</a></div>
+                <div class="dropdown-divider"></div>
+                <div class="dropdown-item">
+                    <span class="bi bi-question-circle"></span> Help
+                </div>
+            </div>
+        </div>
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    </body>
+</html>
+
+                          Bootstrap Nav with Tabs
+                          ----------------------------------
+- To configure simple navigation between various browsing content.
+
+.nav
+.nav-tabs
+.nav-pills
+.nav-item
+.nav-link
+.nav-text
+.tab-content
+.tab-pane
+
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Alerts</title>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    </head>
+    <body class="container-fluid">
+        <h2>Product Details</h2>
+        <div class="row">
+            <div class="col-3">
+                <ul class="nav nav-tabs d-flex flex-column">
+                    <li class="nav-item">
+                        <a href="#basic" data-bs-toggle="tab"  class="nav-link"><span class="nav-text">Basic Details</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#preview" data-bs-toggle="tab" class="nav-link"><span class="nav-text">Preview</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#description" data-bs-toggle="tab" class="nav-link"><span class="nav-text">Description</span></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-9">
+                <div class="tab-content">
+                    <div class="tab-pane active" id="basic">
+                        <h3>Basic Details</h3>
+                        <dl>
+                            <dt>Name</dt>
+                            <dd>Winter Jacket</dd>
+                            <dt>Price</dt>
+                            <dd>5700.44</dd>
+                        </dl>
+                       
+                    </div>
+                    <div class="tab-pane" id="preview">
+                        <h3>Preview</h3>
+                        <img src="../public/assets/jacket.jpg" width="200" height="200">
+                    </div>
+                    <div class="tab-pane" id="description">
+                        <h3>Description</h3>
+                        <p>something about Winter Jacket</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+     
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    </body>
+</html>
+
+                            Bootstrap Progress
+                            ---------------------------
+.progress
+.progress-bar
+.progress-bar-stripped
+.progress-bar-animated
+
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Alerts</title>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    </head>
+    <body class="container-fluid">
+        <h3>Progress</h3>
+         <div class="progress">
+            <div class="progress-bar p-2 progress-bar-striped progress-bar-animated bg-success" style="width: 20%;">
+                20% Completed
+            </div>
+            <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger text-dark" style="width:80% ;">
+                80% Remaining
+            </div>
+         </div>
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    </body>
+</html>
+
+                                Bootstrap Spinners
+                                --------------------------
+.spinner-border-{sm|lg}
+.spinner-grow-{sm|lg}
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Alerts</title>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    </head>
+    <body class="container-fluid">
+        <h3>Spinner </h3>
+         <button class="btn btn-danger">
+            <span class="spinner-border text-warning spinner-border-sm"></span> Loading
+         </button>
+         <button class="btn btn-danger">
+            <span class="spinner-grow text-warning spinner-grow-sm"></span> Loading
+         </button>
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    </body>
+</html>
+
+                              Bootstrap Pagination
+                              -----------------------------
+.pagination
+.page-item
+.page-link
+.page-text
+
+                              Bootstrap Tables
+                              ------------------------
+.table
+.table-hover
+.table-{contextual}
+.table-stripped
+.table-bordered
+.table-responsive
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Alerts</title>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    </head>
+    <body class="container-fluid">
+        <h1>Bootstrap Tables</h1>
+        <div class="table-responsive">
+         <table class="table table-hover table-bordered caption-top">
+             <caption>Products Table</caption>
+             <thead>
+                 <tr>
+                     <th>Name</th>
+                     <th>Price</th>
+                     <th>Name</th>
+                     <th>Price</th>
+                     <th>Name</th>
+                     <th>Price</th>
+                     <th>Name</th>
+                     <th>Price</th>
+                     <th>Name</th>
+                     <th>Price</th>
+                     <th>Name</th>
+                     <th>Price</th>
+                     <th>Name</th>
+                     <th>Price</th>
+                     <th>Name</th>
+                     <th>Price</th>
+                     <th>Name</th>
+                     <th>Price</th>
+                     <th>Name</th>
+                     <th>Price</th>
+                     <th>Name</th>
+                     <th>Price</th>
+                     <th>Name</th>
+                     <th>Price</th>
+                 </tr>
+             </thead>
+             <tbody>
+                 <tr>
+                     <td>Samsung TV</td>
+                     <td>56000.44</td>
+                 </tr>
+                 <tr>
+                    <td>Samsung TV</td>
+                    <td>56000.44</td>
+                </tr>
+                <tr>
+                    <td>Samsung TV</td>
+                    <td>56000.44</td>
+                </tr>
+                <tr>
+                    <td>Samsung TV</td>
+                    <td>56000.44</td>
+                </tr>
+             </tbody>
+             <tfoot>
+                 <tr>
+                     <td colspan="2">
+                        <ul class="pagination pagination-sm">
+                            <li class="page-item"><a href="#" class="page-link">&laquo;</a></li>
+                            <li class="page-item"><a class="page-link">1</a></li>
+                            <li class="page-item active"><a class="page-link">2</a></li>
+                            <li class="page-item"><a class="page-link">3</a></li>
+                            <li class="page-item"><a class="page-link">4</a></li>
+                            <li class="page-item"><a class="page-link">&raquo;</a></li>
+                        </ul>
+                     </td>
+                 </tr>
+             </tfoot>
+         </table>
+        </div>
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    </body>
+</html>
+
+                              Responsive Navbar -->

@@ -1,0 +1,236 @@
+<!-- Multi Media in HTML
+
+- Multi Media is about animations, audio and video conent in page.
+
+1. Marquee :  It is used for scrolling and sliding content.
+
+  Syntax:
+    <marquee>
+        ....your content......
+    </marquee>
+
+Attributes
+- scrollamount    : It sets marquee scrolling speed from 1 to 100.
+
+    <marquee scrollamount="15">
+
+- direction        : It set scrolling direction left, right, up and down.
+
+    <marquee direction="right">
+
+- width / height    : It set marquee width and height.
+
+    <marquee width="200" height="500">
+
+- loop        : It specifies the number of times to display.
+
+    <marquee loop="3">
+
+- behavior        : You can set alternate behaviour.
+          It changes from scrolling to sliding.
+
+    <marquee behavior="alternate">
+
+- bgcolor        : It sets background color for marquee.
+
+    <marquee bgcolor="red">
+
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Marquee</title>
+    </head>
+    <body>
+        <marquee scrollamount="15" behavior="alternate">
+            Offers on Footwear <img src="./assets/shoe.jpg" width="50" height="50"> 50% OFF...
+        </marquee>
+        <marquee bgcolor="yellow" scrollamount="15" width="200" height="500" direction="up">
+            <p>Your use of this software is subject to the terms and conditions of the license agreement by which you acquired this software.  If you are a volume license customer, use of this software is subject to your volume license agreement.  You may not use this software if you have not validly acquired a license for the software from Microsoft or its licensed distributors.</p>
+        </marquee>
+    </body>
+</html>
+
+
+FAQ: How to control marquee dynamically?
+Ans: By using JavaScript events and marquee methods
+    onmouseover
+    onmouseout
+    this.stop()
+    this.start()
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Marquee</title>
+        <style>
+            img{
+                width: 100px;
+                height: 100px;
+                transition: 2s;
+            }
+            img:hover {
+                width: 150px;
+                height: 150px;
+                transition: 2s;
+            }
+        </style>
+    </head>
+    <body>
+        <marquee onmouseover="this.stop()" onmouseout="this.start()" scrollamount="15" direction="up" width="150">
+            <div>
+                <img src="./assets/shoe.jpg" width="100" height="100">
+            </div>
+            <div>
+                <img src="./assets/jacket.jpg" width="100" height="100">
+            </div>
+            <div>
+                <img src="./assets/shoe1.jpg" width="100" height="100">
+            </div>
+            <div>
+                <img src="./assets/speaker.jpg" width="100" height="100">
+            </div>
+        </marquee>
+    </body>
+</html>
+
+
+2. Audio and Video Elements
+
+- HTML provides elements for video and audio embed.
+
+    <audio>
+    <video>
+
+- HTML supports videos of  types
+    .mp4
+    .avi
+    .mov
+    .ogg   [light weight]
+
+Syntax:
+    <video  src="path/filename.mp4"> </video>
+
+    <video>
+       <source src="path/filename.mp4" />
+    </video>
+
+- HTML supports audio types
+    .mp3
+    .midi
+    .wav  etc..
+    <audio  src="path/filename.mp3"> </audio>
+
+    <audio>
+       <source src="path/filename.mp3" />
+    </audio>
+
+- Attributes
+    src        : source file name and path
+    controls        : turn on controls to pause, play etc.
+    autoplay        : start playing automatically
+    poster        : thumb nail image.
+
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Marquee</title>
+        <style>
+            img{
+                width: 100px;
+                height: 100px;
+                transition: 2s;
+            }
+            img:hover {
+                width: 150px;
+                height: 150px;
+                transition: 2s;
+            }
+        </style>
+    </head>
+    <body>
+        <video width="300" poster="./assets/angular.png" height="300" controls src="./assets/angular.mkv"></video>
+    </body>
+</html>
+
+Alternative: Embed video and audio content using <iframe>
+      Store the resources the YouTube.
+   
+Note: In early versions of HTML and browsers we can embed flash
+          animations using "<embed> element".
+
+
+Summary:
+- Semantic Elements
+- Lists
+- Links
+- Images
+- Iframe
+- Tables
+- Forms
+
+
+
+                 Styles in HTML
+
+- Styles are set of attributes defined for HTML elements to make them more interactive and responsive.
+
+- Styles can be defined to any element in 3 ways
+
+    a) Inline Styles
+    b) Embedded Styles
+    c) External Style Sheet [CSS - Cascade Style Sheet]
+
+   
+Inline Styles:
+ - The styles are defined with in the element by using "style" attribute.
+
+      <h2 style="background-color:red; color:white">
+
+- It is faster in rendering
+- You can't reuse styles.
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Marquee</title>
+    </head>
+    <body>
+        <h2 style="background-color:red;color:white; text-align:center">HTML</h2>
+        <h2>CSS</h2>
+        <h2>JavaScript</h2>
+    </body>
+</html>
+
+
+Embedded Styles:
+- Styles are defined in the page by using <style> container.
+- You can embed in <head> or <body>
+- You can reuse the styles.
+- Slow when compared to inline.
+- It is accessible only within the page.
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Marquee</title>
+        <style>
+            h2 {
+                background-color: red;
+                color: white;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>HTML</h2>
+        <h2>CSS</h2>
+        <h2>JavaScript</h2>
+    </body>
+</html> -->

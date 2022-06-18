@@ -1,0 +1,176 @@
+<!-- Sass Statements
+@for
+@if
+@else
+
+                    Sass Functions and Mixins
+
+- Function is used for "Refactoring"
+- It is a technique of extracting a set of statements and values into a function.
+- Function always intended to return value.
+- Always use function for build expression.
+
+Syntax:
+            @function  Name(param)
+              {
+                 @return  param + expression;
+              }
+
+- Mixin is similar to function but it is void type. [No return value]
+- It comprises for set of statements stored under specific name, so that you can reuse without rewriting.
+
+Syntax:
+            @mixin   Name(params...)
+             {
+             }
+
+            @include  Name(values)
+
+Ex:
+effects.scss
+
+$theme : green;
+$padding : 20px;
+$border : 1px solid black;
+
+@function SetPadding($size) {
+    @return $padding - $size;
+}
+
+@mixin SetTheme($containerBg, $headingColor, $paraColor, $btnBg) {
+    .container {
+        padding: $padding;
+        background-color: $containerBg;
+        h2{
+            color:$headingColor;
+            padding: SetPadding(10px);
+            border: $border ;
+        }
+        p {
+            color:$paraColor;
+            padding: SetPadding(15px);
+            border: $border;
+        }
+        button {
+            background-color: $btnBg;
+            color:white;
+        }
+    }
+}
+
+@if $theme==red
+{
+    @include SetTheme(rgb(252, 218, 218),rgb(168, 0, 0) , red , red)
+}
+@else if $theme==green
+{
+   @include SetTheme(rgb(211, 255, 211),rgb(3, 87, 3) , green  ,  green)
+}
+@else {
+   @include SetTheme(rgb(223, 217, 217), black, black , black )
+}
+
+index.html
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sass</title>
+        <link rel="stylesheet" href="../sass/effects.css">
+    </head>
+    <body>
+       <div class="container">
+            <h2>Sass</h2>
+            <p>CSS Pre-processor</p>
+            <button>Login</button>
+       </div>
+    </body>
+</html>
+
+                                Sass Bundling
+- It is a technique used to reduce the number of requests for page.
+- You can bundle a set of scss files into single file.
+- If any scss file need to be imported into another file then its name must start with "_"
+
+                            "_variables.scss"
+
+Ex:
+1. add following files into "scss" folder
+
+    _variables.scss
+
+$theme : green;
+$padding : 20px;
+$border : 1px solid black;
+
+    _functions.scss
+
+@import "variables.scss";
+
+@function SetPadding($size) {
+    @return $padding - $size;
+}
+
+  _mixins.scss
+
+@import "variables.scss";
+@import "functions.scss";
+
+@mixin SetTheme($containerBg, $headingColor, $paraColor, $btnBg) {
+    .container {
+        padding: $padding;
+        background-color: $containerBg;
+        h2{
+            color:$headingColor;
+            padding: SetPadding(10px);
+            border: $border ;
+        }
+        p {
+            color:$paraColor;
+            padding: SetPadding(15px);
+            border: $border;
+        }
+        button {
+            background-color: $btnBg;
+            color:white;
+        }
+    }
+}
+
+ theme.scss
+
+@import "variables.scss";
+@import "functions.scss";
+@import "mixins.scss";
+
+@if $theme==red
+{
+    @include SetTheme(rgb(252, 218, 218),rgb(168, 0, 0) , red , red)
+}
+@else if $theme==green
+{
+   @include SetTheme(rgb(211, 255, 211),rgb(3, 87, 3) , green  ,  green)
+}
+@else {
+   @include SetTheme(rgb(223, 217, 217), black, black , black )
+}
+
+
+> sass theme.scss theme.css
+
+index.html
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sass</title>
+        <link rel="stylesheet" href="../sass/theme.css">
+    </head>
+    <body>
+       <div class="container">
+            <h2>Sass</h2>
+            <p>CSS Pre-processor</p>
+            <button>Login</button>
+       </div>
+    </body>
+</html> -->

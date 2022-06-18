@@ -1,0 +1,139 @@
+<!-- Styles in HTML
+1. Inline
+2. Embedded
+
+FAQ: Where to emebed <style> element? Head or Body?
+Ans: You can embed styles in head or body section.
+
+         Styles in <head> section are intended to load into memory of browser.
+         Styles in <body> section are intended to directly load and apply to
+         element on page load.
+
+       
+Note: You can define style outside HTML document, which is faster but not
+          recommended.
+
+
+FAQ: What is the MIME type for Styles?
+Ans:  MIME type defines the code type. CSS MIME type is "text/css"
+
+    <style  type="text/css">
+    </style>
+
+FAQ: What is the Media type for Styles?
+Ans: It specifies how content is presented on various devices
+    a) print
+    b) screen
+    c) speech
+    d) all
+
+       Syntax:
+    <style type="text/css"  media="print"> </style>
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Marquee</title>
+        <style type="text/css" media="screen">
+            h2 {
+                background-color: red;
+                color:white;
+                text-align: center;
+            }
+        </style>
+        <style type="text/css" media="print">
+            h2 {
+                background-color: gray;
+                color:white;
+                text-align: left;
+                border:2px solid black;
+               
+            }
+            #js {
+                display: none;
+            }
+        </style>
+        <style type="text/css" media="speech">
+            h2 {
+                background-color: transparent;
+                color:black;
+            }
+            #js {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+       
+        <h2>HTML</h2>
+        <h2>CSS</h2>
+        <h2 id="js">JavaScript</h2>
+    </body>
+</html>
+
+FAQ: If we are defining styles for any element in both head and body then which set of styles are applied?
+Ans: 1. If same set of attributes are defined then the values of body section are
+            applied.
+        2. If different set of attributes are defined  then all will apply.
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Marquee</title>
+        <style>
+            h2 {
+                color: red;
+                border:2px solid red;
+            }
+        </style>
+    </head>
+    <body>
+        <style>
+            h2 {
+                color: green;
+            }
+        </style>
+        <h2>HTML</h2>
+        <h2>CSS</h2>
+        <h2>JavaScript</h2>
+    </body>
+</html>
+
+- Emebedded styles are not accessible to elements in another page.
+
+
+3. Styles in External Style Sheet
+- You can configure styles in a separate style sheet that have the extention ".css"
+- So that you access and use styles from any page.
+- Using an external file will always increase the number of requests for page and also page load time.
+- You "Cascade Style Sheets".
+
+Ex:
+1. Add a new style sheet
+    "src/styles"
+
+     effects.css
+
+h2{
+    background-color: yellow;
+    color:red;
+    text-align: center;
+}
+
+2. Link to your web page
+
+   <link rel="stylesheet" href="../src/styles/effects.css">
+
+
+FAQ: What is Minification?
+Ans:  It is a coding technique used to reduce the size of file.
+
+    effects.css
+    effects.min.css
+
+          Uncompress file is used in development.
+          Minified file is used in production [go-live].
+
+    www.cssminifier.com -->

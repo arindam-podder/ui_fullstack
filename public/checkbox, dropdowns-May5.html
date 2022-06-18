@@ -1,0 +1,237 @@
+<!-- Check Box
+                  =========
+- It is similar to radio button that allows to check and uncheck.
+- You can use for selecting one or multiple options.
+
+Syntax:
+  <input type="checkbox" checked  value=""> Text
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Register</title>
+       
+    </head>
+    <body>
+        <form>
+            <fieldset>
+               <legend>Select Courses</legend>
+               <input type="checkbox" value="Java" name="course"> Java
+               <input type="checkbox" value=".NET" name="course"> .NET
+               <input type="checkbox" value="Full Stack" name="course"> Full Stack
+            </fieldset>
+            <br>
+            <button>Submit</button>
+        </form>
+    </body>
+</html>
+
+FAQ: How to design a Checkbox list?
+Ans:  By using CSS overflow technique
+
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Register</title>
+        <style>
+            ol {
+                list-style: none;
+                border:2px solid black;
+                padding: 5px;
+                height: 50px;
+                width: 200px;
+                overflow: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <form>
+            <fieldset>
+               <legend>Select Courses</legend>
+               <ol>
+                   <li><input type="checkbox" value="Java" name="course"> Java </li>
+                   <li><input type="checkbox" value=".NET" name="course"> .NET</li>
+                   <li><input type="checkbox" value="Full Stack" name="course"> Full Stack</li>
+                   <li><input type="checkbox" value="Oracle" name="course"> Oracle</li>
+                   <li><input type="checkbox" value="PHP" name="course"> PHP</li>
+                   <li><input type="checkbox" value="Python" name="course"> Python</li>
+               </ol>
+                     
+            </fieldset>
+            <br>
+            <button>Submit</button>
+        </form>
+    </body>
+</html>
+
+FAQ: How to define styles when checked?
+Ans : CSS introduced a selector called
+    ":checked"
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Register</title>
+        <style>
+            .terms+span {
+                color:red;
+            }
+            .terms:checked+span {
+                color: green;
+            }
+        </style>
+    </head>
+    <body>
+        <form>
+            <fieldset>
+               <legend>Terms of Service</legend>
+               <div>
+                Your use of this software is subject to the terms and conditions of the license agreement by which you acquired this software.  If you are a volume license customer, use of this software is subject to your volume license agreement.  You may not use this software if you have not validly acquired a license for the software from Microsoft or its licensed distributors.
+               </div>
+               <div>
+                   <input class="terms" type="checkbox"> <span>I Accept</span>
+               </div>
+            </fieldset>
+            <br>
+            <button>Submit</button>
+        </form>
+    </body>
+</html>
+
+Form Switch is a checkbox displayed in switch style. You can apply by using bootstrap css.
+
+1. Download and Install "bootstrap"
+
+    > npm  install  bootstrap  --save
+
+2. Link the following file to your webpage
+
+   <link rel="stylesheet"  href="../node_modules/bootstrap/dist/css/bootstrap.css">
+
+3. Apply bootstrap classes for checkbox and its container
+
+      <div class="form-switch">
+           <input type="checkbox" class="form-check-input">
+      </div>
+
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Register</title>
+        <style>
+            .terms+span {
+                color:red;
+            }
+            .terms:checked+span {
+                color: green;
+            }
+        </style>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    </head>
+    <body class="container-fluid">
+         <h2>Select Options</h2>
+         <div class="form-switch">
+            <input class="form-check-input" type="checkbox"> Brightness <br> <br>
+            <input class="form-check-input" checked type="checkbox"> Opacity
+         </div>
+    </body>
+</html>
+
+               Dropdown List
+               --------------------
+                 [ComboBox]
+- It allows user to select any one option from a list of choices.
+- It is a collection options which are RC data type.
+  [Option can display only plain text and chars - no symbols, icons]
+
+- Dropdown is designed by using
+    <select>
+- Options are designed by using
+    <option>
+- Options can be grouped by using
+    <optgroup>
+
+Syntax:
+    <select>
+      <optgroup label="GroupName">
+        <option></option>
+        <option></option>
+      </optgroup>
+    </select>
+
+- Every option comprises of 4 attributes
+
+    a) selected
+    b) disabled
+    c) value
+    d) text
+
+- Text is used to display option title
+    <option> Text </option>
+
+- Value is used to submit , If value is not defined then it submits text.
+
+              <option value="Hyd"> Hyderabad </option>
+
+- Selected will make the option selected on page load.
+
+              <option selected>
+
+- Disabled will not allow to submit and select.
+
+               <option disabled>
+
+- Option will support special chars
+    <option>  &#8377; 20,000/- </option>
+    <option> हिन्दी </option>
+
+- You can't design nested list.
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Register</title>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    </head>
+    <body class="container-fluid">
+        <form>
+            <h2> <span class="bi bi-cart4"></span> Select a Category</h2>
+            <select name="category">
+                <option>Choose Category</option>
+                <optgroup label="Electronics">
+                    <option> Televisions</option>
+                    <option value="AMZWT04">Watches</option>
+                    <option disabled>Mobiles</option>
+                </optgroup>
+                <optgroup label="Footwear">
+                    <option>Casuals</option>
+                    <option>Sneakers</option>
+                    <option>Boots</option>
+                </optgroup>
+                <option> &#8377; 56,000/- </option>
+                <option>हिन्दी</option>
+            </select>
+            <button>Submit</button>
+        </form>
+    </body>
+</html>
+
+                  ListBox
+                  ---------
+- It is same like dropdown just needs attributes
+    a) multiple        : select multiple
+    b) size        : sets height
+
+ <select size="3" multiple>
+
+FAQ: Can we defined checkbox in listbox?
+Ans: No.
+ -->

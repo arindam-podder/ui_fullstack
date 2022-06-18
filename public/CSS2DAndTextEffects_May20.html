@@ -1,0 +1,223 @@
+<!-- CSS Text Effects
+
+color        : font color
+text-indent        : It is used for first-line indent.
+text-align        : left, center, right, justify
+text-transform    : changing capitalization.
+text-direction    : changes text orientation [obsolete]
+text-shadow    : sets shadow for text.
+text-overflow    : control overflow
+text-decoration    : underline, overline, strikeout
+          color, style, size
+font-family        : sets font family
+font-weight    : bold
+font-style        : italic
+font-varient    : capitalization without changing size.
+letter-spacing    
+word-spacing
+line-height
+white-space
+word-wrap
+word-break
+overflow            : vertical
+
+
+Ex:
+h1 {
+                text-decoration: underline wavy 5px red;
+     }
+
+Syntax:
+
+ {
+    white-space:nowrap;    // to display in one line
+    overflow:hidden;        // to hide overflowing text.
+    text-overflow:ellipsis;    // to define a separator "..."
+ }
+
+         CSS 2D Transform
+
+- Two dimensional transformations for elements.
+- You can change the position, size, orientation of any element.
+- 2D transforms are not understandable to all browsers, hence we need take help of plugin's.
+
+          transform
+          -webkit-transform    edge, chrome, safari
+          -moz-transform        firefox
+          -ms-transform        Internet explorer
+          -o-transform        Opera
+
+- CSS transforms contains
+    a) translate()
+    b) scale()
+    c) skew()
+    d) rotate()
+    e) matrix()
+
+translate()        : It is used to change the position of element along
+          x and y axis.
+
+          translate()
+          translateX()
+          translateY()
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>News</title>
+        <style>
+           img {
+               transform: translate(0px, 0px);
+               transition: 2s;
+           }
+           img:hover {
+               transform: translate(400px, 400px);
+               transition: 5s;
+           }
+        </style>
+    </head>
+    <body>
+       <img src="../public/assets/jacket.jpg" width="100" height="100">
+    </body>
+</html>
+
+
+scale()    : It is used to change the height and width of element.
+      scale()
+      scaleX()
+      scaleY()
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>News</title>
+        <style>
+           img {
+               transform: scale(100px, 100px);
+               transition: 2s;
+           }
+           img:hover {
+               transform: scale(3,3);
+               transition: 5s;
+           }
+        </style>
+    </head>
+    <body>
+       <div style="display: flex; justify-content: center; align-items: center; height: 400px;">
+        <img src="../public/assets/jacket.jpg" width="100" height="100">
+       </div>
+    </body>
+</html>
+
+
+skew()    : It is used to tilt element by specified angle.
+      skew()
+      skewX()
+      skewY()
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>News</title>
+        <style>
+           img {
+               transform: skew(0deg);
+               transition: 2s;
+           }
+           img:hover {
+               transform: skewY(-60deg);
+               transition: 5s;
+           }
+        </style>
+    </head>
+    <body>
+       <div style="display: flex; justify-content: center; align-items: center; height: 400px;">
+        <img src="../public/assets/jacket.jpg" width="100" height="100">
+       </div>
+    </body>
+</html>
+
+
+rotate()    :  It is used to rotate element by specified angle.
+       rotate()
+       rotateX()
+       rotateY()
+
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>News</title>
+        <style>
+           img {
+               transform: rotate(0deg);
+               transition: 2s;
+           }
+           img:hover {
+               transform: rotate(180deg);
+               transition: 5s;
+           }
+        </style>
+    </head>
+    <body>
+       <div style="display: flex; justify-content: center; align-items: center; height: 400px;">
+        <img src="../public/assets/jacket.jpg" width="200" height="200">
+       </div>
+    </body>
+</html>
+
+matrix()        : It defines multiple transforms
+
+Syntax:
+        matrix(scaleX(), skewX(), skewY(), scaleY(), translateX(), translateY())
+
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>News</title>
+        <style>
+           img {
+               transition: 2s;
+           }
+           img:hover {
+               transform: matrix(2,3,2,2,400,100);
+               transition: 5s;
+           }
+        </style>
+    </head>
+    <body>
+        <img src="../public/assets/jacket.jpg" width="200" height="200">
+    </body>
+</html>
+
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>News</title>
+        <style>
+           img {
+               transition: 2s;
+           }
+           img:hover {
+               transform: matrix(2,3,2,2,400,100);
+               -webkit-transform: matrix(2,3,2,2,400,100) ;
+               -moz-transform: matrix(2,3,2,2,400,100);
+               -o-transform: matrix(2,3,2,2,400,100);
+               -ms-transform: matrix(2,3,2,2,400,100);
+               transition: 5s;
+           }
+        </style>
+    </head>
+    <body>
+        <input type="file">
+        <img src="../public/assets/jacket.jpg" width="200" height="200">
+    </body>
+</html> -->

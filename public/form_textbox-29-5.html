@@ -1,0 +1,198 @@
+<!-- Form Element and Attributes
+1. method
+2. action
+3. name
+4. id
+5. class
+6. novalidate
+
+FAQ:What is difference between GET and POST?
+
+
+            Form Elements
+            ---------------------
+
+1. TextBox    :  It allows user to view, input and edit a string.
+           String is a literal with group of chars.
+           [A-Z,0-9, Special Chars]
+
+           <input  type="text">
+
+Attributes:
+1. name        : It is required to submit textbox value.
+2. id        : It is used to refer textbox client side
+3. class        : It is used to define css class.
+
+
+Ex: -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Register</title>
+        <style>
+            .form-textbox {
+                width: 300px;
+                font-size: 20px;
+                border:1px solid red;
+            }
+        </style>
+    </head>
+    <body>
+        <form>
+            <fieldset>
+                <legend>User Name</legend>
+                <input type="text" class="form-textbox" name="UserName" id="txtUserName">
+                <button>Submit</button>
+            </fieldset>
+        </form>
+    </body>
+</html>
+
+<!-- 4. value        : It specifies the default value to display in textbox
+
+         <input type="text"  value="John">
+
+5. readonly    : It will not allow to change the value, but it can
+          submit value.
+
+         <input type="text" value="John" readonly>
+
+6. disabled    : It will not allow to change and submit value.
+          It will disable the element.
+
+          <input type="text" value="john" disabled>
+
+7. placeholder    : It is used to display watermark text inside
+          textbox.
+
+           <input type="text" placeholder="User Name">
+
+8. autofocus    : It sets focus to textbox automatically on page
+          load.
+
+          <input type="text" autofocus>
+
+
+Ex: -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Register</title>
+    </head>
+    <body>
+        <form>
+            <fieldset>
+                <legend>Register</legend>
+                 <input type="text" autofocus placeholder="First Name">
+                 <input type="text"  placeholder="Last Name">
+                <button>Submit</button>
+            </fieldset>
+        </form>
+    </body>
+</html>          
+
+<!-- 9. size        : It defines the width for textbox.
+          Default is 20.
+
+         <input type="text" size="4">
+
+10. maxlength    : It sets restriction for maximum number of chars
+          allowed in textbox.
+
+          <input type="text" size="4" maxlength="4">
+
+11. minlength    : It specifies the minimum number of chars
+          to input in textbox.
+
+          It will not verify empty.
+
+12. required    : It specifies that textbox must have a value.
+          It can't submit empty.
+
+         <input type="text"  required minlength="4">
+
+
+Ex: -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Register</title>
+    </head>
+    <body>
+        <form>
+            <fieldset>
+                <legend>Payment Details</legend>
+                  <dl>
+                      <dt>Credit Card</dt>
+                      <dd>
+                          <input type="text" maxlength="4" size="4"> -
+                          <input type="text" maxlength="4" size="4"> -
+                          <input type="text" maxlength="4" size="4"> -
+                          <input type="text" maxlength="4" size="4">
+                      </dd>
+                      <dt>CVV</dt>
+                      <dd>
+                          <input type="text" size="4">
+                      </dd>
+                      <dt>Expiry</dt>
+                      <dd>
+                          <input type="text" size="4">
+                      </dd>
+                  </dl>
+                <button>Submit</button>
+            </fieldset>
+        </form>
+    </body>
+</html>
+
+<!-- 13. list        : It is used to access a datalist and display as
+          "autocomplete" text.
+
+          DataList is a collection of options.
+
+          <datalist>
+            <option> 1 </option>
+            <option> 2 </option>
+         </datalist>
+
+           Textbox must map to datalist to get options.
+
+Ex: -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Register</title>
+        <style>
+            div {
+                margin-bottom: 10px;
+            }
+            button {
+                width: 100px;
+            }
+            form {
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <form>
+            <div>
+                <h2>Google</h2>
+            </div>
+            <div>
+                <input type="text" list="terms" name="Search" size="40">
+                <datalist id="terms">
+                    <option>JavaScript Tutorial</option>
+                    <option>CSS Examples</option>
+                    <option>JavaScript Examples</option>
+                    <option>CSS Projects</option>
+                    <option>CSS Tutorial</option>
+                    <option>HTML Projects</option>
+                </datalist>
+            </div>
+            <div>
+                <button>Search</button>
+            </div>
+        </form>
+    </body>
+</html>

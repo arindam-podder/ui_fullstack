@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Modals</title>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    </head>
+    <body class="container-fluid">
+        
+        <h2>Modals</h2>
+        <button data-bs-target="#login1" data-bs-toggle="modal" class="btn btn-primary">Login</button>
+        <button data-bs-target="#register" data-bs-toggle="modal" class="btn btn-primary">Register</button>
+        <a class="btn btn-primary" data-bs-toggle="modal" href="#login1">Signin</a> 
+        <br><br>
+        <button data-bs-toggle="modal" data-bs-target="#my_details" class="btn-success">MyDetails</button>
+
+        
+        <!-- modals(basically embedded screen) (login1) -->
+        <div class="modal fade" id="login1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2>User Login</h2>
+                        <button data-bs-dismiss="modal" class="btn-close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <dl>
+                            <dt>User Name</dt>
+                            <dd><input type="text" class="form-control"></dd>
+                            <dt>Password</dt>
+                            <dd><input type="password" class="form-control"></dd>
+                        </dl>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary">Login</button>
+                        <button data-bs-dismiss="modal" class="btn btn-danger">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- modal for myDetail -->
+        <div class="modal fade" data-bs-backdrop="static" id="my_details">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    
+                    <div class="modal-header">
+                        <h4>Arindam Podder</h4>
+                        <button data-bs-dismiss="modal" class="btn-close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-bordered table-dark">
+                            <tr>
+                                <td>Father's Name </td>
+                                <td>Ajit Kr Podder</td>
+                            </tr>
+                            <tr>
+                                <td>Mother's Name </td>
+                                <td>Chhanu Kundu Podder</td>
+                            </tr>
+                            <tr>
+                                <td>Address </td>
+                                <td>Binnager,Raiganj,North Dinajpur,WB-733123</td>
+                            </tr>
+                            <tr>
+                                <td>Contact No. </td>
+                                <td>8016977044 / 7001955437</td>
+                            </tr>
+                            <tr>
+                                <td>Email Id  </td>
+                                <td>iampodder@gmail.com</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <a class="btn btn-primary" target="_blank" href="https://www.linkedin.com/in/arindam-podder-b298bb183/">Linkedin</a>
+                        <a class="btn btn-primary" target="_blank" href="https://www.facebook.com/">FaceBook</a>
+                        <a class="btn btn-primary" href="#">Instagram</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!-- modal register -->
+            <div class="modal fade" id="register">
+                <div class="modal-dialog modal-fullscreen modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2>Register User</h2>
+                            <button data-bs-dismiss="modal" class="btn-close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <dl>
+                                <dt>User Name</dt>
+                                <dd><input type="text" class="form-control"></dd>
+                                <dt>Password</dt>
+                                <dd><input type="password" class="form-control"></dd>
+                                <dt>User Name</dt>
+                                <dd><input type="text" class="form-control"></dd>
+                                <dt>Password</dt>
+                                <dd><input type="password" class="form-control"></dd>
+                                <dt>User Name</dt>
+                                <dd><input type="text" class="form-control"></dd>
+                                <dt>Password</dt>
+                                <dd><input type="password" class="form-control"></dd>
+                                <dt>User Name</dt>
+                                <dd><input type="text" class="form-control"></dd>
+                                <dt>Password</dt>
+                                <dd><input type="password" class="form-control"></dd>
+                                <dt>User Name</dt>
+                                <dd><input type="text" class="form-control"></dd>
+                                <dt>Password</dt>
+                                <dd><input type="password" class="form-control"></dd>
+                                <dt>User Name</dt>
+                                <dd><input type="text" class="form-control"></dd>
+                                <dt>Password</dt>
+                                <dd><input type="password" class="form-control"></dd>
+                                <dt>User Name</dt>
+                                <dd><input type="text" class="form-control"></dd>
+                                <dt>Password</dt>
+                                <dd><input type="password" class="form-control"></dd>
+                                <dt>User Name</dt>
+                                <dd><input type="text" class="form-control"></dd>
+                                <dt>Password</dt>
+                                <dd><input type="password" class="form-control"></dd>
+                                <dt>User Name</dt>
+                                <dd><input type="text" class="form-control"></dd>
+                                <dt>Password</dt>
+                                <dd><input type="password" class="form-control"></dd>
+                                <dt>User Name</dt>
+                                <dd><input type="text" class="form-control"></dd>
+                                <dt>Password</dt>
+                                <dd><input type="password" class="form-control"></dd>
+                            </dl>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary">Register</button>
+                            <button data-bs-dismiss="modal" class="btn btn-danger">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    </body>
+</html>

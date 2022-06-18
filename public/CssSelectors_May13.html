@@ -1,0 +1,365 @@
+<!-- Element State Pseudo Selectors [classes]:
+
+:enabled
+:disabled
+:read-only
+:checked
+:target
+:focus
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Frames</title>
+        <style>
+            button:enabled {
+                background-color: yellow;
+                border: none;
+                cursor: grab;
+            }
+            button:disabled {
+                cursor: not-allowed;
+            }
+        </style>
+    </head>
+   <body>
+       <button >Register</button>
+   </body>
+</html>
+
+
+Ex: readonly
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Frames</title>
+        <style>
+           .user-name+div {
+              display: none;
+           }
+           .user-name:read-only+div {
+               display: block;
+           }
+        </style>
+    </head>
+   <body>
+       <dl>
+           <dt>User Name</dt>
+           <dd>
+               <input type="text" readonly class="user-name" value="John">
+               <div style="color: red;">Name is Readonly</div>
+           </dd>
+           
+       </dl>            
+   </body>
+</html>
+
+Ex: target
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Intra Links</title>
+        <style>
+            ul {
+                list-style: none;
+                display: flex;
+            }
+            li {
+                margin-right: 50px;
+                border:2px solid black;
+                padding: 5px;
+                width: 200px;
+                text-align: center;
+            }
+            .box {
+                border:1px solid black;
+                background-color: gray;
+                color:white;
+                padding: 10px;
+                margin: 20px;
+               
+            }
+            .box:target {
+                background-color: black;
+                color:white;
+            }
+            .box:hover {
+                background-color: green;
+                color:white;
+            }
+            .container {
+                display: grid;
+                grid-template-columns: 3fr 3fr 3fr 3fr;
+            }
+            a:link {
+                color:green;
+            }
+            a:visited {
+                color:gray;
+            }
+            a:active {
+                color:red;
+            }
+            a {
+                text-decoration: none;
+            }
+            a:hover {
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+    <body>
+        <ul>
+            <li><a href="#html">HTML</a></li>
+            <li><a href="#css">CSS</a></li>
+            <li><a href="#js">JavaScript</a></li>
+            <li><a href="#react">React</a></li>
+        </ul>
+        <div class="container">
+            <div id="html" class="box">
+                <h2>HTML</h2>
+                <p>It is a markup language.</p>
+            </div>
+            <div id="css" class="box">
+                <h2>CSS</h2>
+                <p>It defines styles for HTML.</p>
+            </div>
+            <div id="js" class="box">
+                <h2>JavaScript</h2>
+                <p>It is a client side scripting language.</p>
+            </div>
+            <div id="react" class="box">
+                <h2>React JS</h2>
+                <p>It is a JavaScript Library.</p>
+            </div>
+        </div>
+    </body>
+</html>
+
+Ex: Focus
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Frames</title>
+        <style>
+           .user-name+div {
+              display: none;
+           }
+           .user-name:focus+div {
+               display: block;
+           }
+        </style>
+    </head>
+   <body>
+       <dl>
+           <dt>User Name</dt>
+           <dd>
+               <input type="text" class="user-name">
+               <div style="color: red;">Name in Block Letters Only</div>
+           </dd>
+           
+       </dl>            
+   </body>
+</html>
+
+Element Validation State Pseudo Selectors [Classes]:
+-----------------------------------------------------------------------
+
+:required        ]  to verify mandatory fields
+:optional        ]
+
+:in-range        ]  to verify number input
+:out-of-range    ]  input type, number, range
+
+:valid        ]  all other validations required, minlength
+:invalid        ]  pattern, email, url
+
+
+Note: required class is just verifying "required" attribute defined for input or not. It is not verifying the value defined or not.
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Frames</title>
+        <style>
+           .user-name:valid+div {
+              display: none;
+           }
+           .user-name:invalid+div {
+               display: block;
+           }
+           .user-name:valid {
+               border:2px solid green;
+               box-shadow: 2px 2px 2px green;
+           }
+           .user-name:invalid {
+               border:2px solid red;
+               box-shadow: 2px 2px 2px red;
+           }
+           .mobile:invalid+div {
+               display: block;
+           }
+           .mobile:valid+div {
+               display: none;
+           }
+           .age:invalid+div {
+               display: block;
+           }
+           .age:valid+div {
+               display: none;
+           }
+        </style>
+    </head>
+   <body>
+       <dl>
+           <dt>User Name</dt>
+           <dd>
+               <input type="text" required  class="user-name">
+               <div style="color: red;">Name Required</div>
+           </dd>
+           <dt>Mobile</dt>
+           <dd>
+               <input type="text" class="mobile" pattern="\+91\d{10}">
+               <div style="color:red ;">Invalid Mobile</div>
+           </dd>
+           <dt>Age</dt>
+           <dd>
+               <input type="number" min="15" value="15" max="30" class="age">
+               <div style="color:red">Age 15 to 30 Only</div>
+           </dd>
+       </dl>            
+   </body>
+</html>
+
+Ex: out-of-range , in-range
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Frames</title>
+        <style>
+           .user-name:valid+div {
+              display: none;
+           }
+           .user-name:invalid+div {
+               display: block;
+           }
+           .user-name:valid {
+               border:2px solid green;
+               box-shadow: 2px 2px 2px green;
+           }
+           .user-name:invalid {
+               border:2px solid red;
+               box-shadow: 2px 2px 2px red;
+           }
+           .mobile:invalid+div {
+               display: block;
+           }
+           .mobile:valid+div {
+               display: none;
+           }
+           .age:out-of-range+div {
+               display: block;
+           }
+           .age:in-range+div {
+               display: none;
+           }
+        </style>
+    </head>
+   <body>
+       <dl>
+           <dt>User Name</dt>
+           <dd>
+               <input type="text" required  class="user-name">
+               <div style="color: red;">Name Required</div>
+           </dd>
+           <dt>Mobile</dt>
+           <dd>
+               <input type="text" class="mobile" pattern="\+91\d{10}">
+               <div style="color:red ;">Invalid Mobile</div>
+           </dd>
+           <dt>Age</dt>
+           <dd>
+               <input type="number" min="15" value="15" max="30" class="age">
+               <div style="color:red">Age 15 to 30 Only</div>
+           </dd>
+       </dl>            
+   </body>
+</html>
+
+Element Behavioural Pseudo Classes:
+::first-letter
+::first-line
+::selection
+::before
+::after
+::placeholder
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Frames</title>
+        <style>
+           p::first-letter {
+              font-size: 30px;
+              font-weight: bold;
+              font-family: Arial;
+              float: left;
+           }
+           p::first-line {
+               color:blue;
+               
+           }
+           p{
+            text-align: justify;
+           }
+           p::selection {
+               background-color: yellow;
+               color: red;
+           }
+        </style>
+    </head>
+   <body>
+       <p>
+        Your use of this software is subject to the terms and conditions of the license agreement by which you acquired this software.  If you are a volume license customer, use of this software is subject to your volume license agreement.  You may not use this software if you have not validly acquired a license for the software from Microsoft or its licensed distributors.
+       </p>
+   </body>
+</html>
+
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Frames</title>
+        <style>
+            ul {
+                list-style: none;
+                display: flex;
+            }
+            li::before {
+                content: ">";
+            }
+            li:first-child::before {
+                content: "";
+            }
+            li:last-child {
+                color:gray;
+            }
+        </style>
+    </head>
+   <body>
+       <ul>
+           <li>Home</li>
+           <li>Electronics</li>
+           <li>Mobiles</li>
+           <li>Samsung</li>
+       </ul>
+   </body>
+</html> -->

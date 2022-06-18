@@ -1,0 +1,330 @@
+<!-- @Keyframes
+
+- Keyframe is used to configure an object with animation.
+- Animation usually contains 30fps - 60fps.
+- CSS can design frame by frame animation or tweening.
+- Tweening doesn't require to define every frame, we have to configure
+    a) Initial position  [from]
+    b) Final position   [to]
+    c) Break points if necessary. [0% to 100%]
+
+Syntax:
+    @keyframes  animationName
+    {
+          from {
+        set of effects;
+             }
+          to {
+        set of effects;
+          }
+    }
+
+- Keyframe is applied to any element by using animation attributes
+
+    a) animation-name
+    b) animation-duration
+    c) animation-delay
+    d) animation-direction
+    e) animation-iteration-count
+
+Syntax:
+      img {
+          animation-name: keyframeName;
+          animation-duration: interval;
+          animation-delay: delayInterval;
+          animation-direction: alternate;
+          animation-iteration-count: infinite|count
+      }
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>News</title>
+        <style>
+           body {
+               overflow: hidden;
+           }
+           @keyframes ZoomIn
+           {
+               from {
+                   margin-left: 120%;
+                   margin-top: 50%;
+                   width: 500px;
+                   height: 500px;
+               }
+               50% {
+                   transform: rotate(360deg);
+                   width: 600px;
+                   height: 600px;
+               }
+               to {
+                   margin-left: 0%;
+                   margin-top: 0%;
+                   width: 100px;
+                   height: 100px;
+               }
+           }
+           img {
+               animation-name: ZoomIn;
+               animation-duration: 5s;
+               animation-direction: alternate;
+               animation-iteration-count: infinite;
+           }
+        </style>
+    </head>
+    <body>
+        <img src="../public/assets/jacket.jpg" width="100" height="100">
+     
+    </body>
+</html>
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>News</title>
+        <style>
+           body {
+               
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               height: 600px;
+           }
+           @keyframes ZoomIn
+           {
+               from {
+                  font-size: 250px;
+                  font-weight: bold;
+                  margin-top: 100%;
+               }
+           
+               to {
+                  font-size: 30px;
+                  font-weight: normal;
+                  margin-top: 0%;
+               }
+           }
+           .a{
+               animation-name: ZoomIn;
+               animation-duration: 5s;
+               animation-delay: 2s;
+               animation-direction: alternate;
+               animation-iteration-count: infinite;
+           }
+           .b {
+               animation-name: ZoomIn;
+               animation-duration: 2s;
+               animation-delay: 1s;
+               animation-direction: alternate;
+               animation-iteration-count: infinite;
+           }
+           .c {
+               animation-name: ZoomIn;
+               animation-duration: 5s;
+               animation-delay: 0s;
+               animation-direction: alternate;
+               animation-iteration-count: infinite;
+           }
+        </style>
+    </head>
+    <body>
+        <div>
+            <span class="a">W</span>
+            <span class="b">E</span>
+            <span class="c">L</span>
+            <span class="d">C</span>
+            <span class="e">O</span>
+            <span class="f">M</span>
+            <span class="g">E</span>
+        </div>
+    </body>
+</html>
+
+         CSS Responsive Design
+         ----------------------------------
+- Responsive allows the page to fit according to device.
+- To create responsive pages you need
+
+    a) Meta Attributes
+    b) Fluid Images
+    c) Fluid Containers [Grid and Flex]
+    d) Media  Queries
+
+- Meta Attribute to define responsive page
+ 
+   <meta name="viewport"  content="width=device-width, initial-scale=1">
+
+
+- Fluid Images
+
+   <img width="30%"  height="20%">
+
+- Grid and Flexbox
+
+    Display:Grid, Flex, Flex-Options
+
+- Media Queries
+   
+       @media  type  and  (query)
+       {
+       }
+
+- Type can be
+    a) all
+    b) screen
+    c) print
+    d) speech
+
+- Query can be
+    a) orientation    
+    b) min-width    : from the given width.
+    c) max-width    : upto the given width.
+    d) width
+
+    max-width:500px    : upto 500px the effect will apply.
+              after 500px it will stop.
+
+    min-width:500px    : from 500px the effect will start
+              upto end.
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            @media screen and (max-width:800px) {
+                body {
+                    background-color: yellow;
+                }
+            }
+            @media screen and (min-width:800px) {
+                body {
+                    background-color: aqua;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        Change width to test..
+    </body>
+</html>
+
+
+
+
+
+Ex: Media Query using Min-width and Max-width
+   
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Responsive Page</title>
+        <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+        <style>
+            header, section, nav, main, aside, footer {
+                border:2px solid black;
+                padding: 5px;
+                margin: 5px;
+            }
+            @media screen and (orientation: landscape){
+                .container {
+                display: grid;
+                grid-template-columns: 3fr 7fr 2fr;
+                }
+                header {
+                    grid-row: 1;
+                    grid-column: 1/4;
+                    text-align: center;
+                }
+                nav {
+                    grid-row: 2;
+                    grid-column: 1;
+                }
+                main {
+                    grid-row: 2;
+                    grid-column: 2;
+                    height: 400px;
+                }
+                aside {
+                    grid-row: 2;
+                    grid-column: 3;
+                }
+                footer {
+                    grid-row: 3;
+                    grid-column: 1/4;
+                    text-align: center;
+                }
+                .nav-toggler {
+                    display: none;
+                }
+            }
+            @media screen and (max-width:800px) {
+                .container {
+                    display: grid;
+                    grid-template-columns: 6fr;
+                }
+                header {
+                    grid-row: 1;
+                }
+                nav {
+                    grid-row: 2;
+                    grid-column: 1/4;
+                }
+                main {
+                    grid-row: 3;
+                    grid-column: 1/4;
+                }
+                aside {
+                    grid-row: 4;
+                    grid-column: 1/4;
+                }
+                footer {
+                    grid-row: 5;
+                    grid-column: 1/4;
+                }
+                ul {
+                    list-style: none;
+                    display: flex;
+                }
+                li {
+                    display: none;
+                }
+                .nav-toggler {
+                    display: inline;
+                    height: 80px;
+                    width: 100%;
+                    font-size: 40px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+       <div class="container">
+        <header>
+            <h2>Header</h2>
+        </header>
+            <nav>
+                <button class="nav-toggler">
+                    <span class="bi bi-card-list"></span>
+                </button>
+                <ul>
+                    <li>Home</li>
+                    <li>About</li>
+                    <li>Contact</li>
+                </ul>
+            </nav>
+            <main>
+                <h2>Home</h2>
+                <p>Page main content</p>
+            </main>
+            <aside>
+                <p>Ads here</p>
+            </aside>
+        <footer>
+            &copy; copyright 2022
+        </footer>
+       </div>
+    </body>
+</html> -->

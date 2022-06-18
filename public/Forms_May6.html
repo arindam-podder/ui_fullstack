@@ -1,0 +1,395 @@
+<!-- Textarea
+                  ------------
+- It is used for multi line text.
+
+Syntax:
+    <textarea>
+          --default text---
+    </textarea>
+
+- You can set height and width by using
+    a) rows
+    b) cols
+
+    <textarea rows="4" cols="40">
+
+    </textarea>
+
+- Textarea is RC data type. It is used only for plain text. No formats allowed.
+
+    <textarea>
+         <b> Hello ! </b>          // Not change to bold
+    </textarea>
+
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Demo</title>
+    </head>
+    <body>
+        <form>
+            <fieldset>
+                <legend>Your Comments</legend>
+                <textarea cols="40" rows="4"> </textarea>
+                <br>
+                <button>Post Comments</button>
+            </fieldset>
+        </form>
+    </body>
+</html>
+
+                  Meter
+                  =====
+
+- It is used as grade meter.
+
+Syntax:
+    <meter> </meter>
+
+- Attributes
+    a) min
+    b) max
+    c) value
+    d) low
+    e) high
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Demo</title>
+        <style>
+            meter {
+                width: 200px;
+                height: 30px;
+            }
+        </style>
+    </head>
+    <body>
+        <form>
+            <fieldset>
+                <legend>Password Strength</legend>
+                <dl>
+                    <dt>Normal</dt>
+                    <dd>
+                        <meter></meter>
+                    </dd>
+                    <dt>Weak Password</dt>
+                    <dd>
+                        <meter min="1" value="20" max="100"></meter>
+                    </dd>
+                    <dt>Strong Password</dt>
+                    <dd>
+                        <meter min="1" max="100" value="100"></meter>
+                    </dd>
+                </dl>
+            </fieldset>
+        </form>
+    </body>
+</html>
+
+Ex: With low and high
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Demo</title>
+        <style>
+            meter {
+                width: 200px;
+                height: 30px;
+            }
+        </style>
+    </head>
+    <body>
+        <form>
+            <fieldset>
+                <legend>Password Strength</legend>
+                <dl>
+                    <dt>Normal</dt>
+                    <dd>
+                        <meter></meter>
+                    </dd>
+                    <dt>Poor Password</dt>
+                    <dd>
+                        <meter min="1" low="60" high="80" value="100" max="100"></meter>
+                    </dd>
+                    <dt>Weak Password</dt>
+                    <dd>
+                        <meter min="1" low="40" high="80" max="100" value="100"></meter>
+                    </dd>
+                    <dt>Strong Password</dt>
+                    <dd>
+                        <meter min="1" low="0" high="0" max="100" value="100"></meter>
+                    </dd>
+                </dl>
+            </fieldset>
+        </form>
+    </body>
+</html>
+
+                     Progress
+                    ========
+- It is used to show the status of any task performed in page.
+  [ uploading, copying, downloaing, installing etc..]
+
+Syntax:
+    <progress> </progress>
+
+- Attributes
+    a) min
+    b) max
+    c) value
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Demo</title>
+        <style>
+            progress {
+                width: 200px;
+                height: 30px;
+            }
+        </style>
+    </head>
+    <body>
+        <form>
+            <fieldset>
+                <legend>Download</legend>
+                <dl>
+                    <dt>Preparing for Download</dt>
+                    <dd>
+                        <progress></progress>
+                    </dd>
+                    <dt>60% Completed</dt>
+                    <dd>
+                        <progress min="1" value="60" max="100"></progress>
+                    </dd>
+                    <dt>Download Completed</dt>
+                    <dd>
+                        <progress min="1" max="100" value="100">
+
+                        </progress>
+                    </dd>
+                </dl>  
+            </fieldset>
+        </form>
+    </body>
+</html>
+
+Alternative : Bootstrap Spinners are applied by using classes
+
+        spinner-border
+        spinner-grow
+        <div class="spinner-border spinner-border-sm"> </div>
+
+
+                 Buttons
+                =======
+- Buttons are used to confirm user actions.
+    a) Record Navigation
+         previous, next, first, last, go to etc..
+    b) Record Actions
+         insert, update, delete, remove, view, submit, register
+         save, edit
+    c) Miscellaneous Actions
+        Print, Copy, Paste, etc..
+
+- HTML provides 2 types of buttons
+    a) Generic
+    b) Non Generic
+
+- Generic buttons have pre-defined functionality.
+    a) HTML 4 Button
+            <input type="submit">    submit form data
+            <input type="reset">    resets form data
+    b) HTML 5 Button
+             <button type="submit"> Text | Image | Icon </button>
+             <button type="reset"> </button>
+             <button> </button>    - default is submit
+
+- Non Generic Button
+    HTML 4
+     <input type="button">
+    HTML 5
+      <button type="button"> </button>
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Demo</title>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    </head>
+    <body class="container-fluid">
+        <form>
+            <h2>Register User</h2>
+            <dl>
+                <dt>User Name</dt>
+                <dd>
+                    <input type="text" name="userName">
+                </dd>
+                <input type="submit" value="Register">
+                <input type="reset" value="Cancel">
+                <input type="button" value="Print">
+                <br><br>
+                <button type="submit"> <span class="bi bi-person"></span> Register </button>
+                <button type="reset"> <img src="assets/shoe.jpg" width="20" height="20"> </button>
+                <button type="button"> <span class="bi bi-printer"></span> </button>
+            </dl>
+        </form>
+    </body>
+</html>
+
+                     Label
+                    =====
+- It is used to displaying title and captions for controls in form.
+
+Syntax:
+    <label> Caption </label>
+
+- Label can bind with any element in form by using "for" attribute.
+
+    <label for="UserName"> User Name </label>
+    <input type="text" name="UserName">
+
+
+Ex: Basic Form Structure
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Demo</title>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+        <style>
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 500px;
+            }
+            form {
+                border: 1px solid gray;
+                padding: 20px;
+            }
+        </style>
+    </head>
+    <body class="container-fluid">
+        <form>
+           <h2>Sign In</h2>
+           <div>
+               <label for="UserName">User Name</label>
+               <div>
+                   <input type="text" name="UserName">
+               </div>
+           </div>
+           <div>
+               <label for="Password">Password</label>
+               <div>
+                   <input type="password" name="Password">
+               </div>
+           </div>
+           <div>
+               <button>Login</button>
+           </div>
+        </form>
+    </body>
+</html>
+
+
+Bootstrap Classes for Form Elements:
+
+ClassName        Element | Purpose
+-----------------------------------------------------------------------------------------
+form-control    textbox, password, number, email, url, textarea
+        date, month
+
+form-range    input type range
+
+form-color        input type color
+
+form-select    dropdown
+
+form-switch    checkbox and radio group | container
+
+form-check-input    checkbox and radio
+
+form-label        label
+
+m        margin
+p        padding
+
+t        top
+b        bottom
+s        left
+e        right
+
+padding and margin values can be from 1 to 4.
+   
+    mt-4        pt-4
+    mb-4        pb-3
+    ms-4        p-4
+    m-4
+
+Button Class:  btn, btn-primary, secondary, success, danger, warning
+
+    w - width  25, 50, 75, 100
+    w-25
+    w-100
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Demo</title>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+        <style>
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 500px;
+            }
+            form {
+                border: 1px solid gray;
+                padding: 20px;
+            }
+        </style>
+    </head>
+    <body class="container-fluid">
+        <form>
+           <h2>Sign In</h2>
+           <div class="mb-4">
+               <label class="form-label" for="UserName">User Name</label>
+               <div>
+                   <input type="text" class="form-control" name="UserName">
+               </div>
+           </div>
+           <div class="mb-4">
+               <label class="form-label" for="Password">Password</label>
+               <div>
+                   <input type="password" class="form-control" name="Password">
+               </div>
+           </div>
+           <div class="mb-4">
+               <label for="City" class="form-label">Your City</label>
+               <div>
+                   <select class="form-select" name="City">
+                       <option>Select a City</option>
+                       <option>Delhi</option>
+                       <option>Hyd</option>
+                   </select>
+               </div>
+           </div>
+           <div>
+               <button class="btn btn-warning w-100">Login</button>
+           </div>
+        </form>
+    </body>
+</html>
