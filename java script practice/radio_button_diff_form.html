@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RadioBtn form</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script>
+
+        function bodyLoad(){
+            document.getElementById("known").style.display = "none";
+        }
+
+        function newClick(){
+            document.getElementById("new").style.display = "block";
+            document.getElementById("known").style.display = "none";
+        }
+        function knownClick(){
+            document.getElementById("known").style.display = "block";
+            document.getElementById("new").style.display = "none";
+        }
+
+    </script>
+</head>
+<body onload="bodyLoad()">
+    
+    <div class="container-fluid">
+        
+        <!-- radio buttons -->
+        <div class="d-flex">
+            <h6 class="me-4"> Requirement For : </h6>
+            <div class="form-check me-2">
+                <input class="form-check-input" type="radio" name="Requirement" id="Requirement" onclick="newClick()" checked>
+                <label for="Requirement">
+                    new contractor
+                </label>
+            </div>
+            <div class="form-check d">
+                <input class="form-check-input " type="radio" name="Requirement" id="Requirement" onclick="knownClick()">
+                <label for="Requirement">
+                    known contractor
+                </label>
+            </div>
+        </div>
+
+        <!-- form for new contractor -->
+        <div id="new" class="mt-4 w-50">
+            <h3>Fill the Details(new contractor)</h3>
+            <form>
+                <div class="mb-3">
+                    <label for="managerName" class="form-label">Manager Name</label>
+                    <input type="text" class="form-control" id="managerName" >
+                </div>
+            </form>
+        </div>
+
+        <!-- form for known contractor  -->
+        <div id="known" class="mt-4 w-50">
+            <h3>Fill the Details(known contractor)</h3>
+            <form>
+                <div class="mb-3">
+                    <label for="managerName" class="form-label">Manager Name</label>
+                    <input type="text" class="form-control" id="managerName" >
+                </div>
+            </form>
+        </div>
+        
+    </div>
+
+</body>
+</html>

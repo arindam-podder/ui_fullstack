@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js out put methods, alert confirm inner,outer Html</title>
+    
+    <!-- embedded java script -->
+    <script>
+        function onClickAlert(){
+            alert("alert button clicked.")
+        }
+
+        function onclickConfirm(){
+            confirm("are u sure , want to delete.")
+        }
+
+        function documentWrite(){
+            var nameValue = document.getElementById("name").value;
+            if(nameValue==""){
+                document.getElementById("name").placeholder = "please enter name";
+            }
+            else{
+                document.write("<h1>Welcome "+ nameValue +"</h1>");
+            }
+        }
+
+    </script>
+</head>
+<body>
+    
+    <button onclick="onClickAlert()">alert btn</button>
+    <button onclick="onclickConfirm()">confirm btn</button>
+    <br><br>
+    <input type="text" id="name" placeholder="enter name"> <button onclick="documentWrite()">OK</button>
+
+    <!-- innerHTML , innerText, outerHTML know this  -->
+
+</body>
+</html>

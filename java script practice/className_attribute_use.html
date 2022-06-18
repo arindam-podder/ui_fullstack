@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>className atrribute with element</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script>
+        function ChangeTheme() {
+            var frmRegister = document.getElementById("frmRegister");
+            var theme = document.getElementById("theme");
+            var button = document.querySelector("button");
+            if (theme.checked) {
+                frmRegister.className = "bg-dark text-white border border-2 p-2 m-2 w-25";
+                button.className = "w-100 btn btn-light";
+            } else {
+                frmRegister.className = "bg-light text-dark border border-2 p-2 m-2 w-25";
+                button.className = "w-100 btn btn-dark";
+            }
+        }
+    </script>
+</head>
+
+<body class="container-fluid">
+    <form id="frmRegister" class="border border-2 p-2 m-2 w-25">
+        <h2>Register User</h2>
+        <div class="form-switch">
+            <input type="checkbox" id="theme" onchange="ChangeTheme()" class="form-check-input"> Dark Mode
+        </div>
+        <dl>
+            <dt>User Name</dt>
+            <dd><input type="text"></dd>
+            <dt>Password</dt>
+            <dd><input type="password"></dd>
+            <dt>Email</dt>
+            <dd><input type="email"></dd>
+        </dl>
+        <button class="btn btn-dark w-100">Register</button>
+    </form>
+</body>
+
+</html>

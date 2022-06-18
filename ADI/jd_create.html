@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>manager requirement</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script>
+
+        function bodyLoad() {
+            document.getElementById("known").style.display = "none";
+        }
+
+        function newClick() {
+            document.getElementById("new").style.display = "block";
+            document.getElementById("known").style.display = "none";
+        }
+        function knownClick() {
+            document.getElementById("known").style.display = "block";
+            document.getElementById("new").style.display = "none";
+        }
+
+    </script>
+</head>
+
+<body onload="bodyLoad()">
+
+    <div class="container mt-2 mb-4">   <!-- main container-->
+
+
+        <!-- radio buttons -->
+        <div class="d-flex">
+            <h5 class="me-4"> Requirement For : </h5>
+            <div class="form-check me-4">
+                <input class="form-check-input" type="radio" name="Requirement" id="Requirement" onclick="newClick()"
+                    checked>
+                <label for="Requirement"> new contractor </label>
+            </div>
+            <div class="form-check d">
+                <input class="form-check-input " type="radio" name="Requirement" id="Requirement"
+                    onclick="knownClick()">
+                <label for="Requirement"> known contractor </label>
+            </div>
+        </div>
+
+
+        
+        <!-- form for new contractor -->
+        <div id="new" class="mt-3 w-50">
+            <h3 class="text-center">Fill the Details</h3>
+            <form class="border-top">
+                <div class="form-group mb-2 mt-2">
+                    <label for="managerName" class="form-label">Manager Name</label><span class="text-danger">*</span>
+                    <input type="text" class="form-control" id="managerName">
+                </div>
+                <div class="form-group mb-2">
+                    <label for="ccNnmber" class="form-label">CC Number</label><span class="text-danger">*</span>
+                    <input type="text" class="form-control" id="ccNnmber">
+                </div>
+                <div class="form-group mb-2">
+                    <label for="ccManager" class="form-label">CC Manager</label><span class="text-danger">*</span>
+                    <input type="text" class="form-control" id="ccManager">
+                </div>
+                <div class="form-group mb-2">
+                    <label for="projectName" class="form-label">Project Name</label><span class="text-danger">*</span>
+                    <input type="text" class="form-control" id="projectName">
+                </div>
+                <div class="form-group mb-2">
+                    <label for="duration" class="form-label">Duration(in months)</label><span class="text-danger">*</span>
+                    <input type="number" class="form-control" id="duration">
+                </div>
+                <div class="form-group mb-2">
+                    <label for="desiredStartDate" class="form-label">Desired start date</label><span class="text-danger">*</span>
+                    <input type="date" class="form-control" id="desiredStartDate">
+                </div>
+                <div class="form-group mb-2">
+                    <label for="noOfResources" class="form-label">No of resources/positions</label><span class="text-danger">*</span>
+                    <input type="number" class="form-control" id="noOfResources">
+                </div>
+                <div class="form-group mb-2">
+                    <!-- experienceBands in JDRequirement table -->
+                    <label for="yearOfExperience" class="form-label">Years of Experience</label><span class="text-danger">*</span>
+                    <select class="form-control" id="yearOfExperience">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                    </select>
+                </div>
+                <div class="form-group mb-2">
+                    <!-- workingMode in JDRequirement table -->
+                    <label for="workSetup" class="form-label">Work set-up</label><span class="text-danger">*</span>
+                    <select class="form-control" id="workSetup">
+                        <option>Onsite</option>
+                        <option>Offsite</option>
+                        <option>Both</option>
+                    </select>
+                </div>
+                <div class="form-group mb-2">
+                    <!-- location in JDRequirement table -->
+                    <label for="adiLocation" class="form-label">ADI Location</label><span class="text-danger">*</span>
+                    <select class="form-control" id="adiLocation">
+                        <option>ADBL</option>
+                        <option>ADHY</option>
+                        <option>ADGN</option>
+                    </select>
+                </div>
+                <div class="form-group mb-2">
+                    <label for="expectation" class="form-label">JD/Expectation</label>
+                    <textarea class="form-control" id="expectation" rows="2"></textarea>
+                </div>
+                <div class="form-group mb-2">
+                    <label for="remarksForEcosystem" class="form-label">Any Remarks (or) note for Ecosystem team</label>
+                    <textarea class="form-control" id="remarksForEcosystem" rows="2"></textarea>
+                </div>
+                <button type="button" class="btn btn-primary w-100">Submit</button>
+            </form>
+        </div>
+
+
+
+        <!-- form for known contractor (here some details will go to JD table , some in Candidate table) -->
+        <div id="known" class="mt-3 w-50">
+            <h3 class="text-center">Fill the Details</h3>
+            <form class="border-top">
+                <div class="form-group mb-2 mt-2">
+                    <label for="" class="form-label">Full Legal Name</label><span class="text-danger">*</span>
+                    <div class="input-group">
+                        <input type="text" class="form-control me-1" id="firstName" placeholder="First Name">
+                        <input type="text" class="form-control me-1" id="middleName" placeholder="Middle Name">
+                        <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+                    </div>
+                </div>
+                <div class="form-group mb-2">
+                    <label for="cv" class="form-label">CV</label><span class="text-danger">*</span>
+                    <input type="file" class="form-control" id="cv">
+                </div>
+                <div class="form-group mb-2">
+                    <!-- salaryType in JDRequirement table -->
+                    <label for="choose" class="form-label">Choose</label><span class="text-danger">*</span>
+                    <select class="form-control" id="choose">
+                        <option>Vays</option>
+                        <option>TeamLease</option>
+                    </select>
+                </div>
+                <div class="form-group mb-2">
+                    <label for="duration" class="form-label">Duration(in months)</label><span class="text-danger">*</span>
+                    <input type="number" class="form-control" id="duration">
+                </div>
+                <div class="form-group mb-2">
+                    <label for="desiredStartDate" class="form-label">Desired start date</label><span class="text-danger">*</span>
+                    <input type="date" class="form-control" id="desiredStartDate">
+                </div>
+                <div class="form-group mb-2">
+                    <label for="serviceToBeProvided" class="form-label">Service to be provided</label>
+                    <input type="text" class="form-control" id="serviceToBeProvided">
+                </div>
+                <div class="form-group mb-2">
+                    <label for="deliverables" class="form-label">Deliverables</label>
+                    <input type="text" class="form-control" id="deliverables">
+                </div>
+                <div class="form-group mb-2">
+                    <label for="specifications" class="form-label">Specifications</label>
+                    <input type="text" class="form-control" id="specifications">
+                </div>
+                <div class="form-group mb-2">
+                    <label for="salaryDiscussed" class="form-label">Salaray Discussed with</label><span class="text-danger">*</span>
+                    <input type="number" class="form-control" id="salaryDiscussed">
+                </div>
+                <div class="form-group mb-2">
+                    <!-- workingMode in JDRequirement table -->
+                    <label for="workSetup" class="form-label">Work set-up</label><span class="text-danger">*</span>
+                    <select class="form-control" id="workSetup">
+                        <option>Onsite</option>
+                        <option>Offsite</option>
+                        <option>Both</option>
+                    </select>
+                </div>
+                <div class="form-group mb-2">
+                    <!-- location in JDRequirement table -->
+                    <label for="adiLocation" class="form-label">ADI Location</label><span class="text-danger">*</span>
+                    <select class="form-control" id="adiLocation">
+                        <option>ADBL</option>
+                        <option>ADHY</option>
+                        <option>ADGN</option>
+                    </select>
+                </div>
+                <div class="form-group mb-2">
+                    <label for="mobileNo" class="form-label">Mobile No</label><span class="text-danger">*</span>
+                    <input type="number" class="form-control" id="mobileNo">
+                </div>
+                <div class="mb-2">
+                    <label for="managerName" class="form-label">Manager Name</label><span class="text-danger">*</span>
+                    <input type="text" class="form-control" id="managerName">
+                </div>
+                <div class="form-group mb-2">
+                    <label for="ccNnmber" class="form-label">CC Number</label><span class="text-danger">*</span>
+                    <input type="text" class="form-control" id="ccNnmber">
+                </div>
+                <div class="form-group mb-2">
+                    <label for="ccManager" class="form-label">CC Manager</label><span class="text-danger">*</span>
+                    <input type="text" class="form-control" id="ccManager">
+                </div>
+                <div class="form-group mb-2">
+                    <label for="projectName" class="form-label">Project Name</label><span class="text-danger">*</span>
+                    <input type="text" class="form-control" id="projectName">
+                </div>
+                <div class="form-group mb-2">
+                    <label for="additionalBenefit" class="form-label">Any additional benefits promised to candidate</label>
+                    <textarea class="form-control" id="additional" rows="2"></textarea>
+                </div>
+                <div class="form-group mb-2">
+                    <label for="remarksForEcosystem" class="form-label">Any Remarks (or) note for Ecosystem team</label>
+                    <textarea class="form-control" id="remarksForEcosystem" rows="2"></textarea>
+                </div>
+                <button type="button" class="btn btn-primary w-100">Submit</button>
+            </form>
+        </div>
+
+    </div> <!-- main container end-->
+
+</body>
+
+</html>
