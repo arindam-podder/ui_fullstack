@@ -1,0 +1,53 @@
+<script>
+
+    var data = "be strong";
+    var array1 = [101, 'Arindam', true, 55.88, data];
+
+    //toString() -> to display array values 
+
+    // join() - take any delimeter and display array data separated by that delimeter
+    document.write(array1.join(" | ") + "<br><br>")      
+
+    // find( function ) -> terminate after 1st true condition
+    var findValue = array1.find(
+                function(value){
+                    return isNaN(value);
+                }
+            );
+    document.write(findValue + "<br><br>")
+
+    //filter( function ) -> all true condition checks and  it will give all those value 
+    var filterArray = array1.filter(
+                function(value){
+                    return isNaN(value);
+                }
+            )
+    document.write(filterArray.toString() + "<br><br>")
+
+    //map () -> It is implicit iterator, reads every element and presents using markup.
+    array1.map(
+            function(value){
+            document.write(`<li>${value}</li>`);
+            }
+        );
+
+    //for loop use
+        // for..in        [ It is used to read all properties(index) ]
+        // for..of        [ It is used to read all values]
+    for(var prop in array1){
+        document.write(prop +" ")
+    }
+    for(var value of array1){
+        document.write(value + " ")
+    }
+
+
+</script>
+
+
+
+
+
+
+
+

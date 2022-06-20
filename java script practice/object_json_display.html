@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Presenting JSON</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script>
+        var products = [
+            {Name: "Winter Jacket", Price: 5000.44, Photo:"../assets/fashoin1.jpg"},
+            {Name: "Nike Casuals", Price: 6000.44, Photo:"../assets/footwear.jpg"},
+            {Name: "Lee Boot", Price: 3400.44, Photo:"../assets/bag.jpg"}
+        ];
+        function LoadClick(){
+            for(var product of products){
+                var tr = document.createElement("tr");
+                var tdName = document.createElement("td");
+                var tdPrice = document.createElement("td");
+                var tdPhoto = document.createElement("td");
+                var img = document.createElement("img");
+
+                tdName.innerHTML = product.Name;
+                tdPrice.innerHTML = product.Price;
+             
+                img.src=product.Photo;
+                img.width="50";
+                img.height="50";
+                tdPhoto.appendChild(img);
+
+                tr.appendChild(tdName);
+                tr.appendChild(tdPrice);
+                tr.appendChild(tdPhoto);
+
+                document.querySelector("tbody").appendChild(tr);
+            }
+        }
+    </script>
+</head>
+<body class="container-fluid">
+    <h2>Product Details</h2>
+    <button onclick="LoadClick()">Load Data</button>
+    <div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

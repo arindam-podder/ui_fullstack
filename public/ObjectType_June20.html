@@ -1,0 +1,156 @@
+<!-- Reading Elements from Array
+Adding Elements into Array
+Removing Elements from Array
+Searching For Element in Array
+    - find()
+    - filter()
+    - indexOf()
+    - lastIndexOf()
+Sort Array Elements
+    - sort()
+    - reverse()
+
+Ex:
+<script>
+    var cities = ["Delhi","Bangalore","Chennai","Mumbai","Goa"];
+    cities.sort();
+    cities.reverse();
+    for(var item of cities)
+    {
+        document.write(item + "<br>");
+    }
+</script>
+
+
+                              Object Type
+- Object is used to keep all related data and logic together.
+- The concept of object was introduced in early 1960's by "Alan Kay".
+- Johan Olay, Kristian Nygaard - Introduced OOP.
+
+        {
+           "Key" : "Value",
+           "Key" : function() { }
+        }
+
+- If JavaScript is defining an object then every key must be string and value can be any type.
+
+        {
+          Name : "Samsung TV",
+          Price : 56000.44,
+        }
+
+- If object contains only data then it is reffered as JSON.
+
+        [JavaScript Object Notation]
+
+- JSON is a format for data.
+
+- Popular Data formats are XML, XML Atom, JSON, JSONP etc..
+
+Ex:
+var tv = {
+    "Name": "Samsung TV",
+    "Price": 45000.44,
+    "Stock": true,
+    "Cities": ["Delhi", "Hyd"],
+    "Rating": { Rate:4.5, Count: 5600 }
+}
+
+- Data is accessed with reference of object Name
+
+   tv.Name;                                    // getter - read value
+   tv.Name = "Samsung LED TV";        // setter - store new value
+   tv.Rating.Count
+
+- It enables reusability.
+
+
+Ex:
+<script>
+   var tv = {
+    "Name": "Samsung TV",
+    "Price": 45000.44
+   }
+   var shoe = {
+    "Name": "Nike Casuals",
+    "Price": 6000.44
+   }
+   shoe.Price = 7000.42;
+   document.write("Shoe Price :" + shoe.Price);
+</script>
+
+
+Ex:
+<script>
+    var product = {
+        "Name": "",
+        "Price": 0,
+        "Stock": false,
+    }
+    product.Name = prompt("Enter Name");
+    product.Price = parseFloat(prompt("Enter Price"));
+    product.Stock = (prompt("Enter Stock")=="true")?true:false;
+
+    document.write(`Name : ${product.Name}<br>Price:${product.Price}<br>Stock:${product.Stock}`);
+</script>
+   
+
+Ex: Presenting a Table
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Presenting JSON</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script>
+        var products = [
+            {Name: "Winter Jacket", Price: 5000.44, Photo:"../public/assets/jacket.jpg"},
+            {Name: "Nike Casuals", Price: 6000.44, Photo:"../public/assets/shoe.jpg"},
+            {Name: "Lee Boot", Price: 3400.44, Photo:"../public/assets/shoe1.jpg"}
+        ];
+        function LoadClick(){
+            for(var product of products){
+                var tr = document.createElement("tr");
+                var tdName = document.createElement("td");
+                var tdPrice = document.createElement("td");
+                var tdPhoto = document.createElement("td");
+                var img = document.createElement("img");
+
+                tdName.innerHTML = product.Name;
+                tdPrice.innerHTML = product.Price;
+             
+                img.src=product.Photo;
+                img.width="50";
+                img.height="50";
+                tdPhoto.appendChild(img);
+
+                tr.appendChild(tdName);
+                tr.appendChild(tdPrice);
+                tr.appendChild(tdPhoto);
+
+                document.querySelector("tbody").appendChild(tr);
+            }
+        }
+    </script>
+</head>
+<body class="container-fluid">
+    <h2>Product Details</h2>
+    <button onclick="LoadClick()">Load Data</button>
+    <div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
+                             Access Data from API
+- JavaScript Promise -->

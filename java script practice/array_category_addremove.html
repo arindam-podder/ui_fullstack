@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>array element add remove</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <!-- js script -->
+    <script>
+        var categoriesArray = [ 'All' , 'Mobiles', 'Electronics'];
+        function loadCategoriesIntoSelectBox(){
+            var listCategories = document.getElementById("listCategories");
+            listCategories.innerHTML = "";
+            for(var category of categoriesArray){
+                var option = document.createElement("option");
+                option.text = category.toUpperCase();
+                option.value = category;
+                listCategories.appendChild(option);
+            }
+        }
+
+        function addCategory(){
+            var categoreyName = document.getElementById("txtCategory").value ;
+            if(categoreyName == ""){
+                alert("Please specify category name.")
+                document.getElementById("txtCategory").focus();
+            }
+            else{
+                categoriesArray.push(categoreyName);
+                loadCategoriesIntoSelectBox();
+                document.getElementById("txtCategory").value = "";
+            }
+        }
+
+        function removeCategory(){
+            var selectedCategory = document.getElementById("listCategories").value;
+           if (selectedCategory == ""){
+                alert("select category to delete.")
+           }else{
+                var flag = confirm(`are you sure.\nwnat to delete?`);
+                if(flag){
+                    categoriesArray.splice(categoriesArray.indexOf(selectedCategory), 1 );
+                    loadCategoriesIntoSelectBox();
+                }else{
+                    document.getElementById("listCategories").value = "";
+                }
+            }      
+        }
+
+
+
+    </script>
+</head>
+<body onload="loadCategoriesIntoSelectBox()">
+    
+    <div class="container mt-2">
+        <h3 class="mb-3">array categorey add remove dynamically</h3>
+        <div class="input-group w-50">
+            <input id="txtCategory" type="text" placeholder="add new category" class="form-control">
+            <button onclick="addCategory()" class="btn btn-primary">Add</button>
+        </div>
+
+        <div class="w-50 mt-4">
+            <h5>Categories List</h5>
+            <select id="listCategories" size="3" class="form-select">
+                <!-- data will be add dynamically from array of category --> 
+            </select>
+            <button onclick="removeCategory()" class="btn btn-danger w-100 mt-2">
+                <span class="bi bi-trash-fill">
+                    Remove Category
+                </span>
+            </button>
+        </div>
+
+    </div>
+
+</body>
+</html>

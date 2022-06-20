@@ -1,0 +1,234 @@
+<!-- 1. Creating a new HTML element dynamically
+
+    var ref = document.createElement("option|li|img..");
+ 
+2. Define properties for element
+
+    ref.name
+    ref.id
+    ref.src
+
+ Note: You can use only property not attribute.
+
+            class                    className
+            src                        src
+            table-height            height is not a property of table
+
+3. Add element into its parent or any container.
+
+            appendChild()
+
+
+Ex:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dynamic Element</title>
+    <script>
+        function CreateClick(){
+           var pic = document.createElement("img");
+           pic.width = "100";
+           pic.height = "100";
+           pic.border = "2";
+           pic.src= "../public/assets/jacket.jpg";
+           document.querySelector("div").appendChild(pic);
+        }
+    </script>
+</head>
+<body>
+    <button onclick="CreateClick()">Create Image</button>
+    <div>
+
+    </div>
+</body>
+</html>
+
+Iterators for Reading Array Elements
+1. for..in            : It read and returns all properties
+2. for..of            : It read and returns all values
+
+Syntax:
+        for(var property in collection)
+        {
+        }
+
+        for(var value of collection)
+        {
+        }
+
+
+
+
+Ex: Add Array Elements into Page using HTML nodes.
+
+
+Ex:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dynamic Element</title>
+    <script>
+        var categories = ["All", "Electronics", "Footwear"];
+        function LoadClick(){
+            for(var category of categories)
+            {
+                var li = document.createElement("li");
+                li.innerHTML = category;
+                document.querySelector("ol").appendChild(li);
+
+                var option = document.createElement("option");
+                option.text = category.toUpperCase();
+                option.value = category;
+                document.querySelector("select").appendChild(option);
+
+                var tr = document.createElement("tr");
+                var td = document.createElement("td");
+                td.innerHTML = category;
+                tr.appendChild(td);
+                document.querySelector("tbody").appendChild(tr);
+
+                var ulLi = document.createElement("li");
+                ulLi.innerHTML = `
+                  <input type="checkbox"> ${category}
+                `;
+                document.querySelector("ul").appendChild(ulLi);
+
+               
+            }
+        }
+    </script>
+</head>
+<body>
+    <button onclick="LoadClick()">Load Categories</button>
+    <h2>Categories</h2>
+    <ol>
+
+    </ol>
+    <h2>Select Category</h2>
+    <select>
+
+    </select>
+    <h2>Categories</h2>
+    <table border="1" width="300">
+        <thead>
+            <tr>
+                <th>Categories</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <h2>Choose Categories</h2>
+     <ul style="list-style: none;">
+
+     </ul>
+</body>
+</html>
+
+                        Adding New Elements into Array
+
+- push()            : It adds  new element(s) as last item.
+- unshift()        : It adds  new element(s) as first item.
+- splice()            : It adds new element(s) at specified index.
+           
+                    Syntax:
+                        splice(index, deleteCount, newItems)
+
+Ex:
+<script>
+    var categories = ["Electronics", "Footwear"];
+    categories.splice(1,0,"Fashion","Men's Clothing");
+    categories.unshift("All");
+    for(var item of categories)
+    {
+        document.write(item + "<br>");
+    }
+</script>
+
+                        Remove Elements from Array
+- pop()            : It removes and returns last item
+- shift()            : It removes and returns first item
+- splice()            : It removes and returns specific item
+
+Ex:
+<script>
+    var categories = ["Electronics", "Footwear", "Fashion"];
+    categories.splice(1,1);
+    for(var item of categories)
+    {
+        document.write(item + "<br>");
+    }
+</script>
+
+
+Ex:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Array Manipulation</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script>
+        var categories = ["All", "Electronics", "Footwear"];
+        function LoadCategories(){
+            document.getElementById("lstCategories").innerHTML="";
+            for(var category of categories)
+            {
+                var option = document.createElement("option");
+                option.text = category;
+                option.value = category;
+                document.getElementById("lstCategories").appendChild(option);
+            }
+        }
+        function bodyload(){
+            LoadCategories();
+        }
+        function AddClick(){
+            var categoryName = document.getElementById("txtCategory").value;
+            categories.push(categoryName);
+            LoadCategories();
+            alert(`${categoryName} Added to List`);
+            document.getElementById("txtCategory").value="";
+        }
+        function RemoveClick(){
+            var categoryName = document.getElementById("lstCategories").value;
+            var categoryIndex = categories.indexOf(categoryName);
+            var flag = confirm(`Are you sure\nWant to Delete ${categoryName}`);
+            if(flag==true){
+                categories.splice(categoryIndex,1);
+                LoadCategories();
+            }
+        }
+    </script>
+</head>
+<body class="container-fluid" onload="bodyload()">
+    <h2>Array Manipulation</h2>
+    <div class="row">
+        <div class="col-4">
+            <div class="mb-3">
+                <label>Add New Category</label>
+                <div class="input-group">
+                    <input type="text" id="txtCategory" class="form-control">
+                    <button onclick="AddClick()" class="btn btn-primary">Add</button>
+                </div>
+            </div>
+            <div class="mt-2">
+                <label>Categories List</label>
+                <div>
+                    <select id="lstCategories" size="3" class="form-select">
+
+                    </select>
+                </div>
+                <div class="mt-3">
+                    <button onclick="RemoveClick()" class="btn btn-danger w-100">
+                        <span class="bi bi-trash-fill"></span>
+                        Remove Category
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html> -->
