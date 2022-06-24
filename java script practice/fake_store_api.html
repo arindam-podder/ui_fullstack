@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Shopping</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script>
+        function LoadCategories(){
+            fetch("http://fakestoreapi.com/products/categories")
+            .then(function(response){
+                return response.json();
+            })
+            .then(function(data){
+                data.unshift("all");
+                for(var category of data)
+                {
+                    var option = document.createElement("option");
+                    option.text = category.toUpperCase();
+                    option.value = category;
+
+                    document.getElementById("lstCategories").appendChild(option);
+                }
+            })
+        }
+
+        function LoadProducts(url){
+            document.querySelector("main").innerHTML="";
+            fetch(url)
+            .then(function(response){
+                return response.json();
+            })
+            .then(function(data){
+                for(var product of data)
+                {
+                    var div = document.createElement("div");
+                    div.className="card m-2 p-2";
+                    div.style.width="180px";
+                    div.innerHTML = `
+                     <img src=${product.image} height="150" class="card-img-top">
+                     <div class="card-header" style="height:160px">
+                        <p>${product.title}<p>
+                     </div>
+                     <div class="card-body">
+                        <dl>
+                          <dt>Price</dt>
+                          <dd>${product.price}</dd>
+                          <dt>Rating</dt>
+                          <dd>
+                            <span class="bi bi-star-fill text-success"></span>
+                            ${product.rating.rate} [${product.rating.count}]
+                          </dd>
+                        </dl>
+                     </div>
+                     <div class="card-footer">
+                        <button onclick="AddClick(${product.id})" class="btn btn-danger w-100"> <span class="bi bi-cart4"></span> Add to Cart </button>
+                     </div>
+                    `;
+
+                    document.querySelector("main").appendChild(div);
+                }
+            })
+        }
+
+        function bodyload(){
+            LoadCategories();
+            LoadProducts("http://fakestoreapi.com/products");
+            GetCartItemsCount();
+        }
+        function CategoryChanged(){
+            var categoryname = document.getElementById("lstCategories").value;
+            if(categoryname=="all") {
+                LoadProducts("http://fakestoreapi.com/products");
+            } else {
+                LoadProducts(`http://fakestoreapi.com/products/category/${categoryname}`);
+            }
+        }
+        var cartItems = [];
+        function GetCartItemsCount(){
+            document.getElementById("lblCount").innerHTML = cartItems.length;
+        }
+        function AddClick(id)
+        {
+            fetch(`http://fakestoreapi.com/products/${id}`)
+            .then(function(response){
+                return response.json();
+            })
+            .then(function(data){
+                cartItems.push(data);
+                alert(`${data.title} \nAdded to Cart`);
+                GetCartItemsCount();
+            })
+        }
+        function LoadCartItems(){
+            document.querySelector("tbody").innerHTML="";
+            for(var item of cartItems)
+            {
+                var tr= document.createElement("tr");
+                var tdTitle = document.createElement("td");
+                var tdPrice = document.createElement("td");
+                var tdPreview = document.createElement("td");
+
+                tdTitle.innerHTML = item.title;
+                tdPrice.innerHTML = item.price;
+                tdPreview.innerHTML = `
+                 <img src=${item.image} width="50" height="50">
+                `;
+
+                tr.appendChild(tdTitle);
+                tr.appendChild(tdPrice);
+                tr.appendChild(tdPreview);
+
+                document.querySelector("tbody").appendChild(tr);
+            }
+        }
+    </script>
+</head>
+<body class="container-fluid" onload="bodyload()">
+    <header class="bg-danger text-white text-center p-2">
+        <h1><span class="bi bi-cart3"></span> Shopping Online</h1>
+    </header>
+    <section class="row mt-3">
+        <nav class="col-2">
+            <div>
+                <label class="form-label">Select Category</label>
+                <div>
+                    <select onchange="CategoryChanged()" id="lstCategories" class="form-select">
+
+                    </select>
+                </div>
+            </div>
+        </nav>
+        <main class="col-8 d-flex flex-wrap overflow-auto" style="height: 500px;" >
+         
+        </main>
+        <aside class="col-2">
+            <button onclick="LoadCartItems()" data-bs-target="#cart" data-bs-toggle="modal" class="btn btn-danger w-100">
+                <span class="bi bi-cart"></span> [<span id="lblCount"></span>] Your Cart Items
+            </button>
+            <div class="modal fade" id="cart">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2>Your Cart Items</h2>
+                            <button data-bs-dismiss="modal" class="btn-close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Price</th>
+                                        <th>Preview</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </section>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>

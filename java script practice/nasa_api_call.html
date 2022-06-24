@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nasa api data</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script>
+        function bodyload(){
+            fetch("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=DEMO_KEY")
+            .then( function(response){
+                    return response.json();
+            })
+            .then( function(data){
+                for(var item of data.photos){
+                    
+                    var tr = document.createElement("tr");
+                    var tdId = document.createElement("td");
+                    var tdPreview = document.createElement("td");
+                    var tdCamera = document.createElement("td");
+                    var tdRover = document.createElement("td");
+                   // var img = document.createElement("img");
+
+                    tdId.innerText = item.id;
+                    //img.src = item.img_src;
+                    //img.width = "200";
+                    //img.height = "180";
+                    //tdPreview.innerHTML = img;
+                    tdPreview.innerHTML = `
+                        <img src=${item.img_src} width="150" height="140">
+                    `;
+                    tdCamera.innerText = item.camera.full_name;
+                    tdRover.innerText = item.rover.name;
+
+                    tr.appendChild(tdId);
+                    tr.appendChild(tdPreview);
+                    tr.appendChild(tdCamera);
+                    tr.appendChild(tdRover);
+
+                    document.querySelector("tbody").appendChild(tr);
+                }
+            })
+        }//bodyload() end
+    </script>
+</head>
+<body onload="bodyload()">
+    
+    <div class="container">
+        <h2>Nasa mars rover data</h2>
+        <table class="table  table-hover">
+            <thead>
+                <tr>
+                    <th>PhotoId</th>
+                    <th>Preview</th>
+                    <th>Camera Name</th>
+                    <th>Rover Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

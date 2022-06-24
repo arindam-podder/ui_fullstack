@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nested Iteration</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <script>
+         var menu = [
+            {Category:"Electronics", Products:["TV", "Mobile"]},
+            {Category:"Footwear", Products:["Nike", "Lee Boot"]}
+        ];
+
+        function bodyload(){
+            for(var item of menu){
+                var li = document.createElement("li");
+                li.innerText = item.Category;
+                document.querySelector("ol").appendChild(li);
+
+
+                var optgroup = document.createElement("optgroup");
+                optgroup.label = item.Category;
+                document.querySelector("select").appendChild(optgroup);
+                
+                for(var product of item.Products){
+                    var ul = document.createElement("ul");
+                    var ulli = document.createElement("li");
+                    ulli.innerText = product;
+                    ul.appendChild(ulli)
+                    li.appendChild(ul) 
+
+                    var option = document.createElement("option");
+                    option.value = product;
+                    option.text = product;
+                    optgroup.appendChild(option)
+                }
+            
+            }
+        }
+
+    </script>
+</head>
+<body onload="bodyload()">
+    
+    <h2 class="text-center mt-3"> Nested Iteration in JS </h2>
+
+    <div class="container">
+        <h3>Categories & items</h3>
+        <ol>
+
+        </ol>
+    </div>
+    
+    <div class="container">
+        <select>
+
+        </select>
+    </div>
+    
+</body>
+</html>

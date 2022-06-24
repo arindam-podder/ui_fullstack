@@ -4,12 +4,17 @@
     <title>Presenting JSON</title>
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
     <script>
-        var products = [
-            {Name: "Winter Jacket", Price: 5000.44, Photo:"../assets/fashoin1.jpg"},
-            {Name: "Nike Casuals", Price: 6000.44, Photo:"../assets/footwear.jpg"},
-            {Name: "Lee Boot", Price: 3400.44, Photo:"../assets/bag.jpg"}
-        ];
+        var products = [];
         function LoadClick(){
+            //getting priduct details from json file
+            fetch("../JSONdata/products.json")
+            .then( function(response){
+                return response.json()
+            })
+            .then( function(responseDataInJson){
+                products = responseDataInJson;
+            })
+
             for(var product of products){
                 var tr = document.createElement("tr");
                 var tdName = document.createElement("td");

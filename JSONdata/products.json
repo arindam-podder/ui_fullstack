@@ -1,0 +1,17 @@
+[
+    {
+        "Name" : "Shoe",
+        "Price" : 2300.00,
+        "Photo" : "../assets/footwear.jpg"
+    },
+    {
+        "Name" : "Jacket",
+        "Price" : 3360.00,
+        "Photo" : "../assets/fashoin1.jpg"
+    },
+    {
+        "Name" : "Watch",
+        "Price" : 2022.50,
+        "Photo" : "../assets/watches.jpg"
+    }
+]

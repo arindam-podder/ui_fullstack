@@ -1,0 +1,195 @@
+<!-- API Interactions
+
+What is distributed computing?
+- Distributed computing allows 2 different applications running on 2 different mechines can share information between them.
+
+- Distributed computing allows 2 different application running in 2 different process of same mechine to share information.
+
+Distributed Computing Technologies
+- CORBA
+- DCOM
+- RMI
+- EJB
+- Web Services [all]
+- Remoting etc..
+
+Web Service Specifications
+- SOAP        
+    Consumer XML request => Provider send XML response
+- REST
+     Consumer Query request => Provider send XML response | JSON
+    [RESTful Services]
+- JSON
+    Consumer JSON request => Provider send JSON response
+
+Features of JSON:
+- Light weight
+- Faster
+- Not infected with VIRUS
+- Can't be blocked by FireWall
+- Easy to transport
+- Compatible with every browser
+
+                        API uses both JSON and XML
+
+FAQ: How JavaScript can handle API requests?
+Ans:  JavaScript uses "XmlHttpRequest" object
+
+        jQuery         : $.ajax()        => XMLhttpRequest
+        Angular         : HttpClient        => XMLhttpRequest
+         React             : Axios            => XMLhttpRequest
+        JavaScript     : Fetch            => XMLhttpRequest
+
+
+JavaScript uses a Promise called "fetch()" to communicate with API.
+
+- Promise is a function that handle specified functions with set of callbacks.
+- Callback handle various functionalities depending on state and situation.
+- Fetch is a JavaScript promise which handle communication with API and returns data if successful and returns error status if failed.
+
+Syntax:
+            fetch('url').then(onsucess).then(onsuccess).catch().throw()
+
+Ex:
+1. Create a new folder in project
+            "data"
+
+2. Add a new file
+            "products.json"
+[
+ {
+    "Name":"Nike Causals",
+    "Price": 4500.54,
+    "Photo": "../public/assets/shoe.jpg"
+ },
+ {
+    "Name":"Winter Jacket",
+    "Price": 5000.54,
+    "Photo": "../public/assets/jacket.jpg"
+ },
+ {
+    "Name":"Lee Boot",
+    "Price": 3000.54,
+    "Photo": "../public/assets/shoe1.jpg"
+ }  
+]
+
+3. Home.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Presenting JSON</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script>
+       
+        var products = [];
+        function LoadClick(){
+            fetch('../data/products.json')
+            .then(function(response){
+                return response.json();
+            })
+            .then(function(data){
+                products = data;
+            })
+            for(var product of products){
+                var tr = document.createElement("tr");
+                var tdName = document.createElement("td");
+                var tdPrice = document.createElement("td");
+                var tdPhoto = document.createElement("td");
+                var img = document.createElement("img");
+
+                tdName.innerHTML = product.Name;
+                tdPrice.innerHTML = product.Price;
+             
+                img.src=product.Photo;
+                img.width="50";
+                img.height="50";
+                tdPhoto.appendChild(img);
+
+                tr.appendChild(tdName);
+                tr.appendChild(tdPrice);
+                tr.appendChild(tdPhoto);
+
+                document.querySelector("tbody").appendChild(tr);
+            }
+        }
+    </script>
+</head>
+<body class="container-fluid">
+    <h2>Product Details</h2>
+    <button onclick="LoadClick()">Load Data</button>
+    <div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
+
+Ex: Nasa API
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Nasa API</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script>
+        function bodyload(){
+            fetch("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=DEMO_KEY&quot;)
+            .then(function(response){
+                return response.json();
+            })
+            .then(function(data){
+                for(var item of data.photos)
+                {
+                    var tr=  document.createElement("tr");
+                    var tdId = document.createElement("td");
+                    var tdPreview = document.createElement("td");
+                    var tdCamera = document.createElement("td");
+                    var tdRover = document.createElement("td");
+
+                    tdId.innerHTML = item.id;
+                    tdPreview.innerHTML = `
+                     <img src=${item.img_src} width="100" height="100">
+                    `;
+                    tdCamera.innerHTML = item.camera.full_name;
+                    tdRover.innerHTML = item.rover.name;
+
+                    tr.appendChild(tdId);
+                    tr.appendChild(tdPreview);
+                    tr.appendChild(tdCamera);
+                    tr.appendChild(tdRover);
+
+                    document.querySelector("tbody").appendChild(tr);
+                }
+            })
+        }
+    </script>
+</head>
+<body onload="bodyload()" class="container-fluid">
+    <h2>Mars Rover Photos</h2>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+            <th>Photo Id</th>
+            <th>Preview</th>
+            <th>Camera Name</th>
+            <th>Rover Name</th>
+        </tr>
+      </thead>
+      <tbody>
+
+      </tbody>
+    </table>
+</body>
+</html> -->

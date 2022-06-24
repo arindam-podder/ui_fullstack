@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Object Demo</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script>
+         var products = [];
+         var product = {Name:'', Price: 0};
+         function LoadProducts(){
+            document.querySelector("tbody").innerHTML="";
+            for(var item of products)
+            {
+                var tr =document.createElement("tr");
+                var tdName = document.createElement("td");
+                var tdPrice = document.createElement("td");
+                var tdDelete = document.createElement("td");
+
+                tdName.innerHTML = item.Name;
+                tdPrice.innerHTML = item.Price;
+                tdDelete.innerHTML = `
+                 <button  class="btn btn-danger" onclick="DeleteClick()">
+                   <span class="bi bi-trash-fill"></span>  
+                 </button>
+                 <button  class="btn btn-success" onclick="EditClick()">
+                   <span class="bi bi-pen"></span>  
+                 </button>
+                 <button  class="btn btn-info" onclick="DetailsClick()">
+                   <span class="bi bi-eye"></span>  
+                 </button>
+                `;
+
+                tr.appendChild(tdName);
+                tr.appendChild(tdPrice);
+                tr.appendChild(tdDelete);
+                document.querySelector("tbody").appendChild(tr);
+            }
+         }
+         function AddClick(){
+            product = {
+                Name: document.getElementById("txtName").value,
+                Price: parseFloat(document.getElementById("txtPrice").value)
+            };
+            products.push(product);
+            alert("Product Added");
+            LoadProducts();
+            document.getElementById("txtName").value = "";
+            document.getElementById("txtPrice").value = "";
+         }
+         function DeleteClick(){
+           
+         }
+    </script>
+</head>
+<body class="container-fluid">
+    <h2>Add New Product</h2>
+    <dl>
+        <dt>Name</dt>
+        <dd><input type="text" id="txtName"></dd>
+        <dt>Price</dt>
+        <dd><input type="text" id="txtPrice"></dd>
+    </dl>
+    <button class="btn btn-primary" onclick="AddClick()">Add Product</button>
+    <hr>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</body>
+</html>
