@@ -1,0 +1,169 @@
+<!-- Functions
+- Parameter Less
+- Parameterized
+- Rest Parameters
+
+                            Function Return Type
+                            ------------------------------
+- Function can be void type, you can define a function that will discard the return value.
+                function Name()
+                {
+                }
+- You can also define function to return any specific value.
+                function Name()
+                {
+                 return value;
+                }
+
+Ex:
+<script>
+   function Add(a,b) {
+    return a + b;
+   }
+  document.write("Addition=" + Add(10,20));
+</script>
+
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+        <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+        <style>
+            dd {
+                margin-bottom: 10px;
+            }
+        </style>
+        <script>
+            function Captcha(){
+                var a = Math.random() * 10;
+                var b = Math.random() * 10;
+                var c = Math.random() * 10;
+                var d = Math.random() * 10;
+                var e = Math.random() * 10;
+                var f = Math.random() * 10;
+                return `${Math.round(a)} ${Math.round(b)} ${Math.round(c)} ${Math.round(d)} ${Math.round(e)} ${Math.round(f)}`;
+            }
+            function NewCode(){
+                document.getElementById("lblCode").innerHTML = Captcha();
+            }
+            function bodyload(){
+               NewCode();
+            }
+            function RefreshClick(){
+                NewCode();
+            }
+        </script>
+    </head>
+    <body onload="bodyload()">
+        <dl>
+            <dt>User Name</dt>
+            <dd><input tpye="text"></dd>
+            <dt>Password</dt>
+            <dd><input type="password"></dd>
+            <dt>Verify Code <button onclick="RefreshClick()"><span class="bi bi-arrow-clockwise" ></span></button> </dt>
+            <dd id="lblCode"></dd>
+            <dd>
+                <input type="text">
+            </dd>
+        </dl>
+        <button>Login</button>
+    </body>
+</html>
+
+                            Anonymous Function
+- It defines a function without name.
+
+<script>
+    (function(){
+        document.write("Hello !");
+    })();
+</script>
+
+- Anonymous function is used in callbacks
+
+        function Verify(pwd, success, failure)
+        {
+        }
+
+        Verify("1234", function(){ }, function(){ })
+
+        fetch("url")
+        .then(function(response){ response.json()})
+
+Ex:
+<script>
+   var welcome =  function(){
+        document.write("Welcome to Functions");
+    }
+   welcome();
+</script>
+
+                          Function Recurssion
+- It is a technique of calling a function within the context of same function.
+
+            function f1()
+            {
+                f1();
+            }
+
+- It is used to design batch operations.
+
+Ex:
+<script>
+    function Factorial(n)
+    {
+        if(n<=0){
+            return 1;
+        }
+        return n * Factorial(n-1);
+    }
+    document.write(`Factorial of 6 is ${Factorial(6)}`);
+</script>
+
+                        Function Closure
+- Closure is a technique of configuring a function with in function and making the results of inner function accessible to outer function.
+
+Ex:
+<script>
+     function Parent()
+     {
+        var x = 10;
+        function Child(){
+            var y = 20;
+            return x + y;  
+        }
+        return  Child() * 2;
+     }
+     document.write("Result =" + Parent());
+</script>
+
+                            Arrow Functions
+- It is a short hand technique of using function.
+
+Ex:
+<script>
+     function Hello(){
+        return "Hello !"
+     }
+     var welcome = ()=> "Welcome !";
+     var userDetails = userName => "Hello ! " + userName;
+     document.write(welcome());
+     document.write(userDetails("John"));
+</script>
+
+
+Ex:
+<script>
+     var PrintProducts = () => {
+        fetch("http://fakestoreapi.com/products&quot;)
+        .then(response=> response.json())
+        .then(data=> {
+            for(var item of data) {
+                document.write(item.title + "<br>");
+            }
+        })
+     }
+     PrintProducts();
+</script> -->

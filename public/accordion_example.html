@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accordion</title>
+
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+
+</head>
+
+<body>
+
+
+    <div class="accordion" id="kfc">
+
+        <!-- Customer Accordion -->
+
+        <div class="accordion-item">
+            <div class="accordion-header">
+                <button data-bs-target="#customer" data-bs-toggle="collapse" class="btn btn-danger w-100">Customer
+                    Details</button>
+            </div>
+            <div class="accordion-collapse collapse" id="customer" data-bs-parent="#kfc">
+                <div class="accordion-body">
+                    <dl>
+                        <dt>Customer Name</dt>
+                        <dd><input type="text" id="txtName" class="form-control"></dd>
+                        <dt>Mobile</dt>
+                        <dd><input type="text" id="txtMobile" class="form-control"></dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+
+
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

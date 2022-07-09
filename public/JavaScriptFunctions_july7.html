@@ -1,0 +1,231 @@
+<!-- JavaScript Functions
+- Refactor
+- Function Architecture
+
+Syntax:
+        function  Print()
+        {
+        }
+
+- Every function comprises 3 parts
+    a) Declaration
+            function Print()
+
+    b) Signature
+            Print()
+
+    c) Definition
+            {
+            }
+
+- You can access any function by using its signature.
+
+            Print();
+
+
+                            Function Parameters
+
+- Function can be parameter less or parameterized.
+
+Ex Parameter less function
+
+<script>
+    function PrintNumbers()
+    {
+        for(var i=1; i<=10; i++) {
+        document.write(i + "<br>");
+        }
+    }
+    PrintNumbers();
+</script>
+
+- Parameters are used to modify the function.
+- Parameters are classified into 2 types
+    a) Formal Parameters
+    b) Actual Parameters
+- Formal parameters are defined in  function declaration.
+
+        function Print(a)        => a is formal parameter
+
+- Actual parameters are defined in function calling.
+
+        Print(10);                => 10 is actual parameter
+
+        a = 10;                => a is reference and 10 is value.
+
+- Based on how many parameters are required function is defined as with arguments.
+
+- Every parameter in function is required. [Mandatory]
+
+- Order of parameter is also mandatory.
+
+Ex:
+<script>
+    function PrintNumbers(howMany)
+    {
+        for(var i=1; i<=howMany; i++) {
+        document.write(i + "<br>");
+        }
+    }
+    PrintNumbers(5);
+    PrintNumbers(8);
+</script>
+
+- Function can have multiple parameters. All parameters are required and order dependent.
+
+- Function can handle any type of parameter
+        a) Primitive
+        b) Non-Primitive
+        c) Function
+
+Ex:
+<script>
+    function Details(id, name, price, stock){
+        document.write(`
+            Id=${id} <br>
+            Name=${name} <br>
+            Price=${price} <br>
+            Stock=${stock}
+        `);
+    }
+    Details(1,"",45000.44, true);
+</script>
+
+Ex:
+<script>
+    function Details(name, price){
+        if(name==undefined) {
+            document.write("Price=" + price);
+        } else if (price==undefined) {
+            document.write("Name=" + name);
+        } else {
+            document.write(`Name=${name}<br>Price=${price}`);
+        }
+    }
+    Details("TV",45000.44);
+</script>
+
+
+Ex: Array Parameter
+
+<script>
+   
+    function PrintArray(list)
+    {
+        for(var item of list) {
+            document.write(item + "<br>");
+        }
+    }
+    PrintArray(["Electronics", "Footwear", "Fashion"]);
+    document.write("<hr>");
+    var products = ["TV", "Mobile", "Watch"];
+    PrintArray(products);
+    document.write("<hr>");
+    PrintArray(new Array("John", "David"));
+</script>
+
+Ex: Array with string
+
+<script>
+   
+    function PrintArray(list, title)
+    {
+        document.write(`<h2>${title}</h2>`);
+        for(var item of list) {
+            document.write(item + "<br>");
+        }
+    }
+    PrintArray(["Electronics", "Footwear", "Fashion"],"Categories");
+    document.write("<hr>");
+    var products = ["TV", "Mobile", "Watch"];
+    PrintArray(products,"Products");
+    document.write("<hr>");
+    PrintArray(new Array("John", "David"),"Users");
+</script>
+
+
+Ex: Function with function type parameters [used for callback]
+
+<script>
+    function Validate(password,success, failure)
+    {
+        if(password=="admin") {
+            success();
+        } else {
+            failure();
+        }
+    }
+    Validate("sdsds",
+    function(){
+        document.write("Login Success")
+     },
+     function(){
+        document.write("Invalid Password")
+    });
+</script>
+
+Note: Using lot of parameters in a function is not safe for application.
+         It leads to Injection attacks.
+        As per ECMA standards function allows only 1024 params.
+
+- JavaScript ES6+ introduced "Rest Parameters"
+- A single rest parameter allows multiple arguments.
+- Rest is defined by using "..." and param name.
+
+Syntax:
+    function Name(...paramName)
+    {
+    }
+
+Ex:
+<script>
+    function Validate(...userDetails)
+    {
+        var [password, success, failure] = userDetails;
+
+        if(password=="admin") {
+            success();
+        } else {
+            failure();
+        }
+    }
+    Validate("admin",
+    function(){
+        document.write("Login Success")
+    },
+    function(){
+        document.write("Invalid Password")
+    });
+</script>
+
+- Every function can have only one rest parameter.
+
+    function Name(...one, ...two)        // invalid
+
+- Rest parameter must be last in formal list.
+
+    function Name(...userDetails, title)        // invalid
+    function Name(title, ...userDetails)        // valid
+
+
+Ex:
+<script>
+    function Validate(title, ...userDetails)
+    {
+        var [password, success, failure] = userDetails;
+
+        document.write(`<h2>${title}</h2>`);
+        if(password=="admin") {
+            success();
+        } else {
+            failure();
+        }
+    }
+    Validate("Validate User", "admin",
+    function(){
+        document.write("Login Success")
+     },
+     function(){
+        document.write("Invalid Password")
+    });
+</script> -->

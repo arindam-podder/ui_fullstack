@@ -1,0 +1,310 @@
+<!-- Switch Selector
+- Switch in electronics is used to interrupt the flow of electrons.
+- Selector switch is used in programming to handle multiple conditions.
+- It select only the block that matches the given condition.
+- It reduces the compile time and complexity.
+
+Syntax:
+    switch(value|expression)
+    {
+        case  value:
+        statements;
+        jump_statement;
+
+        default:
+        statements;
+        jump_statement;
+    }
+
+Ex:
+<script>
+     function f1(){
+        var x = parseInt(prompt("Enter number"));
+        switch(x)
+        {
+            case 1:
+            document.write(`You entered One`);
+            break;
+            case 2:
+            document.write(`You entered Two`);
+            break;
+            case 3:
+            document.write(`You entered Three`);
+            break;
+            default:
+            document.write(`Please Enter value between 1 to 3`);
+            break;
+           
+        }
+     }
+     f1();
+</script>
+
+
+FAQ's
+1. Can we define switch without default?
+A. Yes.
+
+2. Can we define default above or between case?
+A. Yes.
+
+3. Can we define case without break?
+A. Yes. If break not defined then it will continue with next case and will stop when next break occurs or switch ends.
+
+4. What is break?
+A. It is a jump statement used to terminate the block.
+
+5. Can we use "return" as jump statement for switch case?
+A. Yes.
+
+6. What is difference between break and continue?
+A. break will terminate the block, but it will still keep the compiler active.
+    return will terminate compiler and execution.
+
+7. Can we define switch case string type? What must be the type for case?
+A. Yes. case can use only
+        a) number
+        b) string
+        c) boolean
+        d) expression that returns number, string, boolean
+
+Ex:
+<script>
+     function f1(){
+        var x = prompt("Do you want to Continue","Y/N");
+        switch(x)
+        {
+           case "y":
+           document.write("You entered Yes..");
+           break;
+           case "n":
+           document.write("You entered No..");
+           break;
+           default:
+           document.write("Please Enter only Y or N");
+           break;
+        }
+     }
+     f1();
+</script>
+
+- You can define multiple cases for one set of statements.
+
+      case 1:
+      case 2:
+      case 3:
+         statement;
+         break;
+
+Ex:
+<script>
+     function f1(){
+        var x = prompt("Do you want to Continue","Y/N");
+        switch(x)
+        {
+           case "y":
+           case "Y":
+           document.write("You entered Yes..");
+           break;
+           case "n":
+           case "N":
+           document.write("You entered No..");
+           break;
+           default:
+           document.write("Please Enter only Y or N");
+           break;
+        }
+     }
+     f1();
+</script>
+
+Ex:
+<script>
+     function f1(){
+        var x = prompt("Do you want to Continue","Yes/No");
+        switch(x.toLowerCase())
+        {
+           case "yes":
+           document.write("You entered Yes..");
+           break;
+           case "no":
+           document.write("You entered No..");
+           break;
+           default:
+           document.write("Please Enter only Y or N");
+           break;
+        }
+     }
+     f1();
+</script>
+
+8. How to define case for range of values?
+A. By using boolean type expression.
+    If expression is case is boolean then switch value must be boolean.
+
+Ex:
+<script>
+     function f1(){
+        var x = parseInt(prompt("Enter number"));
+        switch(true)
+        {
+            case x>=1 && x<=10:
+            document.write(`Your number ${x} is between 1 to 10`);
+            break;
+            case x>10 && x<=20:
+            document.write(`Your number ${x} is between 10 to 20`);
+            break;
+            case x>20 && x<=30:
+            document.write(`Your number ${x} is between 20 to 30`);
+            break;
+            default:
+            document.write(`Your number ${x} is above 30 or 0 or -ve`);
+            break;
+        }
+     }
+     f1();
+</script>
+
+Ex: Cascading Dropdown
+
+products.json
+
+[
+ {
+    "Name":"Nike Casuals",
+    "Price": 4500.54,
+    "Photo": "../public/assets/shoe.jpg",
+    "Rating": 3.4
+ },
+ {
+    "Name":"Lee Cooper Boot",
+    "Price": 5000.54,
+    "Photo": "../public/assets/shoe1.jpg",
+    "Rating": 4.4
+ },
+ {
+    "Name":"boAt Neckband",
+    "Price": 4000.54,
+    "Photo": "../public/assets/neckband.png",
+    "Rating": 5.0
+ },
+ {
+   "Name":"Sony Speaker",
+   "Price": 4000.54,
+   "Photo": "../public/assets/speaker.jpg",
+   "Rating": 2.5
+}  
+]
+
+
+index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Switch Demo</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script>
+        var categories = ["Select a Category", "Electronics", "Footwear"];
+        var electronics = ["Select Electronics", "boAt Neckband", "Sony Speaker"];
+        var footwear = ["Select Footwear", "Nike Casuals", "Lee Cooper Boot"];
+        var products = [];
+
+        function LoadCategories(){
+            for(var item of categories)
+            {
+                var option = document.createElement("option");
+                option.text= item;
+                option.value= item;
+                document.getElementById("lstCategories").appendChild(option);
+            }
+        }
+        function LoadProducts(){
+            document.getElementById("lstProducts").innerHTML = "";
+            for(var item of products)
+            {
+                var option = document.createElement("option");
+                option.text = item;
+                option.value = item;
+                document.getElementById("lstProducts").appendChild(option);
+            }
+        }
+
+        function bodyload(){
+            LoadCategories();
+        }
+        function CategoryChanged(){
+            var categoryName = document.getElementById("lstCategories").value;
+            switch(categoryName)
+            {
+                case "Electronics":
+                products = electronics;
+                LoadProducts();
+                break;
+                case "Footwear":
+                products = footwear;
+                LoadProducts();
+                break;
+                default:
+                products = ["Please Select a Category"];
+                LoadProducts();
+                break;
+            }
+        }
+        function ProductChanged(){
+            var productName = document.getElementById("lstProducts").value;
+            fetch("../data/products.json")
+            .then(response=>response.json())
+            .then(data=>{
+                var result = data.find(function(product){
+                    return product.Name == productName;
+                });
+                document.getElementById("lblName").innerHTML = result.Name;
+                document.getElementById("lblPrice").innerHTML = result.Price;
+                document.getElementById("lblRating").innerHTML = result.Rating
+                document.getElementById("imgProduct").src= result.Photo;
+            })
+        }
+    </script>
+</head>
+<body class="container-fluid" onload="bodyload()">
+   <h2>Cascading Dropdown</h2>
+    <div style="width: 300px;">
+        <div class="mb-2">
+            <label>Select Category</label>
+            <div>
+               <select onchange="CategoryChanged()" class="form-select" id="lstCategories">
+       
+               </select>
+            </div>
+          </div>
+          <div class="mb-2">
+           <label>Select Product</label>
+           <div>
+              <select onchange="ProductChanged()" class="form-select" id="lstProducts">
+       
+              </select>
+           </div>
+         </div>
+         <div class="mb-2">
+            <label>Product Details</label>
+            <div class="card p-2">
+              <img id="imgProduct" height="150" class="card-img-top">
+              <div class="card-header">
+                 <h2 id="lblName"></h2>
+              </div>
+              <div class="card-body">
+                <dl>
+                    <dt>Price</dt>
+                    <dd id="lblPrice"></dd>
+                    <dt>Rating</dt>
+                    <dd id="lblRating"></dd>
+                </dl>
+              </div>
+              <div class="card-footer">
+                <button class="btn btn-danger w-100">Add to Cart</button>
+              </div>
+            </div>
+         </div>
+    </div>
+</body>
+</html> -->

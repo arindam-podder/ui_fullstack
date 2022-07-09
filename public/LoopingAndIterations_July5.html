@@ -1,0 +1,185 @@
+<!-- Selection Statements
+- If select
+    if, else
+- switch
+    switch, case, default
+
+                    Looping Control Statements
+
+- Looping is the process of executing a set of statements repeatedly until the given condition is satisfied.
+- Looping comprises of
+        a) Initialization
+        b) Condition
+        c) Counter
+
+- Initialization defines when to start
+- Condition defines when to stop
+- Counter defines how to proceed
+- Loops are defined by using
+        a) for
+        b) while
+        c) do while
+
+For Loop:
+- It is a looping control statement used by developers when exact number of iterations are known and iteration counter will not change dynamically.
+
+Syntax:
+        for(initialization; condition; counter)
+        {
+        }
+
+Ex:
+<script>
+    for(var i=1; i<=10;i++) {
+        document.write(i + "<br>")
+    }
+</script>
+
+-  You can define initialization, condition and counter outside for() but it must have configuration for all 3.
+
+Syntax:
+<script>
+    var i=1
+    for(; ;) {
+        if(i<=5){
+            document.write(i + "<br>")
+        }
+        i++;
+    }
+</script>
+
+- You can configure for with any counter [increment or decrement]
+
+<script>
+   for(var i=1; i<=10; i=i+2) {
+     document.write(i + "<br>");
+   }
+</script>
+
+Ex: Using Loop
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Loop</title>
+    <script>
+        var menu = [
+            {Category: "Electronics", Products:["TV","Mobile"]},
+            {Category: "Footwear", Products:["Nike Casuals", "Lee Boot"]}
+        ];
+        function bodyload(){
+            for(var i=0;i<menu.length;i++) {
+                var li = document.createElement("li");
+                li.innerHTML = menu[i].Category;
+                document.querySelector("ol").appendChild(li);
+                for(j=0; j<menu[i].Products.length; j++) {
+                    var ul = document.createElement("ul");
+                    var ulLi = document.createElement("li");
+                    ulLi.innerHTML = menu[i].Products[j];
+                    ul.appendChild(ulLi);
+                    li.appendChild(ul);
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="bodyload()">
+    <ol>
+
+    </ol>
+</body>
+</html>
+
+- Best Practice is using Iterations
+- Iteration is a software design pattern used to read elements from a collection in sequential order.
+- Iteration doesn't require initialization, condition and counter.
+- Iterations are defined in JavaScript by using
+
+            for..in
+            for..of
+
+- for..in   : It can read and return all properties
+- for..of   : It can read and return all values
+
+Ex:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Loop</title>
+    <script>
+        var menu = [
+            {Category: "Electronics", Products:["TV","Mobile"]},
+            {Category: "Footwear", Products:["Nike Casuals", "Lee Boot"]}
+        ];
+        function bodyload(){
+            for(var item of menu)
+            {
+                var li = document.createElement("li");
+                li.innerHTML = item.Category;
+                document.querySelector("ol").appendChild(li);
+                for(var product of item.Products)
+                {
+                    var ul = document.createElement("ul");
+                    var ulLi = document.createElement("li");
+                    ulLi.innerHTML = product;
+                    ul.appendChild(ulLi);
+                    li.appendChild(ul);
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="bodyload()">
+    <ol>
+
+    </ol>
+</body>
+</html>
+
+- You can terminate the loops and iterators by using jump statements
+        a) break
+        b) return
+        c) continue
+
+- break        : It terminates the block, but will stay in function.
+- return        : It terminates the execution.
+- continue    : It skips the counter and continues to next.
+
+Ex:
+<script>
+    function f1(){
+        for(var i=1; i<=10; i++){
+            if(i==6 || i==8){
+                continue;
+            }
+            document.write(i + "<br>");
+        }
+    }
+    f1();
+</script>
+
+Ex:
+<script>
+    function f1(){
+       fetch("http://fakestoreapi.com/products&quot;)
+       .then(function(response){
+        return response.json();
+       })
+       .then(function(data){
+          for(var item of data) {
+             if(item.category=="electronics" || item.category=="men's clothing")
+             {
+                continue;
+             }
+             document.write(`${item.title} - <b>${item.category}</b><br>`);
+          }
+       })
+    }
+    f1();
+</script>
+
+Task: Design PIN validation
+
+do while
+
+OOP -->

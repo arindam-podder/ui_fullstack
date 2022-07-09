@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>case with condition</title>
+
+    <script>
+
+        var x = parseInt( prompt("enter a number ? "));
+        switch(true)
+        {
+            case x>=1 && x<=10: 
+                document.write(`Number ${x} is in b/w 1 to 10`);
+                break;
+
+            case x>=11 && x<=20:
+                document.write(`Number ${x} is in b/w 11 to 20`);
+                break;
+
+            default:
+                document.write(`Number ${x} is not b/w 1 to 20.`)
+                break;
+        }
+
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

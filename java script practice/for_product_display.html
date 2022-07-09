@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>display</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script>
+        var menu = [
+            {Category: "Electronics", Products:["TV","Mobile"]},
+            {Category: "Footwear", Products:["Nike Casuals", "Lee Boot","Addidas"]}
+        ];
+
+        function bodyload(){
+            for(var item of menu){
+                var li = document.createElement("li")
+                li.innerHTML = item.Category;
+                document.querySelector("ol").appendChild(li);
+                var ul = document.createElement("ul")
+                for(var product of item.Products){
+                    var uli = document.createElement("li")
+                    uli.innerHTML = product;
+                    ul.appendChild(uli)
+                }
+                li.appendChild(ul);
+            }    
+        }
+
+    </script>
+
+</head>
+<body onload="bodyload()">
+    
+    <div>
+        <ol>
+
+        </ol>
+    </div>
+
+
+</body>
+</html>

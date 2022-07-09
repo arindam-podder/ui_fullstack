@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>EMI Calculator</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script>
+        function AmountChange(){
+            document.getElementById("txtAmount").value =
+            document.getElementById("rangeAmount").value;
+        }
+        function YearChange(){
+            document.getElementById("txtYears").value =
+            document.getElementById("rangeYear").value;
+        }
+        function RateChange(){
+            document.getElementById("txtRate").value =
+            document.getElementById("rangeRate").value;
+        }
+        function CalculateClick(){
+            var p = parseInt(document.getElementById("txtAmount").value);
+            var r = parseFloat(document.getElementById("txtRate").value)/100/12;
+            var n = parseInt(document.getElementById("txtYears").value)*12;
+            var emi = p * r / (1- (Math.pow(1/(1 + r), n)));
+            document.getElementById("result").innerHTML = `EMI Amount : &#8377; ${Math.round(emi)}`;
+        }
+    </script>
+</head>
+<body class="container-fluid">
+    <h2>EMI Calculator</h2>
+    <div class="row">
+        <div class="col">
+            <div class="input-group">
+                <span class="input-group-text">Amount you need &#8377;</span>
+                <input type="text" class="form-control" id="txtAmount">
+            </div>
+        </div>
+        <div class="col">
+            <div class="input-group">
+                <span class="input-group-text">for</span>
+                <input type="number" min="1" max="5" class="form-control" id="txtYears" size="4">
+                <span class="input-group-text">years</span>
+            </div>
+        </div>
+        <div class="col">
+            <div class="input-group">
+                <span class="input-group-text">Interest Rate</span>
+                <input type="number" min="13" max="18" step="0.1" class="form-control" id="txtRate" size="4">
+                <span class="input-group-text">%</span>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col">
+            <div class="row">
+                <div class="col">
+                    <span class="input-group-text"> &#8377; 50,000 </span>
+                </div>
+                <div class="col">
+                    <input type="range" onchange="AmountChange()" value="50000" id="rangeAmount" class="form-range" min="50000" max="1000000" step="1000">
+                </div>
+                <div class="col">
+                    <span class="input-group-text"> &#8377; 10,0000 </span>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col">
+                    <span class="input-group-text">  1 </span>
+                </div>
+                <div class="col">
+                    <input type="range" onchange="YearChange()" value="1" id="rangeYear" class="form-range" min="1" max="5">
+                </div>
+                <div class="col">
+                    <span class="input-group-text">  5 </span>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col">
+                    <span class="input-group-text">  13 </span>
+                </div>
+                <div class="col">
+                    <input type="range" onchange="RateChange()" value="13" id="rangeRate" class="form-range" min="13" max="18" step="0.1">
+                </div>
+                <div class="col">
+                    <span class="input-group-text">  18 </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mt-3">
+        <button onclick="CalculateClick()" class="btn btn-primary">Calculate</button>
+    </div>
+    <div class="text-center bg-info text-white p-2 mt-4">
+        <h1 id="result"></h1>
+    </div>
+</body>
+</html>

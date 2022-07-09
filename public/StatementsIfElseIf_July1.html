@@ -1,0 +1,182 @@
+<!-- JavaScript Statements
+- In computer programming statement is used to control the execution flow.
+- JavaScript statements are classified into following types
+
+1. Selection Statements
+    if, else, switch, case, default
+
+2. Iteration Statements
+    for..in, for..of
+
+3. Looping Control Statements
+    for, while, do while
+
+4. Jump Statements
+    break, return, continue
+
+5. Exception Handling Statements
+    try, catch, throw, finally
+
+
+                         Selection Statements
+                         ------------------------------
+- Selection statements are used in decision making.
+- The keywords are
+    if, else, switch, case, default
+
+1. The IF Select
+    - It is a decision making statement that executes one set of statements when condition is true and another when it is false.
+   - IF select can be defined in various forms
+   
+        a) Forward Jump
+        b) Simple Decision
+        c) Multi Level Decision
+        d) Multiple Choices
+
+1. Forward Jump
+- It is decision making where there will not be any alternative.
+
+Syntax:
+        if (condition)
+        {
+         statement on true
+        }
+
+Ex:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Forward Jump</title>
+    <script>
+        var userDetails = {
+            CardNumber: "44445555666677778902",
+            CVV:"2345",
+            Expiry:"2023"
+        }
+        function VerifyCard(){
+            var card = document.getElementById("txtCard").value;
+            if(card==userDetails.CardNumber) {
+                document.getElementById("txtCvv").disabled=false;
+                document.getElementById("txtCvv").focus();
+            }
+        }
+        function VerifyCvv(){
+            var cvv = document.getElementById("txtCvv").value;
+            if(cvv==userDetails.CVV) {
+                document.getElementById("lstExpiry").disabled=false;
+                document.getElementById("lstExpiry").focus();
+            }
+        }
+        function VerifyExpiry(){
+            var expiry = document.getElementById("lstExpiry").value;
+            if(expiry==userDetails.Expiry) {
+                document.getElementById("btnPay").disabled=false;
+                document.getElementById("btnPay").focus();
+            }
+        }
+    </script>
+</head>
+<body>
+    <fieldset>
+        <legend>Payment Details</legend>
+        <dl>
+            <dt>Card Number</dt>
+            <dd><input type="text" onkeyup="VerifyCard()" id="txtCard"></dd>
+            <dt>CVV</dt>
+            <dd><input disabled onkeyup="VerifyCvv()" type="text" id="txtCvv" size="4"></dd>
+            <dt>Expiry</dt>
+            <dd>
+                <select onchange="VerifyExpiry()" disabled id="lstExpiry">
+                    <option>2022</option>
+                    <option>2023</option>
+                    <option>2024</option>
+                </select>
+            </dd>
+        </dl>
+        <button disabled id="btnPay">Pay</button>
+    </fieldset>
+</body>
+</html>
+
+2. Simple Decision
+- It comprises of one alternative for given condition.
+
+Syntax:
+            if (condition)
+            {
+             statement if true;
+            }
+            else
+            {
+             statement if false;
+            }
+
+ "if and else clause"
+
+Ex:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Forward Jump</title>
+    <script>
+        var userDetails = {
+            CardNumber: "44445555666677778902",
+            CVV:"2345",
+            Expiry:"2023"
+        }
+        function VerifyCard(){
+            var card = document.getElementById("txtCard").value;
+            if(card==userDetails.CardNumber) {
+                document.getElementById("txtCvv").disabled=false;
+                document.getElementById("txtCvv").focus();
+            } else {
+                document.getElementById("btnPay").disabled = true;
+            }
+        }
+        function VerifyCvv(){
+            var cvv = document.getElementById("txtCvv").value;
+            if(cvv==userDetails.CVV) {
+                document.getElementById("lstExpiry").disabled=false;
+                document.getElementById("lstExpiry").focus();
+            }
+            else {
+                document.getElementById("btnPay").disabled = true;
+            }
+        }
+        function VerifyExpiry(){
+            var expiry = document.getElementById("lstExpiry").value;
+            if(expiry==userDetails.Expiry) {
+                document.getElementById("btnPay").disabled=false;
+                document.getElementById("btnPay").focus();
+            }
+            else {
+                document.getElementById("btnPay").disabled = true;
+            }
+        }
+    </script>
+</head>
+<body>
+    <fieldset>
+        <legend>Payment Details</legend>
+        <dl>
+            <dt>Card Number</dt>
+            <dd><input type="text" onkeyup="VerifyCard()" id="txtCard"></dd>
+            <dt>CVV</dt>
+            <dd><input disabled onkeyup="VerifyCvv()" type="text" id="txtCvv" size="4"></dd>
+            <dt>Expiry</dt>
+            <dd>
+                <select onchange="VerifyExpiry()" disabled id="lstExpiry">
+                    <option>2022</option>
+                    <option>2023</option>
+                    <option>2024</option>
+                </select>
+            </dd>
+        </dl>
+        <button disabled id="btnPay">Pay</button>
+    </fieldset>
+</body>
+</html>
+
+Note: Always don't try to write multiple condition in one line.
+
+3. Multi Level -->

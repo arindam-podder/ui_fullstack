@@ -1,0 +1,111 @@
+<!-- while loop
+- It is used when we are not sure about the number of iterations.
+- Iteration counter will change dynamically.
+- It can start loop only when condition is true.
+
+Syntax:
+        while(condition)
+        {
+          counter;
+          statements;
+        }
+
+Ex:
+<script>
+    var i = 1;
+    while(i<=10)
+    {
+        document.write(i +"<br>");
+        i++;
+    }
+</script>
+
+                                do while
+- It is similar to while loop but can execute statements at least once even when the condition is false.
+
+Syntax:
+ do
+ {
+    statement;
+    counter;
+ } while(condition);
+
+Ex:
+<script>
+    var i = 21;
+    do
+    {
+        document.write(i + "<br>");
+        i++;
+    }while(i<=20);
+</script>
+
+Task: Write a JavaScript program to convert number into words
+
+Summary
+- Selection
+- Jump
+- Looping
+- Iteration
+
+                        Exception Handling Statements
+
+- In computer programming developers will come across 2 types of errors.
+            1. Compile Time Errors
+            2. Run Time Errors
+
+- Compile time errors are syntax errors, due to which the program fails to compile and unable to print output.
+
+- Runtime errors : Program is compiled successfully without errors.
+                        When user interacts with program and provides
+                        input which is not understandable to compiler
+                        then it leads to run time errors.
+   
+                        If any runtime errors occurs in a program that leads
+                        to abnormal termination.
+
+- "Exception Handling is used in computer programming to avoid abnormal termination".
+
+- Exception handling in JavaScript is managed by following statements
+
+    try                - It is monitoring block : statement to execute
+    catch            - It is handler block : It catches the exception
+    throw            - It is used to throw the error.
+    finally            - It contains statements to execute always.
+
+Ex:
+<script>
+    try {
+        var x = parseInt(prompt("Enter Number-1"));
+        var y = parseInt(prompt("Enter Number-2"));
+        var z = x / y;
+        if(y==0) {
+            throw "Divide By Zero Error: You can't divide by Zero";
+        }
+        if(y>x) {
+            throw "Number too large: You have to provide a number lower than the previous."
+        }
+        document.write(`Division=${z}`);
+    }
+    catch(ex)
+    {
+        document.write(ex);
+    }
+    finally {
+        alert("Program End");
+    }
+</script>
+
+Summary
+- Variables
+- DataTypes
+- Operators
+- Statements
+- Functions
+
+
+                              Functions in JavaScript
+
+- Functions are used in computer programming for "Refactoring"
+- Refactor is the process of extracting a function for set of statements so that you can reuse.
+- Function Architecture -->

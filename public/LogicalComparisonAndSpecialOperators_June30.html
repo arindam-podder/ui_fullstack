@@ -1,0 +1,204 @@
+<!-- Arithematic Operators
+Assignment Operators
+Comparision Operators
+
+==                    Equal
+===                Identical Equal | Strict Equal
+!=                    Not Equal
+>                    Greater Than
+>=                    Greater than or equal
+<                    Lessthan
+<=                    Lessthan or equal
+
+FAQ: What is difference between "==" & "===" ?
+Ans:
+        ==            It can compare 2 values of different types.
+        ===        It can compare 2 values of same type only.
+
+Ex:
+<script>
+    var x = "10";
+    var y = 10;
+    document.write(`X==Y ? ${x==y} <br>`);          //true
+    document.write(`X===Y ? ${x===y}`);             //false;
+</script>
+
+
+Logical Operators
+
+&& [AND]        : It returns true if all expressions evaluate to true.
+||     [OR]            : It returns true if any one expression evaluate to true.
+!      NOT            : It returns when it is not true.
+
+                        !true  => false
+   
+Data "users.json"
+
+[
+    {
+        "UserName":"john_nit",
+        "Password": "john@11",
+        "Mobile": "9876543210"
+    },
+    {
+        "UserName": "david",
+        "Password": "d@vid",
+        "Mobile": "9987654321"
+    }
+]
+
+Ex:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Comparision</title>
+    <script>
+        function LoginClick(){
+            var username = document.getElementById("txtName").value;
+            var password = document.getElementById("txtPwd").value;
+            fetch("../data/users.json")
+            .then(function(response){
+                return response.json();
+            })
+            .then(function(users){
+                for(var user of users) {
+                    if(user.UserName===username && user.Password===password){
+                        document.write("Login Success");
+                    } else {
+                        document.getElementById("msg").innerHTML = "Invalid User Name / Password";
+                    }
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+    <h2>User Login</h2>
+    <dl>
+        <dt>User Name</dt>
+        <dd><input type="text" id="txtName"></dd>
+        <dt>Password</dt>
+        <dd><input type="password" id="txtPwd"></dd>
+    </dl>
+    <button onclick="LoginClick()">Login</button>
+    <h2 align="center" id="msg"></h2>
+</body>
+</html>
+
+
+Ex:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Comparision</title>
+    <script>
+        function LoginClick(){
+            var username = document.getElementById("txtName").value;
+            var password = document.getElementById("txtPwd").value;
+            fetch("../data/users.json")
+            .then(function(response){
+                return response.json();
+            })
+            .then(function(users){
+                for(var user of users) {
+                    if((user.UserName===username || user.Mobile===username) && user.Password===password){
+                        document.write("Login Success");
+                    } else {
+                        document.getElementById("msg").innerHTML = "Invalid User Name / Password";
+                    }
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+    <h2>User Login</h2>
+    <dl>
+        <dt>User Name or Mobile</dt>
+        <dd><input type="text" id="txtName"></dd>
+        <dt>Password</dt>
+        <dd><input type="password" id="txtPwd"></dd>
+    </dl>
+    <button onclick="LoginClick()">Login</button>
+    <h2 align="center" id="msg"></h2>
+</body>
+</html>
+
+Special Operators
+1. Ternary Operators
+        ?:
+
+2. typeof            : It returns the data type of value stored in a reference.
+
+
+Ex:
+<script>
+    var product = {
+        Name: "TV",
+        Price: 45000.55,
+        Stock: true,
+        Rating: {rate:4.4}
+    }
+    for(var property in product)
+    {
+        document.write(`${property} - ${typeof product[property]} <br>`);
+    }
+</script>
+
+3. instanceof        : It returns boolean true if given object is instance
+                          of specific class.
+
+Ex:
+<script>
+   class Employee {
+
+   }
+   class Product {
+
+   }
+   let tv = new Product();
+   let sam = new Employee();
+   let products = new Array();
+
+   document.write(`TV is Employee : ${tv instanceof Employee}<br>`);
+   document.write(`TV is Product : ${tv instanceof Product}<br>`);
+   document.write(`TV is Object : ${tv instanceof Object}<br>`);
+   document.write(`Products is Array : ${products instanceof Array}<br>`);
+   document.write(`Products is Object : ${products instanceof Object}<br>`);
+
+</script>
+
+4. delete            : It is used to delete any key/property from an object.
+
+                        delete  product.Name;
+
+5. in                : It is used to verify a property in object.
+
+Ex:
+<script>
+    var product = {
+        Name : "TV",
+        Price : 5600.44,
+        Stock: true,
+    }
+    document.write(`Is Product Rating Available ? ${"Rating" in product}`);
+</script>
+
+6. of            : It used for verify all values in an iterator.
+
+                for(var value of collection)
+                for(var property in collection)
+
+7. void        : It discards the return value of any expression.
+
+Syntax:
+ <a href="javascript:void()">Shopping</a>   // Not Implemented
+
+ <a href="javascript:void(location.href='shopping.html')">Shopping</a>
+
+8. new        : It is dynamic memory allocating operator.
+
+        var products = new Array();  // dynamic memory
+        var products = [ ];                // static memory
+        var date = new Date(); -->
