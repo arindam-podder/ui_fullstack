@@ -1,0 +1,225 @@
+<!-- JavaScript OOP
+- Modules
+- Class
+
+                                    Class
+- Class is a program template.
+- Class have the behaviour of
+        a) Model
+        b) Entity
+        c) Blue Print
+- Class is reffered as model when it is mapping to data requirements.
+- Class is reffered as entity when it is mapping to business requirements.
+- Class is reffered as blue print when it is used as template.
+
+How to define class?
+- class is defined by using 2 techniques
+        a) Class declaration
+        b) Class expression
+
+- Class declaration allows to configure class with a set of specific members.
+
+Syntax:
+         class className
+        {
+        }
+
+- Class expression allows to configure memory for class where the class can change according state and situation.
+
+Syntax:
+        var name = class { };
+
+Ex:
+<script>
+    //class declaration
+    class Product
+    {
+
+    }
+    //class expression
+    var ProtoType = class {
+        Name = "";
+        Price = 0;
+    }
+    ProtoType = class {
+        EmpName="";
+        Designation="";
+    }
+</script>
+
+- Every JavaScript class can contain only following members
+        1. Property
+        2. Method
+        3. Accessor
+        4. Constructor
+
+FAQ: Can we define a variable in class?
+Ans: No.
+
+FAQ: Why variable is not allowed as class member?
+Ans: Variable is immutable. Class can't contain immutable members.
+
+FAQ: How data is stored in class?
+Ans:  By using Property.
+
+Syntax:
+    class  Name
+    {
+        Property = value;
+    }
+
+FAQ: What is difference between Property and Variable?
+Ans: Variable is immutable and property is mutable.
+
+FAQ: Can we define a function in class?
+Ans:  No.
+
+FAQ: How functionality is defined in class?
+Ans:  By using Method
+
+- A class method can have variables and functions.
+
+<script>
+   class Product
+   {
+      Print(){
+        var x = 10;
+         function f1(){
+
+         }
+      }
+   }
+</script>
+
+                                Class Members
+1. Property
+- It is used to store data.
+- It is mutable
+- It can store any type of data, Primitive or Non-Primitive.
+
+<script>
+   class Product
+   {
+      Name = "Samsung TV";
+      Price = 45000.44;
+      Stock = true;
+      Cities = ["Delhi", "Hyd"];
+      Rating = {Rate: 4, Count:6600}
+   }
+</script>
+
+- You can access the class members by using instance of class.
+- Instance is a object that refers to memory where all class members are loaded.
+
+Syntax:
+        let obj = new Product;
+        obj.Name
+
+Ex:
+<script>
+   class Product
+   {
+      Name = "Samsung TV";
+      Price = 45000.44;
+      Stock = true;
+      Cities = ["Delhi", "Hyd"];
+      Rating = {Rate: 4, Count:6600}
+   }
+
+   function PrintProductDetails()
+   {
+        let obj = new Product;
+        document.write(`
+        Name=${obj.Name}<br>
+        Price=${obj.Price}<br>
+        Stock=${obj.Stock}<br>
+        Cities=${obj.Cities}<br>
+        Rating=${obj.Rating.Rate}
+        `);
+   }
+   PrintProductDetails();
+</script>
+
+- You can assign any value into property dynamically.
+
+        let obj = new Product;
+        obj.Name = "Samsung LED TV";
+
+
+
+                                Accessor
+- It is used to give a fine grained control over property.
+- It can control read and write features for any property.
+- Every property can have 2 accessors
+        a) get            [getter used to read value from property]    
+        b) set            [setter used to write value into property]
+
+
+Ex:
+<script>
+    var username = prompt("Enter User Name");
+    var role = prompt("Enter Your Role");
+    var productname = prompt("Enter Product Name");
+
+    class Product
+    {
+        _productName;
+
+        get ProductName()
+        {
+            return this._productName;
+        }
+        set ProductName(newName){
+            if(role=="admin") {
+                this._productName = newName;
+            } else {
+                document.write("Unauthorized : You are not authorized to set product name");
+            }
+        }
+    }
+    let obj = new Product;
+    obj.ProductName = productname;    
+    if(obj.ProductName) {
+        document.write(`Name=${obj.ProductName}`); // getter
+    }
+</script>
+
+- You can also use accessor to access any member of class from a multi level hierarchy.
+
+Ex:
+<script>
+    class Product
+    {
+        Name = "Nike Casuals";
+        CustomerRating = {
+            Rating : {
+                Rate : 4.4,
+                Count: 45000
+            }
+        }
+        get CustomerRate(){
+            return this.CustomerRating.Rating.Rate;
+        }
+    }
+    let obj  = new Product;
+    document.write(obj.CustomerRate);
+</script>
+
+                                 Method
+- All method features are same as function
+- Parameterized
+- Parameter less
+- Arrow
+- Rest Parameters
+- Recursion
+- Return Type etc..
+
+Syntax:
+    {
+      methodName(params)
+      {
+         // members... return type
+      }
+    }
+
+                         -->

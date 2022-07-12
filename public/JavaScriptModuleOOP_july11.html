@@ -1,0 +1,135 @@
+<!-- Javascript OOP
+- Real world project development uses various programming systems
+    1. POPS (Process Oriented Programming System)
+    2. OBPS (Object Based Programming System)
+    3. OOPS (Object Oriented Programming System)
+
+POPS
+- It supports low level features
+- It can directly interact with hardware
+- It is faster
+- It is less memory
+Ex:    C, Pascal, COBOL
+- Reusability Issues
+- Extensibility Issues
+- Dynamic memory
+
+OBPS
+- It supports reusability
+- It supports dynamic memory
+- Limited extensibility
+- Not loosely coupled.
+- More memory than POPS
+- Security Issues
+Ex: JavaScript, VB
+
+OOPS
+- Reusability
+- Security
+- Extensibility
+- Can't directly interact with hardware
+- Slow
+- More memory
+
+Ex: C++, Java, .NET Language, TypeScript etc..
+
+
+Note: JavaScript is not an OOP language. It supports only few feature of OOP.
+
+History of OOP
+- Alan Kay  in early 1960's introduced the concept of "Object" into computer programming.
+- 1967  Johan Olay, Kristan Nygaard developed first OOP language "SIMULA"
+   [Code Reusability]
+            SIMULA 67
+           
+- Trygve introduced the concept of code separation. He introduced a framework called "MVC" [Model - View - Controller]
+
+            Small Talk
+
+- In early 1975 - C++
+- In early 1990 - Java
+- In early 2003 - .NET Language , TypeScript
+
+
+                                   JavaScript Modules
+- A module is a set of functions, values and classes.
+- Module resemble a library for building application.
+- JavaScript uses various module systems
+    a) Common JS
+    b) Require JS
+    c) UMD (Universal Module Distribution)
+    d) AMD (Asynchronous Module Distribution)
+
+- By default with node.js you will get "Common JS" module system.
+
+- Every JavaScript file is a module.
+- Module comprises of functions, variables and classes.
+- Every member in a module is accessible only within the module.
+- If you want a function of class to be accessed outside module then you have to mark it as "export".
+
+Syntax:
+        export function Name(){ }
+        export class Name() { }
+
+- Every module can have one "default" member.
+- Default member loads automatically
+
+Syntax:
+      export default function Name() { }
+
+- You can import the member is a page by using "import " statement
+
+     import  { function } from  '../library/module.js';        // non default members
+     import  function from '../library/module.js';            // default member
+     import  defaultFun, { function } from '../library/module.js';
+
+
+- Modules are configured with type as "module"
+
+    <script type="module"> </script>
+
+EX:
+1. Add a new folder "library"
+
+2. Add a new JavaScript file into library
+
+        "DemoModule.js"
+
+var msg = "Hello ! Welcome to JavaScript OOP";
+export function Hello(){
+    return msg;
+}
+export default function Add(a, b)
+{
+    return a + b;
+}
+
+3. Go to your HTML page
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JavaScript Modules</title>
+        <script src="../library/DemoModule.js"></script>
+        <script type="module">
+            import Add, { Hello } from "../library/DemoModule.js";
+            document.querySelector("p").innerHTML = Hello() + "<br>" + "Addition=" + Add(10,30);
+        </script>
+    </head>
+    <body>
+        <h2>Module System</h2>
+        <p></p>
+    </body>
+</html>
+     
+                                         Classes
+- In OOP languages class is a program template.
+- A template comprises of sample data and logic which you can customize according to your requirements and implement.
+- Class is reffered as model when it is mapping with data.
+- Class is reffered as entity when it is mapping with business.
+- Class is a blue print for designing templates.
+- In JavaScript OOP class can contain only
+        a) Property
+        b) Method
+        c) Accessor
+        d) Constructor -->
