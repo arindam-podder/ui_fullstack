@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrow => functions </title>
+
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+
+    <script>
+
+        //annonymous functions
+        (function(){
+            document.write(" <h3 class='text-center'> annonymous function1. </h3> <br>")
+        }) ();  //here calling function, later we can't call
+        var annonymousFunction = function(){
+            document.write(" <h3 class='text-center'> annonymous function2. </h3> <br>" )
+        }
+        //function call
+        annonymousFunction();
+
+
+        //arrow function ( using =>  )
+        var arrow1 = () => {
+            document.write("<h3 class='text-center'> arrow( =>) function line1. </h3> <br>");
+            document.write("<h3 class='text-center'> arrow( =>) function line2. </h3> <br>");
+        }
+        //call
+        arrow1();
+
+        var arrow2 = param => {
+            document.write(`<h3 class='text-center'> arrow( =>) function with param=${param} </h3> <br>`);
+        }
+        //call
+        arrow2("Arindam");
+    </script>
+
+
+</head>
+<body>
+    
+</body>
+</html>
