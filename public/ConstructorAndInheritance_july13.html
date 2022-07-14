@@ -1,0 +1,168 @@
+<!-- -Property
+-Accessor
+-Method
+-Constructor
+Design Patterns
+- 23 GoF design patterns
+    a) Creational
+    b) Structrual
+    c) Behavioural
+
+
+                                Constructor
+- Constructor is a software design pattern.
+- It is a creational pattern.
+- It is the process of creating an instance for class.
+- Constructor is a special type of subroutine used for instantiation.
+  [Creating Object].
+- Every class have a default constructor.
+- You can add a constructor explicitly.
+- Constructor is a special type method [subroutine] that executes automatically at the time of creating object.
+- JavaScript constructor is Anonymous type
+
+Syntax:
+    class  Name
+    {
+        constructor() { }
+    }
+
+    let obj = new Name;        Name()
+
+- If constructor is parameterized then you have to mention about constructor at the time of instantiation.
+
+- You have to pass values into constructor at the time of allocating memory for object.
+
+        let obj = new Name(params);
+
+Ex:
+<head>
+  <script>
+     class Database
+     {
+        constructor(dbName){
+            alert(`Connected with ${dbName} database successfully..`);
+        }
+        Insert(){
+            document.querySelector("p").innerHTML = "Record Inserted";
+        }
+        Delete(){
+            document.querySelector("p").innerHTML = "Record Deleted";
+        }
+     }
+     function InsertClick(){
+        let obj = new Database("Oracle");
+        obj.Insert();
+     }
+     function DeleteClick(){
+        let obj = new Database("MySql");
+        obj.Delete();
+     }
+  </script>
+</head>
+<body>
+    <button onclick="InsertClick()">Insert on Oracle</button>
+    <button onclick="DeleteClick()">Delete from MySql</button>
+    <p></p>
+</body>
+
+- JavaScript constructor can't overload.
+- You can't restrict constructor.
+
+Summary:
+1. Property
+2. Method
+3. Accessor
+4. Constructor
+
+                        Code Reusability and Extensibility
+- You can reuse and extend code by using 2 techniques
+    a) Aggregation
+    b) Inheritance
+
+Aggregation:
+- It is the process of access members of one class in another class without re-writing.
+- It is the process of reusing without configuring any relation between class.
+- It is often called as "Object-to-Object" communication.
+- It is also known as "Has-A-Relation".
+
+Ex:
+<script>
+    class Base
+    {
+        Print(){
+            document.write("Base Class Print Method<br>");
+        }
+    }
+    class Derived
+    {
+        Print(){
+            let obj = new Base;
+            obj.Print();
+            document.write("Derived Class Print Method");
+        }
+    }
+    let obj = new Derived;
+    obj.Print();
+</script>
+
+
+Inheritance:
+- It is the process that allows to access members of one class in another class without an object.
+- You can configure relation between class.
+- You can access the members of existing class in current class by using "extends".
+- Current class can extend the existing class.
+- Existing class is known as "Super" class.
+- Current class in known as "Derived" class.
+- You can access super class members in derived class by using "super" keyword.
+- This process is reffered as "Is-A-Relation".
+
+Ex:
+<script>
+    class Base
+    {
+        Print(){
+            document.write("Base Class Print Method<br>");
+        }
+    }
+    class Derived extends Base
+    {
+        Print(){
+            super.Print();
+            document.write("Derived Class Print Method");
+        }
+    }
+    let obj = new Derived;
+    obj.Print();
+</script>
+
+OOP Rules:
+ - When you create an object for derived class which is extending super class, then as per OOP rules first base class constructor is called and followed by derived class constructor.
+
+- JavaScript will not follow the above rule.
+- You have to explicitly design the derived class constructor that calls base class constructor.
+
+Ex:
+<script>
+    class Base
+    {
+        constructor(){
+            document.write("Base Class Constructor<br>");
+        }
+        Print(){
+            document.write("Base Class Print Method<br>");
+        }
+    }
+    class Derived extends Base
+    {
+        constructor(){
+            super();
+            document.write("Derived Class Constructor<br>");
+        }
+        Print(){
+            super.Print();
+            document.write("Derived Class Print Method");
+        }
+    }
+    let obj = new Derived;
+    obj.Print();
+</script> -->

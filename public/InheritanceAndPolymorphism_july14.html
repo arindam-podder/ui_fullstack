@@ -1,0 +1,175 @@
+<!-- - Aggregation
+- Inheritance
+    It allows to extend any component.
+    It is often reffered as "Is-A-Relation".
+    Inhertiance is classified into various types
+        a) Single
+        b) Multi Level
+        c) Multiple
+    Class will not support multiple inheritance.
+
+Single Inheritance
+- One base class and one derived class.
+
+Ex:
+<head>
+    <script>
+        class HdfcBank_Version1
+        {
+        Personal = "Personal Banking";
+        NRI = "NRI Banking"    
+        }
+        class HdfcBank_Version2 extends HdfcBank_Version1
+        {
+            Loans = "Car, Home Loans";
+        }
+
+        function InstallClick(){
+            var version = document.getElementById("versions").value;
+            switch(version)
+            {
+                case "ver1":
+                let HdfcBank_LegacyApp = new HdfcBank_Version1();
+                document.write(`<h2>Bank Legacy App</h2><p>${HdfcBank_LegacyApp.Personal}<br>${HdfcBank_LegacyApp.NRI}</p>`);
+                break;
+                case "ver2":
+                let HdfcBank_ModernApp = new HdfcBank_Version2();
+                document.write(`<h2>Bank Latest App</h2><p>${HdfcBank_ModernApp.Personal}<br>${HdfcBank_ModernApp.NRI}<br>${HdfcBank_ModernApp.Loans}</p>`);
+                break;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h3>Select HDFC Bank App Version</h3>
+    <select id="versions">
+        <option value="ver1">Version-1</option>
+        <option value="ver2">Version-2</option>
+    </select>
+    <button onclick="InstallClick()">Install</button>
+</body>
+
+- Multi Level Inheritance
+  A derived is extended.
+
+Ex:
+<head>
+    <script>
+        class HdfcBank_Version1
+        {
+        Personal = "Personal Banking";
+        NRI = "NRI Banking"    
+        }
+        class HdfcBank_Version2 extends HdfcBank_Version1
+        {
+            Loans = "Car, Home Loans";
+        }
+        class HdfcBank_Version3 extends HdfcBank_Version2
+        {
+            AGRI = "Govt. Schemes";
+        }
+
+        function InstallClick(){
+            var version = document.getElementById("versions").value;
+            switch(version)
+            {
+                case "ver1":
+                let HdfcBank_LegacyApp = new HdfcBank_Version1();
+                document.write(`<h2>Bank Legacy App</h2><p>${HdfcBank_LegacyApp.Personal}<br>${HdfcBank_LegacyApp.NRI}</p>`);
+                break;
+                case "ver2":
+                let HdfcBank_ModernApp = new HdfcBank_Version2();
+                document.write(`<h2>Bank Latest App</h2><p>${HdfcBank_ModernApp.Personal}<br>${HdfcBank_ModernApp.NRI}<br>${HdfcBank_ModernApp.Loans}</p>`);
+                break;
+                case "ver3":
+                let HdfcBank_Govt = new HdfcBank_Version3();
+                document.write(`<h2>Bank Govt App</h2><p>${HdfcBank_Govt.Personal}<br>${HdfcBank_Govt.NRI}<br>${HdfcBank_Govt.Loans}<br>${HdfcBank_Govt.AGRI}</p>`);
+                break;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h3>Select HDFC Bank App Version</h3>
+    <select id="versions">
+        <option value="ver1">Version-1 Legacy</option>
+        <option value="ver2">Version-2 Modern</option>
+        <option value="ver3">Version-3 Govt.</option>
+    </select>
+    <button onclick="InstallClick()">Install</button>
+</body>
+
+FAQ: Why Multiple Inheritance is not supported for classes?
+Ans:  Constructor Deadlock.
+
+
+                                       Polymorphism
+- Poly means Many
+- Morphos means Forms
+- Creating any component that can serve for different situations is "Polymorphism"
+- Ploymorphism is configuring a base class object that uses the memory of multiple derived classes.
+
+Ex:
+<script>
+    class Employee
+    {
+        FirstName="";
+        LastName="";
+        Designation="";
+        Print(){
+            document.write(`${this.FirstName} ${this.LastName} - ${this.Designation}<br>`);
+        }
+    }
+    class Developer extends Employee
+    {
+        FirstName="Kiran";
+        LastName="Kumar";
+        Designation="Developer";
+        DeveloperRole="Building, Debug, Test, Deploy";
+        Print(){
+            super.Print();
+            document.write(this.DeveloperRole);
+        }
+
+    }
+    class Admin extends Employee
+    {
+        FirstName="Raj";
+        LastName="Kumar";
+        Designation="Admin";
+        AdminRole="Authorization / Authentication";
+        Print(){
+            super.Print();
+            document.write(this.AdminRole);
+        }
+
+    }
+    class Manager extends Employee
+    {
+        FirstName="Tom";
+        LastName="Hanks";
+        Designation="Manager";
+        ManagerRole="Approvals";
+        Print(){
+            super.Print();
+            document.write(this.ManagerRole);
+        }
+    }
+    let employees = [];
+    employees[0] = new Developer();
+    employees[1] = new Admin();
+    employees[2] = new Manager();
+    let designaiton = prompt("Enter Designation");
+    for(var employee of employees) {
+        if(employee.Designation==designaiton) {
+            employee.Print();
+        }
+    }
+</script>
+   
+                        JavaScript Browser Events
+- Event is a message sent by sender to its subscriber in order to notify change.
+- Event following a software design pattern called "Observer".
+- It is a communication pattern.
+- Event is a function pointer.
+- It uses "Delegate" mechanism [Function Pointer] -->
