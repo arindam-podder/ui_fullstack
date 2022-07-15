@@ -1,0 +1,95 @@
+<!-- JavaScript Events
+
+FAQ: What is Event?
+- Event is a message sent by sender to its subscriber in order to notify change.
+- Event follows a software design pattern called "Observer".
+- Event uses delegate mechanism [function pointer].
+
+FAQ: What is event handler?
+- Event handler specifies the event and function.
+
+           onclick="Insert()"
+
+FAQ: What are Event Args?
+- The args allowed into event handler.
+- The default args are
+        a) event
+        b) this
+
+- "event" sends event related properties like
+    clientX, clientY, shiftKey, ctrlKey, keyCode etc..
+
+- "this" sends object related properties like
+    id, class, name, value, src, etc..
+
+- You can send custom args
+- Args can be any type.
+
+      onclick="Insert({key, value})"
+      onclick="Insert([])"
+      onclick="Insert('string')"
+- No order for arguments
+- All args are optional.
+
+Ex:
+<script>
+  function InsertClick(obj, e, product){
+     document.write(`
+       Button Id : ${obj.id} <br>
+       Button Value: ${obj.value} <br>
+       Button Name : ${obj.name} <br>
+       Button Class : ${obj.className} <br>
+       Clicked @ X position:  ${e.clientX} <br>
+       Clicked with Ctrl Key: ${e.ctrlKey} <br>
+       Product Name : ${product.Name} <br>
+       Product Price: ${product.Price}
+     `);
+  }
+</script>
+<body>
+    <button id="btnInsert" class="btn btn-primary" value="Insert" name="ButtonInsert" onclick="InsertClick(this, event, {Name:'TV', Price:45000.44})">Insert</button>
+</body>
+
+Ex:
+<script>
+    function Database(name){
+        switch(name){
+            case "insert":
+            document.write("Record Inserted");
+            break;
+            case "update":
+            document.write("Record Updated..");
+            break;
+            case "delete":
+            document.write("Record Deleted");
+            break;
+        }
+    }
+</script>
+<body>
+    <button name="insert" onclick="Database(this.name)">Insert</button>
+    <button name="update" onclick="Database(this.name)">Update</button>
+    <button name="delete" onclick="Database(this.name)">Delete</button>
+</body>
+
+- JavaScript provides browser events for various interactions.
+- Events are not related to any element.
+- Events belong to "window" object of browser.
+- Events are classified into various categories
+
+1. Mouse Events    
+        onmouseover, onmouseout, onmousedown, onmouseup
+2. Button Events
+        onclick, ondblclick, oncontextmenu
+3. Keyboard Events
+    onkeyup, onkeydown, onkeypress
+4. Clipboard Events
+     oncut, oncopy, onpaste
+5. Element State Events
+     onchange, onblur, onfocus
+6. Touch Events etc...
+     ontouchstart, ontouchend
+7. Timer Events
+     setInterval, clearInterval, setTimeout, clearTimeout
+8. Form Events
+     onsubmit, onreset -->
