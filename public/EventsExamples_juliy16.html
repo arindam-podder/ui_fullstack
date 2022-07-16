@@ -1,0 +1,222 @@
+<!-- Mouse Events
+- onmouseover
+- onmouseout
+- onmousedown
+- onmouseup
+- onmousemove
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mouse Events</title>
+        <style>
+            .picker div {
+                width: 200px;
+                height: 100px;
+            }
+            .picker {
+                display: flex;
+            }
+            .offer-box {
+                padding: 40px;
+                border:2px solid red;
+            }
+        </style>
+        <script>
+            function PickColor(id){
+                document.querySelector("h1").style.color = id;
+            }
+            function ShowOffer(){
+                document.getElementById("offer").style.display = "block";
+            }
+            function HideOffer(){
+                document.getElementById("offer").style.display = "none";
+            }
+        </script>
+    </head>
+    <body>
+        <marquee onmouseover="this.stop()" onmouseout="this.start()" scrollamount="20">
+            <img src="../public/assets/jacket.jpg" width="100" height="100">
+            <img src="../public/assets/shoe.jpg" width="100" height="100">
+            <img src="../public/assets/shoe1.jpg" width="100" height="100">
+            <img src="../public/assets/speaker.jpg" width="100" height="100">
+        </marquee>
+        <h2>Color Picker</h2>
+        <div class="picker">
+            <div onmouseover="PickColor(this.id)" id="red" style="background-color:red;"></div>
+            <div onmouseover="PickColor(this.id)" id="green" style="background-color:green;"></div>
+            <div onmouseover="PickColor(this.id)" id="blue" style="background-color:blue;"></div>
+        </div>
+        <h1 align="center">Sample Text</h1>
+        <div onmousedown="ShowOffer()" onmouseup="HideOffer()" class="offer-box" style="height: 400px; width: 300px;">
+            <p>Press hold the mouse button to view offer</p>
+            <div id="offer" style="display: none;">
+                <img src="../public/assets/speaker.jpg">
+                <p>50% OFF </p>
+            </div>
+        </div>
+    </body>
+</html>
+
+
+
+Ex: Mousemove
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Mouse Move</title>
+        <script>
+            function Track(e){
+                var img = document.getElementById("flag");
+                img.style.position = "fixed";
+                img.style.top = e.clientY + "px";
+                img.style.left = e.clientX + "px";
+            }
+        </script>
+    </head>
+    <body onmousemove="Track(event)" >
+        <div style="height: 1000px;"></div>
+        <img id="flag" src="../public/assets/flag.gif" width="50" height="50">
+    </body>
+</html>
+
+
+                                Keyboard Events
+- onkeyup            : actions on key up
+- onkeydown        : actions on key down
+- onkeypress        : actions when you finish a key.
+
+Note: Keyup and Keydown can't track the key or char code.
+         Keypress can track the char code.
+
+Keyboard Event Properties
+---------------------------------------
+keyCode                    code for every key
+charCode                code for only char keys
+which                        code for every key [mac, multimedia keyboards]
+shiftKey                    true/false
+ctrlKey                    true/false
+altKey                    true/false
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>KeyEvents</title>
+        <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+        <script>
+            var users = [];
+            function GetUsers(){
+                fetch("../data/users.json")
+                .then(response=>response.json())
+                .then(data=> {
+                    users = data;
+                })
+            }
+            function VerifyUser(){
+                var username = document.getElementById("txtUser").value;
+                var userError = document.getElementById("UserError");
+                for(var user of users)
+                {
+                    if(user.UserName==username) {
+                        userError.innerHTML = "User Name Taken : Try Another";
+                        userError.style.color = "red";
+                        break;
+                    }  else {
+                        userError.innerHTML = "User Name Available";
+                        userError.style.color = "green";
+                    }
+                }
+            }
+            function bodyload(){
+                GetUsers();
+            }
+            function VerifyCaps(e){
+                var PasswordError = document.getElementById("PasswordError");
+                if(e.keyCode>=65 && e.keyCode<=90) {
+                    PasswordError.style.display = "block";
+                } else {
+                    PasswordError.style.display = "none";
+                }
+            }
+        </script>
+    </head>
+    <body onload="bodyload()">
+        <h2>Register</h2>
+        <dl>
+            <dt>User Name</dt>
+            <dd><input onkeyup="VerifyUser()" id="txtUser" type="text"></dd>
+            <dd id="UserError"></dd>
+            <dt>Password</dt>
+            <dd>
+                <input onkeypress="VerifyCaps(event)" type="password" id="txtPwd">
+            </dd>
+            <dd id="PasswordError" style="color:goldenrod; display: none;">
+                <span class="bi bi-exclamation-triangle-fill"></span> Caps is ON
+            </dd>
+           
+        </dl>
+    </body>
+</html>
+                       
+
+Clipboard Events
+-oncut
+-oncopy
+-onpaste
+
+Button Events
+-onclick
+-ondblclick
+-oncontextmenu
+-onselectstart
+
+FAQ: How to disable selection and right click in page?
+Ans:  Make the events return false.
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Disable</title>
+        <script>
+            document.onselectstart = function(){
+                return false;
+            }
+            document.oncontextmenu = function(){
+                alert("Right Click Disabled on this Page");
+                return false;
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Right click and selection is disabled.</h1>
+    </body>
+</html>
+
+Ex: Double Click
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Disable</title>
+        <script>
+            document.onselectstart = function(){
+                return false;
+            }
+            document.oncontextmenu = function(){
+                alert("Right Click Disabled on this Page");
+                return false;
+            }
+            function ViewLarge(){
+                window.open("../public/assets/jacket.jpg","Jacket","width=400 height=400");
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Right click and selection is disabled.</h1>
+        <img ondblclick="ViewLarge()" src="../public/assets/jacket.jpg" width="100" height="100">
+        <p>Double Click to View Large</p>
+    </body>
+</html> -->
