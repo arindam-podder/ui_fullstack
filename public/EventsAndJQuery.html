@@ -1,0 +1,295 @@
+<!-- Timer Events
+- setTimeout()
+- clearTimeout()
+- setInterval()
+- clearInterval()
+
+setTimeout()    : It used to delay the execution of any function by
+                      specified time interval.
+
+                    Syntax:  setTimeout(functionName, interval);
+
+                      It removes the function from memory after execution.
+
+
+clearTimeout()    : It removes the function from memory.
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Timer</title>
+        <script>
+            function msg1(){
+                document.querySelector("p").innerHTML = "Hello !";
+            }
+            function msg2(){
+                document.querySelector("p").innerHTML = "How are You?";
+            }
+            function msg3(){
+                document.querySelector("p").innerHTML = "Welcome to JavaScript";
+            }
+            var m1, m2, m3;
+            function bodyload(){
+               m1 =  setTimeout(msg1, 3000);
+               m2 = setTimeout(msg2, 6000);
+               m3 = setTimeout(msg3, 10000);
+            }
+            function StopMsg2(){
+                clearTimeout(m2);
+            }
+        </script>
+    </head>
+    <body onload="bodyload()">
+        <p align="center"></p>
+        <button onclick="StopMsg2()">Stop Message - 2</button>
+    </body>
+</html>
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Timer</title>
+        <script>
+            function ShowTime(){
+                var now = new Date();
+                document.querySelector("p").innerHTML = now.toLocaleTimeString();
+            }
+            function bodyload(){
+              window.time = setInterval(ShowTime,1000);
+            }
+            function StopClick(){
+                clearInterval(time);
+            }
+            function StartClick(){
+                bodyload();
+            }
+        </script>
+    </head>
+    <body onload="bodyload()">
+        <p align="center"></p>
+        <button onclick="StopClick()">Stop</button>
+        <button onclick="StartClick()">Start</button>
+    </body>
+</html>
+
+                                  Form Events
+- onsubmit
+- onreset
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Timer</title>
+        <script>
+            function SubmitData(){
+                //write logic for submitting to server
+                alert("Form Submitted to server");
+            }
+            function CancelClick(){
+                alert("Form will reset");
+            }
+        </script>
+    </head>
+    <body>
+        <form onsubmit="SubmitData()" onreset="CancelClick()">
+            <dl>
+                <dt>Name</dt>
+                <dd><input name="Name" type="text"></dd>
+                <dt>Price</dt>
+                <dd><input name="Price" type="text"></dd>
+            </dl>
+            <button>Submit</button>
+            <button type="reset">Cancel</button>
+        </form>
+    </body>
+</html>
+
+FAQ: How to submit a form on dropdown change?
+Ans: By using <form> element "submit()" method.
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Timer</title>
+        <script>
+            function SubmitData(){
+                //write logic for submitting to server
+                alert("Form Submitted to server");
+            }
+            function CancelClick(){
+                alert("Form will reset");
+            }
+            function ChangeCity(){
+                frmRegister.submit();
+            }
+        </script>
+    </head>
+    <body>
+        <form name="frmRegister" onsubmit="SubmitData()" onreset="CancelClick()">
+            <dl>
+                <dt>Name</dt>
+                <dd><input name="Name" type="text"></dd>
+                <dt>Price</dt>
+                <dd><input name="Price" type="text"></dd>
+                <dt>City</dt>
+                <dd>
+                    <select name="City" onchange="ChangeCity()">
+                        <option>Delhi</option>
+                        <option>Hyd</option>
+                    </select>
+                </dd>
+            </dl>
+            <button>Submit</button>
+            <button type="reset">Cancel</button>
+        </form>
+    </body>
+</html>
+
+                                Touch Events
+- ontouchstart
+- ontouchend
+- ontouchmove
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Touch Demo</title>
+        <script>
+            function GetProduct(obj){
+                document.querySelector("p").innerHTML=obj.id;
+            }
+        </script>
+    </head>
+    <body>
+        <img ontouchstart="GetProduct(this)" id="jacket" src="../public/assets/jacket.jpg" width="100" height="100">
+        <img ontouchstart="GetProduct(this)" id="shoe" src="../public/assets/shoe.jpg" width="100" height="100">
+        <img  ontouchstart="GetProduct(this)" id="speaker" src="../public/assets/speaker.jpg" width="100" height="100">
+        <div>
+            <p></p>
+        </div>
+    </body>
+</html>
+
+                                     jQuery
+- It is a JavaScript Library for building application.
+- A library comprises of pre-defined functions.
+- jQuery caption is "Write less-do more"
+- jQuery uses JavaScript as language.
+- There are various JavaScript library to handle different tasks
+            jQuery
+            React
+            RxJs
+            Redux etc..
+- jQuery is good for DOM manipulations and interactions
+- jQuery Ajax
+- jQuery DOM
+
+Install jQuery in your Project:
+> npm install jquery --save
+
+Invoke jQuery library in HTML page:
+
+$(function(){
+
+})
+
+DOM reference is not required, you can use CSS selectors
+
+<div>
+<p id="p1">
+<h2 class="head">
+
+            $("div")
+            $("#p1")
+            $(".head")
+
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jQuery</title>
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script>
+            $(function(){
+                $("#head").text("jQuery");
+                $("p").text("Write-Less-Do-More");
+                $(".msg").html("<b><i>Welcome to jQuery</i></b>");
+            })
+        </script>
+    </head>
+    <body>
+        <h1 id="head"></h1>
+        <p></p>
+        <div class="msg"></div>
+    </body>
+</html>
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jQuery</title>
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script>
+            $(function(){
+               var categories = ["All","Electronics", "Footwear"];
+               for(var item of categories){
+                  $(`<li>${item}</li>`).appendTo("ol");
+                  $(`<option>${item}</option>`).appendTo("select");
+               }
+            })
+        </script>
+    </head>
+    <body>
+        <ol>
+
+        </ol>
+        <select>
+
+        </select>
+    </body>
+</html>
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jQuery</title>
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script>
+            $(function(){
+                var products = [
+                    {Name: "Nike Causals", Price:5600.44, Photo:"../public/assets/shoe.jpg"},
+                    {Name: "Winter Jacket", Price:2600.44, Photo:"../public/assets/jacket.jpg"}
+                ]
+                for(var item of products) {
+                    $(`<tr>
+                        <td>${item.Name}</td>
+                        <td>${item.Price}</td>
+                        <td><img src=${item.Photo} width="100" height="100"></td>
+                     </tr>`).appendTo("tbody");
+                }
+            })
+        </script>
+    </head>
+    <body>
+        <table width="500" border="1">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Photo</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </body>
+</html> -->
