@@ -1,0 +1,392 @@
+<!-- jQuery
+- What is jQuery?
+- How to invoke jQuery library?
+        $(function(){
+
+        })
+              (or)
+        $(document.ready() { })
+- How jQuery can access DOM elements?
+
+
+                            jQuery DOM Methods
+                            ------------------------------
+html()                        innerHTML
+text()                        innerText
+val()                        can access element value
+attr()                        can acess any element attribute  
+prop()                        can access element property
+append()                    adds markup to any specific element [suffix]
+prepend()                adds markup to any specific element [prefix]
+appendTo()                add child element into parent.
+before()                    adds markup above
+after()                        adds markup below
+each()                    Iterator
+css()                         apply styles dynamically
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jQuery</title>
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script>
+            $(function(){
+                $("p").append("<span> to JavaScript.</span>");
+                $("p").prepend("<span>Hello ! </span>");
+                $("p").after("<h3>JQuery</h3>");
+            })
+        </script>
+    </head>
+    <body>
+       <p>Welcome</p>
+    </body>
+</html>
+
+                                jQuery Events
+- All are same as JavaScript
+- jQuery will not use event handler
+
+        <button onclick="InsertClick()">  // Event Handler
+
+- It configure events directly in jQuery function.
+- Clean separation of code and UI.
+
+        <button>Insert</button>
+
+
+        $(function(){
+            $("button").click(function(){
+
+            })
+        })
+
+- All JavaScript events are defined without "on" as prefix.
+            click, dblclick, change, blur, focus etc..
+
+- jQuery events will support only default "event" argument. There is no "this".
+
+            event.clientX, clientY, keyCode, charCode
+            event.target = {id, value, name }
+            event.target.id
+
+- You can pass custom arguments.
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jQuery</title>
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script>
+            $(function(){
+                $("button").click((e)=>{
+                    document.write(`
+                        X  : ${e.clientX} <br>
+                        name: ${e.target.name} <br>
+                        class: ${e.target.className}
+                    `);
+                })
+            })
+        </script>
+    </head>
+    <body>
+       <div>
+          <dl>
+            <dt>User Name</dt>
+            <dd><input type="text" id="UserName"></dd>
+            <dt>Email</dt>
+            <dd><input type="text" id="Email"></dd>
+            <dt>City</dt>
+            <dd>
+                <select id="City">
+                    <option>Delhi</option>
+                    <option>Hyd</option>
+                </select>
+            </dd>
+            <dt>Subscribed</dt>
+            <dd><input type="checkbox" id="Subscribe"> Yes </dd>
+          </dl>
+          <button name="btnRegister" value="Register" class="btn btn-primary">Register</button>
+       </div>
+    </body>
+</html>
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jQuery</title>
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script>
+            $(function(){
+                $("button").click((e)=>{
+                    document.write(`
+                       Name: ${$("#UserName").val()} <br>
+                       Email: ${$("#Email").val()} <br>
+                       City : ${$("#City").val()} <br>
+                       Subscribed: ${($("#Subscribe").prop("checked"))?"Subscribed":"Not Subscribed"}
+                    `);
+                })
+            })
+        </script>
+    </head>
+    <body>
+       <div>
+          <dl>
+            <dt>User Name</dt>
+            <dd><input type="text" id="UserName"></dd>
+            <dt>Email</dt>
+            <dd><input type="text" id="Email"></dd>
+            <dt>City</dt>
+            <dd>
+                <select id="City">
+                    <option>Delhi</option>
+                    <option>Hyd</option>
+                </select>
+            </dd>
+            <dt>Subscribed</dt>
+            <dd><input type="checkbox" id="Subscribe"> Yes </dd>
+          </dl>
+          <button name="btnRegister" value="Register" class="btn btn-primary">Register</button>
+       </div>
+    </body>
+</html>
+
+                               Each - Iterator
+Syntax:
+        $.each(collection, function(key, value){
+
+        })
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>jQuery</title>
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script>
+            $(function(){
+                var categories = ["All", "Electronics", "Footwear"];
+                $.each(categories,(key, value)=>{
+                    $(`<li>[${key}]-${value}</li>`).appendTo("ol");
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <ol>
+
+        </ol>
+    </body>
+</html>
+
+                                jQuery Ajax
+                  [Asynchronous JavaScript And XML ]
+
+- Fetch returns data in binary format.
+- jQuery Ajax returns data in JSON format.
+- Ajax can return any type of content [HTML, PDF, Text, JSON...]
+- Async is without blocking other requests it can process your request.
+- You enable "Partial PostBack".
+- Without reloading the complete page, new details are added to page.
+- Ajax have better error handling
+- Ajax provides life cycle events.
+- The Ajax object used by all JavaScript technologies is
+            "XmlHttpRequest"
+
+Syntax:
+        $.ajax({
+             method    : "GET | POST",
+             url        : "API path",
+             data        : "Data to submit",
+             success    : function on success,
+             error        : function on error
+        })
+        .ajaxStart()
+        .ajaxStop()
+        .ajaxSuccess()
+        .ajaxComplete()
+        .ajaxError()
+
+Design a SPA [Single Page Application]
+
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Index</title>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script>
+            $(function(){
+                $.ajax({
+                    method:"GET",
+                    url: "home.html",
+                    success:(res)=>{
+                        $("section").html(res);
+                    }
+                })
+                $("#home").click(()=>{
+                    $.ajax({
+                        method: "GET",
+                        url: "home.html",
+                        success:(res)=> {
+                           $("section").html(res);
+                        }
+                    })
+                })
+                $("#about").click(()=>{
+                    $.ajax({
+                        method: "GET",
+                        url: "about.html",
+                        success:(res)=> {
+                           $("section").html(res);
+                        }
+                    })
+                })
+                $("#contact").click(()=>{
+                    $.ajax({
+                        method: "GET",
+                        url: "contact.html",
+                        success:(res)=> {
+                           $("section").html(res);
+                        }
+                    })
+                })
+                $("#cart").click(()=>{
+                    $.ajax({
+                        method: "GET",
+                        url: "../data/products.json",
+                        success: (data)=>{
+                            $("section").html("");
+                            $.each(data,(key, product)=>{
+                                $(`
+                                  <div class="card m-2 p-2" style="width:200px">
+                                    <img src=${product.Photo} class="card-img-top">
+                                    <div style="height:150px" class="card-header">
+                                        <h3>${product.Name}</h3>
+                                    </div>
+                                  </div>
+                                `).appendTo("section");
+                            })
+                        }
+                    })
+                })
+            })
+        </script>
+    </head>
+    <body class="container-fluid">
+        <div class="btn-toolbar mt-2 bg-dark justify-content-between">
+            <div class="btn-group">
+                <button id="home" class="btn btn-dark">Home</button>
+                <button id="about" class="btn btn-dark">About</button>
+                <button id="contact" class="btn btn-dark">Contact</button>
+            </div>
+            <div class="btn-group">
+                <button id="cart" class="btn btn-dark">Your Cart</button>
+            </div>
+        </div>
+        <section class="d-flex flex-wrap" style="height: 400px;">
+
+        </section>
+        <footer class="bg-dark text-white text-center">
+            <i><b>&copy; copyright 2022</b></i>
+        </footer>
+    </body>
+</html>
+
+
+
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Index</title>
+        <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script>
+            $(function(){
+                $.ajax({
+                    method:"GET",
+                    url: "home.html",
+                    success:(res)=>{
+                        $("section").html(res);
+                    }
+                })
+                $("#home").click(()=>{
+                    $.ajax({
+                        method: "GET",
+                        url: "home.html",
+                        success:(res)=> {
+                           $("section").html(res);
+                        }
+                    })
+                })
+                $("#about").click(()=>{
+                    $.ajax({
+                        method: "GET",
+                        url: "about.html",
+                        success:(res)=> {
+                           $("section").html(res);
+                        }
+                    })
+                })
+                $("#contact").click(()=>{
+                    $.ajax({
+                        method: "GET",
+                        url: "contact.html",
+                        success:(res)=> {
+                           $("section").html(res);
+                        }
+                    })
+                })
+                $("#cart").click(()=>{
+                    $.ajax({
+                        method: "GET",
+                        url: "../data/products.json",
+                        success: (data)=>{
+                            $("section").html("");
+                            $.each(data,(key, product)=>{
+                                $(`
+                                  <div class="card m-2 p-2" style="width:200px">
+                                    <img src=${product.Photo} class="card-img-top">
+                                    <div style="height:150px" class="card-header">
+                                        <h3>${product.Name}</h3>
+                                    </div>
+                                    <div class="card-footer">
+                                        <button id="add" class="btn btn-danger">Add to Cart</button>
+                                    </div>
+                                  </div>
+                                `).appendTo("section");
+                            })
+                        }
+                    })
+                })
+
+                $(document).on("click","#add",()=>{
+                    alert("Add Clicked");
+                })
+            })
+        </script>
+    </head>
+    <body class="container-fluid">
+        <div class="btn-toolbar mt-2 bg-dark justify-content-between">
+            <div class="btn-group">
+                <button id="home" class="btn btn-dark">Home</button>
+                <button id="about" class="btn btn-dark">About</button>
+                <button id="contact" class="btn btn-dark">Contact</button>
+            </div>
+            <div class="btn-group">
+                <button id="cart" class="btn btn-dark">Your Cart</button>
+            </div>
+        </div>
+        <section class="d-flex flex-wrap" style="height: 400px;">
+
+        </section>
+        <footer class="bg-dark text-white text-center">
+            <i><b>&copy; copyright 2022</b></i>
+        </footer>
+    </body>
+</html> -->

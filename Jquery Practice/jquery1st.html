@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jquery 1st</title>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script>
+        var item = ["ALL","Mobile","Shoe","Watch","T-Shirt"];
+        $( function(){
+            //document.write("<h1>welcome to JQuery.</h1>"); 
+            jqueryUse();    
+        });
+
+        function jqueryUse(){
+            for(var val of item){
+                //$("ol").html("<li>"+val+"</li>"); //not suitable here
+              
+                //$("ol").append("<li>"+val+"</li>");
+              
+                $("<li>"+val+"</li>").appendTo("ol");       //element select
+            
+                $("#selectBox").append("<option>"+val+"</option>"); //id select
+
+                $(".dataListItem").append("<dd>"+val+"</dd>");  //class select
+            }
+
+        }
+
+    </script>
+
+</head>
+<body>
+    
+    <ol></ol>
+
+    <select id="selectBox"></select>
+
+    <dt class="dataListItem"> items :- </dt>
+
+</body>
+</html>
