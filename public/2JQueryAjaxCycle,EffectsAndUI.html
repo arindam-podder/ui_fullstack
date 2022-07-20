@@ -1,0 +1,196 @@
+<!-- - jQuery Methods and Events
+- How to configure events for embedded elements?
+
+     document.on("eventname", "element", function(){
+
+    })
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Shopping</title>
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script>
+            $(function(){
+                function LoadCategories(){
+                    $.ajax({
+                        method:"get",
+                        url: "http://fakestoreapi.com/products/categories&quot;,
+                        success: function(data){
+                            $.each(data,function(key, value){
+                                $(`<option>${value}</option>`).appendTo("select");
+                            })
+                        }
+                    })
+                }
+                LoadCategories();
+            })
+        </script>
+    </head>
+    <body>
+        <select>
+
+        </select>
+    </body>
+</html>
+
+Ajax Life Cycle Events
+ajaxStart()
+ajaxEnd()
+ajaxSuccess()
+ajaxComplete() etc..
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Shopping</title>
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script>
+            $(function(){
+                $("button").click(function(){
+                    $.ajax({
+                    method: "get",
+                    url:"home1.html",
+                    success:(response)=>{
+                        $(".container").html(response);
+                    }
+                   })
+                })
+            })
+            .ajaxStart(()=> {
+                alert("Your request for Home Page Started");
+            })
+            .ajaxComplete(()=> {
+                alert("Your request successfully completed..");
+            })
+            .ajaxSuccess(()=>{
+                alert("Your request processed and response ready");
+            })
+            .ajaxStop(()=> {
+                alert("Ajax End");
+            })
+            .ajaxError(()=> {
+                alert("Something Went Wrong");
+            })
+        </script>
+    </head>
+    <body>
+        <button>Load</button>
+         <div class="container">
+
+         </div>
+    </body>
+</html>
+
+- You can track the errors by using Ajax Error Object
+        jqXHR = {
+            status            : returns the status code,
+            statusText    : returns the status text
+         }
+
+    200            OK
+    302            Method
+    404            Not Found
+
+Ex:
+.ajaxError((event, jqXHR)=> {
+                alert(`${jqXHR.status} : Page you requested ${jqXHR.statusText}`);
+            })
+
+     XmlHttpRequest
+     ----------------------
+JavaScript        fetch()
+jQuery            ajax(), getJSON()
+React                axios, whatwgFetch
+Angular            HttpClient
+
+                             jQuery Effects
+show()
+hide()
+toggle()
+slideIn()
+slideOut()
+slideToggle()
+fadeIn()
+fadeOut()
+fadeToggle() etc..
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Shopping</title>
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script>
+            $(function(){
+                $("button").click(()=>{
+                    $("img").slideToggle(3000);
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <div>
+            <button>Toggle Preview</button>
+        </div>
+        <img src="../public/assets/jacket.jpg" width="100" height="100">
+    </body>
+</html>
+
+                                jQuery UI Library
+- It is library that provides
+    a) Interactions
+    b) Widgets
+    c) Plugins
+
+- Download and Copy jQuery UI Library into project
+
+        https://jqueryui.com/
+ 
+
+Interactions
+- Draggable
+- Sortable
+- Selectable
+- Resizable
+
+Widgets
+- calendar
+- according
+- dialog
+- button
+- nav
+
+Ex:
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Shopping</title>
+        <link rel="stylesheet" href="../node_modules/jquery-ui/jquery-ui.css">
+
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script src="../node_modules/jquery-ui/jquery-ui.js"></script>
+        <script>
+            $(function(){
+                $("#topics").accordion();
+                $("#dob").datepicker();
+            })
+        </script>
+    </head>
+    <body>
+        Date of Birth :  <input type="text" id="dob">
+        <div id="topics">
+           
+                <h2>HTML</h2>
+                <div>
+                    It is a markup language.
+                </div>
+                <h2>CSS</h2>
+                <div>
+                    It configure styles for HTML.
+                </div>
+        </div>
+    </body>
+</html> -->
