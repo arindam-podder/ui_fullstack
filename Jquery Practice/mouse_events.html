@@ -1,0 +1,61 @@
+<!-- Mouse Events
+- onmouseover
+- onmouseout
+- onmousedown
+- onmouseup
+- onmousemove -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> mouse event</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <style>
+
+        .color{
+            width: 200px;
+            height: 200px;
+        }
+        #green{
+            background-color: green;
+        }
+        #red{
+            background-color: red;
+        }
+        #blue{
+            background-color: blue;
+        }
+
+
+    </style>
+
+    <script>
+       function color(id){
+            $("#colorName").text(id) ;
+       }
+    </script>
+</head>
+<body>
+    
+    <marquee onmouseover="this.stop()" onmouseout="this.start()">
+        <img src="../assets/bags.jpg" width="150" height="140">
+        <img src="../assets/footwear.jpg" width="150" height="140">
+    </marquee>
+
+    <div class="d-flex justify-content-center">
+        <div onmouseover="color(this.id)" class="color me-2" id="green"></div>
+        <div onmouseover="color(this.id)" class="color me-2" id="red"></div>
+        <div onmouseover="color(this.id)" class="color" id="blue"></div>
+    </div>
+    <h3 id="colorName" class="text-center mt-4">
+       
+    </h3>
+
+
+
+</body>
+</html>
