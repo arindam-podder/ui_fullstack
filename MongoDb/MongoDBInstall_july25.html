@@ -1,0 +1,78 @@
+<!-- Back End Technologies
+1. What is Database?
+2. Why we need database?
+3. Database Models
+        a) Conceptual
+        b) Physical
+        c) Logical
+        d) Entity
+4. Database Types
+        a) SQL        : Oracle, MySql, Sql Server etc..
+        b) No-Sql    : MongoDb
+
+
+                                MongoDB
+- It is non-sql database. [No-Sql]
+- It is document oriented database.
+- It is schema less.
+- It is JSON formatted
+        [ { Name:"",  Price: 0 },
+          { Name:"",  Price: 0, Stock:true},
+        ]
+- It is easy for Browser to handle data.
+- It supports indexing. You can query on any field.
+- It supports Ad-hoc queries. It allows to build a query dynamically.
+- It supports data replications.
+- It can handle load balancing.
+- High Availablilty
+
+Issues
+- It is schema less, not good for analytics at ERP.
+- It poor in relationships
+
+
+Download and Install MongoDB on your PC
+
+1. Visit
+     https://www.mongodb.com/try/download/community
+
+2. Download  5.0.9  version  [Windows 8+]
+
+3. Install ".msi" file
+
+Note: While Installing Select "MongoDB Compass", It is  a GUI tool for database.
+
+Start MongoDB Server:
+-------------------------------
+1. Open your PC services.
+
+        run => services.msc
+        search => services.msc
+
+2. Right Click on "MongoDB Server"
+
+3. Select Start
+
+
+Connect to MongoDB Server:
+----------------------------------------
+Method-1: From CLI
+- Open Command Prompt
+- Change to following location
+
+C:\Program Files\MongoDb\Server\5.0\Bin> mongo.exe
+
+Method-2: From GUI
+- Open MongoDB Compass on your PC
+- Type the connection string
+
+        mongodb://127.0.0.1:27017
+
+
+
+                                   MongoDB Commands
+- CRUD
+    C        Create
+    R        Read
+    U        Update
+    D        Delete -->

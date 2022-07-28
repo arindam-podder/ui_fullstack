@@ -1,0 +1,130 @@
+Setup and Install MongoDB
+MongoDB Compass
+
+Note: If CLI tool is not available with "mongo.exe" then open with MongoDB Compass using "MONGOSH" [MongoDB Shell]
+
+                        MongoDB Terminology
+
+Oracle,MySql,..                        MongoDB
+-------------------------------------------------------------
+Database                            Database
+Tables                                Collections
+Records [Row]                        Document [Row]
+Field    [Column]                        Field
+Joins                                    Embedded Documents
+
+
+Database                :  It is the store
+Table /Collection        :  It is a tuple that comprises of data
+Document                :  It refers to a row, every record is considered
+                               as document.
+Field                        :  It refers to the column header, Field defines
+                               the structure of data.
+Embedded Document:  It is a document within document.
+
+
+                            MongoDB Commands
+
+1. To view the list of existing databases on server
+
+            > show dbs
+
+    You will find default database
+            - admin
+            - config    
+            - local
+
+2. To create a new Database  or to use existing database
+
+            > use  newDatabaseName
+            > use  existingDbName
+
+
+3. To view which data base is currently active
+
+            > db
+
+
+4.  To remove database
+        a) Change into database
+                > use demodb
+        b) Remove database
+                > db.dropDatabase()
+
+Creating a new Database:
+-----------------------------------
+ > use  fakestore
+ > db
+
+Note: Database in not permanent, It is temporary.
+         To make the database permanent you have to add collection    
+          into database.
+
+
+Add Collection into Database: [Tables]
+
+>db.createCollection("name", { options })
+>db.createCollection("name")
+
+Note : You can ignore options. It will take the options default.
+
+Option                Type                Description
+--------------------------------------------------------------------------------
+autoIndexId            boolean            If set to true, every document
+                                            in collection will have an ID
+                                            generated automatically.
+                                            [Default it is true]
+
+size                    number            It defines the space allocated for
+                                            collection. It is mentioned in bytes.
+       
+                                            8 bits             =  1 byte
+                                            1024 bytes    =  1 KB
+                                            1024    KB        =  1 MB
+                                            1024 MB        =  1 GB
+                                            1024 GB        =  1 TB
+
+max                    number            It defines max number of                                                         documents to allow.
+
+
+capped                boolean            If set to true, you can't store
+                                            new document after reaching the
+                                            max number.
+
+                                            If set you set false, new document
+                                            will replace the oldest.
+
+Syntax:
+ > db.createCollection("products", {autoIndexId:true, capped:true, max:10, size:2097152})
+> db.createCollection("categories")
+
+To View the list of collection in Database:
+--------------------------------------------------------
+
+ >show collections
+
+
+Summary
+- Created a database            : fakestore
+- Created collections            : categories, products
+
+Add documents into collection:
+------------------------------------------
+insert()
+insertOne()
+insertMany()
+
+Syntax:
+    db.collectionName.insert({ } or [ ])
+    db.collectionName.insertOne({ })
+    db.collectionName.insertMany([{}, {}])
+
+Ex: One
+>db.categories.insertOne({CategoryId:1, CategoryName:"Electronics"})
+
+Ex: Multiple
+> db.categories.insertMany([{CategoryId:2, CategoryName:"Footwear"},{CategoryId:3, CategoryName:"Fashion"}])
+
+To View Documents in collection
+--------------------------------------------
+    >db.collectionName.find({query}).pretty()

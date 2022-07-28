@@ -1,0 +1,109 @@
+- Create Database
+    > use dbname
+- Create Collection
+    > db.createCollection()
+- Insert Documents
+    > db.collection.insert(), insertOne(), insertMany()
+- Reading Documents
+    find({ query }).pretty()
+
+Syntax:
+  db.collection.find({})                // return all
+
+Query:
+            {fieldName:value}
+            {fieldName:{expression}}
+
+Ex:
+ db.products.find().pretty()
+ db.products.find({id:2}).pretty()
+ db.products.find({name:"tv"}).pretty()
+
+Note: MongoDB will not allow operators in query. You have to use literals.
+
+            {price:300}                equal to 300
+            {price:{$gt:300}}        greater than 300
+            {price:{$gte:300}}        >=300
+            {price:{$lt:300}}            <300
+            {price:{$lte:300}}        <=300
+            {price:{$ne:300}}        !=300
+
+
+            { field:{} }
+
+Ex:
+db.products.find({price:{$gt:600}}).pretty()
+db.products.find({category:"electronics"}).pretty()
+
+                  $gt
+                  $lt
+                $gte
+                $lte
+                $ne
+                $in        finds for string that occurs in any location
+                $or    ||
+
+        { $or:[{ field:" " }, { field:{ } }] }
+
+Ex:
+db.products.find({$or:[{category:"electronics"},{price:{$gt:600}}]}).pretty()
+
+db.products.find({category:"jewelery"})
+
+
+var products = db.products.find({});
+products.filter(product=> product.price>600);
+
+
+- CRUD
+- Create
+- Read
+- Update
+- Delete
+
+                                    Update
+- update()
+- updateOne()
+- updateMany()
+
+Syntax:
+    db.collection.updateOne({findQuery}, {update Query})
+
+Operators
+$set                    : It is used to change value in field
+$rename                : It is used to change field name
+$unset                : It is used to remove field name
+
+Syntax:
+  db.collection.update({find_query},{$set:{field:value}})
+
+  db.products.updateOne({id:2},{$set:{price:150.32}})
+
+  db.products.updateMany({price:{$gt:600}}, {$set:{price:650.44}})
+
+  db.products.updateMany({ }, {$rename:{"category", "categoryName"}})
+
+            { }            = all
+            {id:1}        = specific
+
+                                  Delete
+- Delete Document
+    delete()
+    deleteOne()
+    deleteMany()
+- Delete Table
+    db.collection.drop()
+- Delete Database
+    db.dropDatabase()
+
+Syntax:
+        db.collection.delete({findQuery})
+
+Note: You can't delete any document from capped collection.
+
+Ex:
+db.products.deleteOne({id:20})
+db.products.deleteMany({category:"jewelery"})
+
+                    Server Side Scripting / Middleware
+                     NodeJS / Express
