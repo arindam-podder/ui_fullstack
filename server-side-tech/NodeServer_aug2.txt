@@ -1,0 +1,139 @@
+- Node JS connect with Backend Database
+- Create a server
+
+Server:
+- It resembles both hardware and software.
+- It satisfies the client request by sending and receving data.
+- It manages request and response.
+- You can configure servers in 2 ways
+        a) Local Server
+        b) Cloud Server
+
+- Local server
+        MAMPP
+        WAMP
+        IIS
+        Tomcat
+
+- Cloud Server
+        Firebase
+        GitHub Pages
+        AWS
+        Azure etc..
+
+- To Create a local server using Node JS you have to install a library
+    "http".
+- Web Server is often called as "HttpServer".
+
+            Creating a WebServer using Node JS
+             ----------------------------------------------------
+1. Install
+    >npm install http --save  
+
+2. Import Http and create a new server by using the method
+
+        createServer()
+
+3. createServer() handle request and response objects.
+
+
+     http.createSever(function(req, res){
+
+     })
+
+    req    : It is used to fetch details from client.
+    res    : It is used to send response to client.
+
+4. Response must define a response header, which specifies the type of content you are sending.
+
+5. Response must also define the status
+            OK            - 200
+            NotFound    - 404
+
+Syntax:
+          response.writeHead(statusCode, {
+                 "Content-Type" : "MIME Type"
+         })
+
+
+6. Define the content to send as response
+
+          response.write("your content");
+          response.end();
+
+7. Server must load into memory and start listening
+
+        var server = http.createServer();
+
+        server.listen(port);
+
+
+Ex:  index.js
+var http = require("http");
+
+var server = http.createServer(function(request, response){
+    response.writeHead(200, {
+        "Content-Type": "text/html"
+    });
+    response.write("<h2>Welcome to Node JS</h2><p>Server Responded with HTML - 200</p>");
+    response.end();
+});
+server.listen(4000);        
+console.log("Server Listening : http://127.0.0.1:4000&quot;);
+
+
+Ex: Accessing Data from Database and Send to Client
+
+var http = require("http");
+var mongoClient = require("mongodb").MongoClient;
+
+var connectionString = "mongodb://127.0.0.1:27017";
+
+var server = http.createServer(function(request, response){
+    response.writeHead(200, {
+        "Content-Type": "application/json"
+    });
+    mongoClient.connect(connectionString,(err, clientObject)=>{
+        if(!err) {
+            var dbo = clientObject.db("fakestore");
+            dbo.collection("products").find({id:1}).toArray((err,documents)=>{
+                if(!err) {
+                    response.write(JSON.stringify(documents));
+                    response.end();
+                }
+            })
+        }
+    })
+   
+});
+server.listen(4000);        
+console.log("Server Listening : http://127.0.0.1:4000&quot;);
+
+
+fakestoreapi.com/products
+fakestoreapi.com/products/1
+fakestoreapi.com/products/categories
+
+                            Distributed Computing
+- Distributed computing is an architecture that allows two different applications running on two different mechines to share information.
+
+- It also allows 2 different apps running in 2 different process of same mechine to share information.
+
+- There are various distributed computing technologies used by different languages
+
+CORBA
+DCOM
+RMI
+EJB
+WebService
+Remoting
+
+
+- Web Service specifications
+    a) SOAP            Request => XML <= XML <= Server
+    b) REST            Query  ?id=1  => XML
+    c) JSON            JSON = JSON
+
+
+                         Middleware - Express
+- API

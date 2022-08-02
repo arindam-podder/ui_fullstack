@@ -1,0 +1,158 @@
+Node JS Server Side Program
+1. Node JS server side program is a JavaScript module
+
+            program.js
+
+2. Node JS uses JavaScript as language. Not for DOM.
+        - Variables
+        - Data Types
+        - Operators
+        - Statements
+        - Functions
+        - OOP
+        - Input from Front End
+        - Output as Response [console]
+
+3. Node JS programs are compiled and executed by node compiler
+
+        > node  program.js
+
+Ex:
+- Add a new folder into project
+        "server"
+
+- Add a new file
+        index.js
+var msg = "Hello ! Welcome to Node JS";
+console.log(msg);
+
+- Compile and Run
+
+      > node index.js
+
+                          Server Side Objects
+                          ---------------------------
+1. OS object
+- It gets information about the server operating system.
+- It include OS type, version, language, memory, cpu type, cpu arch etc..
+- It is a built-in object of Node JS.
+- You have to import and use.
+- Node JS is used "UMD" module system.
+- The properties and methods of OS object
+
+arch
+cpus
+endianness
+freemem
+getPriority
+homedir
+hostname
+loadavg
+networkInterfaces
+platform
+release
+setPriority
+tmpdir
+totalmem
+type
+userInfo
+uptime
+version
+constants
+EOL
+devNull
+
+
+Ex:
+var os = require("os");
+
+console.log(os.cpus());
+console.log(`Total Free Memory : ` + os.freemem());
+
+2. Path Object
+- It is used to get and set path of any resource on server.
+- It provides all properties and methods that are used to access details of any specific file uploaded on server.
+- Properties and Methods
+
+
+resolve
+normalize
+isAbsolute
+join
+relative
+toNamespacedPath
+dirname
+basename
+extname
+format
+parse
+sep
+delimiter
+win32
+posix
+_makeLong
+
+Ex:
+
+var path = require("path");
+
+var file = "D:\\Images\\myphoto.jpg";
+
+console.log(path.dirname(file));
+console.log(path.basename(file));
+console.log(path.extname(file));
+
+if(path.extname(file)!=".jpg" && path.extname(file)!=".png") {
+    console.log('You can upload only JPG and PNG files');
+} else {
+    console.log('File Uploaded Successfully..');
+}
+
+3. File Stream Object
+- It provides a set of properties and methods to read information present in file or write information into file.
+- FS is not a built-in object of Node JS
+- You have to install "FS" library
+
+    > npm install fs --save
+
+- Node JS allows 2 type of techniques to interact with files
+
+    a) Sync            Blocking
+    b) Async            UnBlocking
+
+
+Ex: Sync - Blocking
+
+var fs = require("fs");
+
+console.log("Reading Cookie");
+
+var data = fs.readFileSync("../data/cookie.txt");
+console.log(data.toString());
+
+console.log("Read Completed");
+
+
+Ex: Asyn - Unblocking
+
+var fs = require("fs");
+
+console.log("Reading Cookie");
+
+fs.readFile("../data/cookie.txt", function(err, data){
+    if(!err) {
+        console.log(data.toString());
+    } else {
+        console.log(err);
+    }
+})
+
+console.log("Read Completed");
+
+
+4. Http Object
+- It is used to create a Http Server
+- You can create local web server
+- You can configure the server
+- You design application in server
+- You handle request and response from client.

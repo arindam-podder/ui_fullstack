@@ -1,0 +1,175 @@
+Connecting with Backend Database
+                    -------------------------------------------------
+- Your server side application can communicate with any database in the backend.
+- You have to install the relative drivers.
+- Drivers allow to connect and communicate with database.
+- Every database have different set of drivers.
+
+    >npm install mongodb --save
+
+    https://www.npmjs.com/
+
+
+- You have to import MongoClient class, It provides all set of properties and methods to communicate with mongodb database.
+
+        var mongoClient = require("mongodb").MongoClient;
+
+- To communicate with any database you need to configure "Connection String".
+
+            www.connectionstrings.com
+
+             mongodb://127.0.0.1:27017
+
+- You can open connection with database server using "connect()"
+
+   mongoClient.connect(connectionString, function(err, clientObj){
+
+    })
+
+    err            : It is an object that returns the error status
+    clientObj    : It is an object that connects with specific database on
+                  mongodb server.
+
+
+Ex: Testing Connection with Database Server
+
+1. Install MongoDB Drivers
+
+    >npm install mongodb --save
+
+2. index.js
+
+var mongoClient = require("mongodb").MongoClient;
+
+var connectionString = "mongodb://127.0.0.1:27017";
+
+mongoClient.connect(connectionString,function(err, clientObj){
+    if(!err) {
+        console.log("Connected Successfully..");
+    } else {
+        console.log(`Error Code : ${err.code}\nMessage : ${err.message}\nError Name : ${err.name}`);
+    }
+})
+
+Ex: Connect with database and read data from collection [Table]
+
+- To access any database in mongodb you have to use "db()" method
+   provided by clientObject.
+
+        var dbo = clientObject.db("fakestore");
+
+- By using the database object you can access the collection.
+
+        dbo.collection("name")
+
+- You can define the query on collection, which can be insert, update, delete and read.
+
+        dbo.collection("name").find({query})
+        dbo.collection("name").insertOne()
+        dbo.collection("name").deleteOne()
+        dbo.collection("name").updateOne()
+
+
+Reading
+- You can use find() method
+- It returns data, which is converted into Array by using "toArray()"
+- It uses a callback to report error in reading and return documents on success.
+
+    db.collection("name").find({}).toArray(function(err, documents){
+
+     })
+
+
+Ex:
+index.js
+
+var mongoClient = require("mongodb").MongoClient;
+
+var connectionString = "mongodb://127.0.0.1:27017";
+
+mongoClient.connect(connectionString,function(err, clientObj){
+    if(!err) {
+       var dbo = clientObj.db("fakestore");
+       dbo.collection("products").find({}).toArray(function(err, documents){
+            if(!err) {
+                console.log(documents);
+            } else {
+                console.log(err);
+            }
+       })
+       
+    } else {
+        console.log(err);
+    }
+})
+
+
+Ex: Query
+
+var mongoClient = require("mongodb").MongoClient;
+
+var connectionString = "mongodb://127.0.0.1:27017";
+
+mongoClient.connect(connectionString,function(err, clientObj){
+    if(!err) {
+       var dbo = clientObj.db("fakestore");
+       dbo.collection("products").find({id:2}).toArray(function(err, documents){
+            if(!err) {
+                console.log(documents);
+            } else {
+                console.log(err);
+            }
+       })
+       
+    } else {
+        console.log(err);
+    }
+})
+
+Ex: Insert Document
+
+var mongoClient = require("mongodb").MongoClient;
+
+var connectionString = "mongodb://127.0.0.1:27017";
+
+mongoClient.connect(connectionString,function(err, clientObj){
+    if(!err) {
+        var dbo = clientObj.db("fakestore");
+        var document = {
+            CategoryId:1,
+            CategoryName: 'electronics'
+        };
+        dbo.collection("categories").insertOne(document, function(err){
+            if(!err){
+                console.log("Record Inserted");
+            } else {
+                console.log(err);
+            }
+        })
+    } else {
+        console.log(err);
+    }
+})
+
+
+Ex: Update
+
+var mongoClient = require("mongodb").MongoClient;
+
+var connectionString = "mongodb://127.0.0.1:27017";
+
+mongoClient.connect(connectionString,function(err, clientObj){
+    if(!err) {
+        var dbo = clientObj.db("fakestore");
+        dbo.collection("categories").updateOne({CategoryId:1},{$set:{CategoryName:'fashion'}}, function(err){
+            if(!err) {
+                console.log(`Record Updated`);
+            } else {
+                console.log(err);
+            }
+        })
+    } else {
+        console.log(err);
+    }
+})
+                        Create and Configure Server

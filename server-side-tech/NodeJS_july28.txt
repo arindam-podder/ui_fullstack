@@ -1,0 +1,65 @@
+Server Side Scripting
+                            ----------------------------
+- Server Side Scripting a technique where scripts are employed on server in order to generate a response customized to every client request.
+- There are various server side scripting technologies
+        CGI, JSP, PHP, ASP, ASP.NET, Node.js, Python etc..
+
+
+                                Node JS
+- It is JavaScript based.
+- It uses V8 compiler.
+- It is single threaded.
+- It Can't handle CPU intensive tasks.
+  [Share task among process allocated]
+- It will not support buffering.
+- Data is received in the form of packets.
+- It is good for audio, video broadcasting etc..
+
+Server Side Objects
+---------------------------
+1. Request
+2. Response
+3. Cookie
+4. Session
+5. Application etc..            [Redux]
+
+
+Request Object:
+- It is used to request data from client.
+- Client data includes
+        a) Query String
+        b) Form Body
+        c) Cookies
+        d) Local Storage
+
+
+Response Object:
+- It is used to send response to client.
+- Response can be
+        a) HTML
+        b) JSON
+        c) XML
+        d) File
+
+- Node JS provides various built-in server objects
+        a) os
+        b) fs
+        c) path
+        d) http etc..
+
+Setup Node JS
+- It is already installed on your PC
+
+C:\> node -v
+C:\> npm -v
+
+Node REPL
+- It is a CLI tool to test node commands.
+    R        - Read
+    E        - Evaluate
+    P        - Print
+    L        - Loop
+
+C:\> node
+
+Ctrl + C [twice] to terminate
