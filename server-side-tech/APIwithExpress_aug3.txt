@@ -1,0 +1,196 @@
+What is Distributed Computing?
+Distributed Computing Technologies
+- CORBA
+- DCOM
+- RMI
+- EJB
+- Web Service
+- Remoting
+Specifications
+- SOAP
+- REST
+- JSON
+
+                                   Express JS
+- It is a middleware software framework used in JavaScript based applications for handling communication between computers in a network.
+- Various Middleware Frameworks
+    Oracle Middleware
+    CISCO Middleware
+    Express Middleware etc..
+- Middleware Role and Responsibility
+    a) Transporting data from server to client.
+    b) Handling client request and sending response
+    c) Parsing [Translating - Binary to JSON and Vice Versa]
+
+- Install Express for your project
+
+    > npm install express --save
+
+- Import express library
+
+    var express = require("express");
+
+- Create a server side app that uses express
+
+    var app = express();
+
+- Server Side App or API [Application Interface] can configure requests and response to handle.
+
+    app.get()                It is used to fetch data from client
+    app.post()            It is used to submit data to server.
+    app.put()                It is used to modify all details.
+    app.patch()            It is used to modify partial details.
+    app.delete()            It is used to remove any resource.
+
+- After configuring requests you have to start the server
+
+    app.listen(port);
+
+Ex: API with GET requests
+
+1. Install Express
+    > npm install express --save
+
+2. Add a new file
+        "api.js"
+
+var express = require("express");
+
+var app = express();
+
+app.get("/", (req, res) => {
+    res.send("<h2>Index</h2>");
+});
+app.get("/home", (req, res) => {
+    res.send("<h2>Home</h2><p>You requested Home</p>");
+});
+app.get("/shopping",(req, res)=>{
+    res.send("<h2>Shopping</h2><p>You can browser and search products.</p>")
+});
+app.get("**", (req, res)=>{
+    res.send(`<h2>Not Found</h2><p>Page you requested - Not Found</p>`);
+})
+
+app.listen(4000);
+console.log("Server Started : http://localhost:4000&quot;);
+
+3. Run
+    > node api.js
+
+4. Request the following from browser
+
+    http://localhost:4200                    : Index
+    http://localhost:4200/home            : Home
+    http://localhost:4200/shopping        : Shopping
+    http://localhost:4200/cart                : Not Found
+
+Note:   app.get("**")        :to define actions when requested path not
+                                found.
+          app.get("c*t")        : /cat, /contact, /ct
+
+
+API Route Parameters:
+- Parameter allows to query any content directly from URL
+
+            fakestoreapi.com/products/1
+            fakestoreapi.com/products/category/electronics
+
+- API route parameters are defined by using
+
+            app.get("/name/:paramName/:paramName")
+            app.get("/products/:id/:name/:price")
+
+- Every route parameter is mandatory
+
+- To access the route parameters you have to use "request" object.
+
+            request.params = {
+                ParamName : value,
+                ParamName : value
+             }
+
+            request.params.id
+
+
+Ex:
+var express = require("express");
+
+var app = express();
+
+app.get("/", (req, res) => {
+    res.send("<h2>Fakestore Home</h2>");
+});
+
+app.get("/products", (req, res)=> {
+    res.send("You are requesting all products");
+});
+
+app.get("/details/:id/:name/:price", (req, res)=>{
+    res.send(`
+        <dl>
+          <dt>Product Id</dt>
+          <dd>${req.params.id}</dd>
+          <dt>Name</dt>
+          <dd>${req.params.name}</dd>
+          <dt>Price</dt>
+          <dd>${req.params.price}</dd>
+        </dl>
+    `);
+});
+
+app.get("**", (req, res)=>{
+    res.send(`<h2>Not Found</h2><p>Page you requested - Not Found</p>`);
+})
+
+app.listen(4000);
+console.log("Server Started : http://localhost:4000&quot;);
+
+
+Ex: Get Data from Database using API methods
+
+api.js
+---------
+
+var express = require("express");
+var mongoClient = require("mongodb").MongoClient;
+
+var connectionString = "mongodb://127.0.0.1:27017";
+
+var app = express();
+
+app.get("/", (req, res) => {
+    res.send("<h2>Fakestore Home</h2>");
+});
+
+app.get("/products",(req, res)=>{
+    mongoClient.connect(connectionString,(err, clientObject)=>{
+        if(!err){
+            var dbo = clientObject.db("fakestore");
+            dbo.collection("products").find({}).toArray((err,documents)=>{
+                if(!err){
+                    res.send(documents);
+                }
+            })
+        }
+    })
+});
+app.get("/details/:id",(req, res)=>{
+    var productId = parseInt(req.params.id);
+    mongoClient.connect(connectionString,(err, clientObject)=>{
+        if(!err){
+            var dbo = clientObject.db("fakestore");
+            dbo.collection("products").find({id:productId}).toArray((err,documents)=>{
+                if(!err){
+                    res.send(documents);
+                }
+            })
+        }
+    })
+})
+
+app.get("**", (req, res)=>{
+    res.send(`<h2>Not Found</h2><p>Page you requested - Not Found</p>`);
+})
+
+app.listen(4000);
+console.log("Server Started : http://localhost:4000&quot;);

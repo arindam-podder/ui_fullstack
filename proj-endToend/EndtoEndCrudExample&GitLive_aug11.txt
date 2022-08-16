@@ -1,0 +1,493 @@
+API  - Complete CRUD
+
+var express = require("express");
+var mongoClient = require("mongodb").MongoClient;
+var cors = require("cors");
+
+var connectionString = "mongodb://127.0.0.1:27017";
+
+var app = express();
+app.use(express.urlencoded({
+    extended:true
+}));
+app.use(express.json());
+app.use(cors());
+
+app.get("/products", (req, res)=> {
+    mongoClient.connect(connectionString, (err, clientObject)=>{
+        if(!err) {
+            var dbo = clientObject.db("demodb");
+            dbo.collection("tblproducts").find({}).toArray((err, documents)=> {
+                if(!err) {
+                    res.send(documents);
+                }
+            })
+        }
+    })
+});
+
+app.get("/edit/:id", (req, res)=>{
+    var ProductId = parseInt(req.params.id);
+    mongoClient.connect(connectionString, (err, clientObject)=>{
+        if(!err) {
+            var dbo = clientObject.db("demodb");
+            dbo.collection("tblproducts").find({ProductId:ProductId}).toArray((err, documents)=> {
+                if(!err) {
+                    res.send(documents);
+                }
+            })
+        }
+    })
+})
+
+
+
+app.get("/categories", (req, res)=> {
+    mongoClient.connect(connectionString, (err, clientObject)=>{
+        if(!err) {
+            var dbo = clientObject.db("demodb");
+            dbo.collection("tblcategories").find({}).toArray((err, documents)=> {
+                if(!err) {
+                    res.send(documents);
+                }
+            })
+        }
+    })
+});
+
+app.post("/addproduct", (req, res)=> {
+    var product = {
+        "ProductId": parseInt(req.body.ProductId),
+        "Name": req.body.Name,
+        "Price": parseFloat(req.body.Price),
+        "Stock": (req.body.Stock=="true")?true:false,
+        "Category": req.body.Category
+    }
+    mongoClient.connect(connectionString, (err, clientObject)=>{
+        if(!err) {
+            var dbo = clientObject.db("demodb");
+            dbo.collection("tblproducts").insertOne(product,(err,result)=>{
+                if(!err) {
+                    console.log("Record Inserted");
+                }
+            })
+        }
+    })
+});
+
+app.put("/updateProduct/:id", (req, res)=>{
+    var id= parseInt(req.params.id);
+    var product = {
+        "ProductId": parseInt(req.body.ProductId),
+        "Name": req.body.Name,
+        "Price": parseFloat(req.body.Price),
+        "Stock": (req.body.Stock=="true")?true:false,
+        "Category": req.body.Category
+    };
+    mongoClient.connect(connectionString, (err, clientObject)=>{
+        if(!err) {
+            var dbo = clientObject.db("demodb");
+            dbo.collection("tblProducts").updateOne({ProductId:id}, product, function(err, result){
+                if(!err){
+                    console.log("Record Updated Successfully");
+                }
+            })
+        }
+    })
+})
+
+app.delete("/deleteProduct/:id", (req, res)=>{
+    var id = parseInt(req.params.id);
+    mongoClient.connect(connectionString, (err, clientObject)=>{
+        if(!err) {
+            var dbo = clientObject.db("demodb");
+            dbo.collection("tblproducts").deleteOne({ProductId:id},function(err, result){
+                if(!err) {
+                    console.log("Record Deleted");
+                }
+            })
+        }
+    })
+})
+
+app.listen(3500);
+console.log("Server Started : http://localhost:3500&quot;);
+
+
+- index.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script>
+        $(function(){
+
+            function LoadProducts(){
+                $.ajax({
+                    method:"Get",
+                    url: "http://localhost:3500/products&quot;,
+                    success: function(data){
+                        for(var item of data){
+                            $(`<tr>
+                                <td>${item.Name}</td>
+                                <td>${item.Price}</td>
+                                <td>${(item.Stock==true)?"Available":"Out of Stock"}</td>
+                                <td>${item.Category}</td>
+                                <td><button id="btnEdit" name="${item.ProductId}" class="btn btn-outline-info">
+                                     <span class="bi bi-pen-fill"></span>    
+                                    </button>
+                                </td>
+                                <td><button id="btnDelete" name="${item.ProductId}" class="btn btn-outline-danger">
+                                     <span class="bi bi-trash-fill"></span>    
+                                    </button>
+                                </td>
+                               </tr>`
+                             ).appendTo("tbody");
+                        }
+                    }
+                })
+            }
+
+            function LoadCategories(){
+                $.ajax({
+                    method:"Get",
+                    url: "http://localhost:3500/categories&quot;,
+                    success: function(data){
+                        data.unshift({CategoryId:-1, CategoryName:"Select Category"});
+                        for(var item of data) {
+                           $(`<option>${item.CategoryName}</option>`).appendTo("select");
+                        }
+                    }
+                })
+            }
+
+            $("#Add").click(function(){
+                $.ajax({
+                    method: "Get",
+                    url: "addproduct.html",
+                    success: function(layout) {
+                        $("section").html(layout);
+                    }
+                })
+               LoadCategories();
+            })
+
+            function LoadView(){
+                $.ajax({
+                    method: "Get",
+                    url: "viewproduct.html",
+                    success: function(layout) {
+                        $("section").html(layout);
+                    }
+                })
+                LoadProducts();
+            }
+            $("#View").click(function(){
+               LoadView();
+            })
+            $(document).on("click","#btnAdd",function(){
+                var product = {
+                    ProductId: parseInt($("#ProductId").val()),
+                    Name: $("#Name").val(),
+                    Price: parseFloat($("#Price").val()),
+                    Category: $("#Category").val(),
+                    Stock: ($("#Stock").prop("checked"))?true:false
+                }
+                $.ajax({
+                    method: "Post",
+                    url: "http://localhost:3500/addproduct&quot;,
+                    data: product
+                })
+                alert("Record Inserted");
+                LoadView();
+            })
+
+            $(document).on("click", "#btnEdit", function(event){
+                var id = parseInt(event.target.name);
+                $.ajax({
+                    method: "get",
+                    url: "editProduct.html",
+                    success: function(layout){
+                        $("section").html(layout);
+                    }
+                })
+                LoadCategories();
+                $.ajax({
+                    method: "get",
+                    url: `http://localhost:3500/edit/${id}`,
+                    success: function(data) {
+                        $("#Name").val(data[0].Name);
+                        $("#Price").val(data[0].Price);
+                        $("#Stock").prop("checked",data[0].Stock);
+                        $("#Category").val(data[0].Category);
+                    }
+                })
+            })
+
+            $(document).on("click","#btnDelete",function(event){
+                var id = parseInt(event.target.name);
+                $.ajax({
+                    method: "get",
+                    url: "deleteProduct.html",
+                    success: function(layout){
+                        $("section").html(layout);
+                    }
+                })
+                $.ajax({
+                    method: "get",
+                    url:`http://localhost:3500/edit/${id}`,
+                    success: function(data) {
+                        $("#lblName").html(data[0].Name);
+                        $("#lblPrice").html(data[0].Price);
+                    }
+                })
+            })
+        })
+    </script>
+</head>
+<body class="container-fluid">
+    <h2>Products CRUD Operations</h2>
+    <header>
+        <button class="btn btn-primary" id="Add">Add Product</button>
+        <button class="btn btn-primary" id="View">View Products</button>
+    </header>
+    <hr>
+    <section>
+
+    </section>
+</body>
+</html>
+
+- viewProduct.html
+
+<div>
+    <h2>View Products</h2>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Category</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</div>
+
+- addProduct.html
+
+<div>
+    <h2>Add New Product</h2>
+    <dl>
+        <dt>Product Id</dt>
+        <dd><input type="number" id="ProductId"></dd>
+        <dt>Name</dt>
+        <dd><input type="text" id="Name"></dd>
+        <dt>Price</dt>
+        <dd><input type="text" id="Price"></dd>
+        <dt>Stock</dt>
+        <dd class="form-switch"><input id="Stock" class="form-check-input" type="checkbox"> Available</dd>
+        <dt>Category</dt>
+        <dd>
+            <select id="Category">
+            </select>
+        </dd>
+    </dl>
+    <button id="btnAdd" class="btn btn-primary">Add Product</button>
+</div>
+
+- editProduct.html
+
+<div>
+    <h2>Edit Product</h2>
+    <dl>
+        <dt>Name</dt>
+        <dd><input type="text" id="Name"></dd>
+        <dt>Price</dt>
+        <dd><input type="text" id="Price"></dd>
+        <dt>Stock</dt>
+        <dd class="form-switch"><input id="Stock" class="form-check-input" type="checkbox"> Available</dd>
+        <dt>Category</dt>
+        <dd>
+            <select id="Category">
+            </select>
+        </dd>
+    </dl>
+    <button id="btnUpdate" class="btn btn-primary">Update Product</button>
+</div>
+
+- deleteProducts.html
+
+<h2>Delete Product</h2>
+<dl>
+    <dt>Name</dt>
+    <dd id="lblName"></dd>
+    <dt>Price</dt>
+    <dd id="lblPrice"></dd>
+</dl>
+<button class="btn btn-danger">Delete</button>
+
+
+                                  MySql
+- It is SQL database
+- It is RDBMS
+
+Setup Environment:
+- Download and Install "MySql Workbench".
+
+https://dev.mysql.com/downloads/workbench/
+
+- Open and Connect to MySql Server
+
+        user    : root
+        pwd    : root
+
+- Create a new Database : open query window
+
+        create  database  demodb
+        use demodb
+
+- Create Tables
+
+       CREATE TABLE `demodb`.`tblproducts` (
+  `ProductId` INT NOT NULL,
+  `Name` VARCHAR(45) NULL,
+  `Price` DECIMAL(6) NULL,
+  PRIMARY KEY (`ProductId`));
+
+- Add data into Table
+   
+
+ INSERT INTO `demodb`.`tblproducts` (`ProductId`, `Name`, `Price`) VALUES ('1', 'Samsung TV', '56000');
+
+INSERT INTO `demodb`.`tblproducts` (`ProductId`, `Name`, `Price`) VALUES ('2', 'Nike Casuals', '3500');
+
+- View Records
+
+ select * from tblproducts
+
+
+
+
+Node JS API to connect with MySQL Database
+
+> npm install mysql --save
+
+mysql.js
+
+var mysql = require("mysql");
+
+var con = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "root",
+    database: "demodb"
+});
+con.connect(function(err){
+    if(!err) {
+        console.log("Connected Successfully..");
+    } else {
+        console.log(err);
+    }
+})
+   
+Ex:
+var mysql = require("mysql");
+
+var con = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "root",
+    database: "demodb"
+});
+con.connect(function(err){
+    if(!err) {
+        con.query("select * from tblproducts",function(err,rows, fields){
+            if(!err){
+                console.log(rows);
+            }
+        })
+    } else {
+        console.log(err);
+    }
+})
+
+Ex:
+var mysql = require("mysql");
+var express = require("express");
+
+var app = express();
+
+var con = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "root",
+    database: "demodb"
+});
+
+app.get("/products", (req,res)=> {
+    con.connect(function(err){
+        if(!err) {
+            con.query("select * from tblproducts",function(err,rows, fields){
+                if(!err){
+                    res.send(rows);
+                }
+            })
+        } else {
+            console.log(err);
+        }
+    })
+})
+
+app.listen(3400);
+console.log("Server Started : http://localhost:3400&quot;);
+
+                           
+                           Deployment
+- It is the process of publishing our project on to server.
+- Making our application "Go - Live".
+- You can deploy on local servers
+        a) IIS
+        b) Tomcat
+        c) WAMP
+        d) MAMPP etc..
+- You can deploy on cloud servers
+        a) Firebase
+        b) Git Hub Pages
+        c) AWS
+        d) Azure etc..
+
+Ex: Developer Portfolio  with Git Hub Pages
+
+1. Create a folder
+
+2. Add repositories
+        - public
+        - src
+3. Add index.html in root folder.
+
+
+4. Create a new Account on GIT Hub
+
+    https://github.com/
+
+5. Login into Git Hub Account
+
+6. Create a new Repository
+        developer-portfolio
+        [public]
+
+7. Download and Install GIT hub Desktop Tool
+
+https://fullstack-shopping.github.io/developer-portfolio/

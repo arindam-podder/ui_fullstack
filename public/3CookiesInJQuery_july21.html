@@ -10,7 +10,7 @@
  AS-IS            TO-BE            GAP
  --------------------------------------------------------------------
  what your        What client        Java 20% GAP
- tech. is            wants?            .NET 15 % GAP    
+ tech. is            wants?            .NET 15 % GAP     
  capable of?                            PHP 2% GAP
 
 
@@ -31,3 +31,96 @@ Install
 MongoDB
 NodeJS
 Express -->
+
+<!-- example code on - google class room - cookis example
+
+index.html
+--------------------------------------------------------------------
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Index</title>
+        <script>
+            function bodyload(){
+                document.getElementById("msg").innerHTML = (navigator.cookieEnabled==true)?"":"Please Enable Cookies on your Browser";
+            }
+        </script>
+    </head>
+    <body onload="bodyload()">
+        <h1>IShop-Index</h1>
+        <div id="msg"></div>
+        <a href="login.html">Login</a>
+        <span>|</span>
+        <a href="shopping.html">Shopping</a>
+    </body>
+</html>
+
+
+shopping.html
+--------------------------------------------------------------------
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Shopping</title>
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script src="../node_modules/jquery.cookie/jquery.cookie.js"></script>
+        <script>
+            $(function(){
+                if($.cookie("username")==undefined) {
+                    location.href="login.html";
+                } else {
+                    $("#user").html($.cookie("username"));
+                }
+                $("#btnSignout").click(()=>{
+                    $.removeCookie("username");
+                    location.href="login.html";
+                })
+            })
+        </script>
+    </head>
+    <body>
+        
+        <h2>Shopping Home - <span id="user"></span>  <button id="btnSignout">Signout</button></h2>
+    </body>
+</html>
+
+
+login.html
+---------
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script src="../node_modules/jquery.cookie/jquery.cookie.js"></script>
+        <script>
+            $(function(){
+                 $("#btnLogin").click(()=>{
+                     $.cookie("username", $("#UserName").val());
+                     location.href="shopping.html";
+                 })
+            })
+        </script>
+    </head>
+    <body>
+        <h2>User Login</h2>
+        <dl>
+            <dt>User Name</dt>
+            <dd><input type="text" id="UserName"></dd>
+            <dt>Password</dt>
+            <dd><input type="password" id="Password"></dd>
+        </dl>
+        <button id="btnLogin">Login</button>
+        <br>
+        <a href="index.html">Index</a>
+    </body>
+</html> -->
+
+
+
+
+
+
+
+
+

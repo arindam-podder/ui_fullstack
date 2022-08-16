@@ -1,0 +1,264 @@
+Back End
+- Database
+    tblusers
+- Server Side API
+    GET        /getusers
+    POST        /registeruser
+- Enable CORS
+- Body Parser
+
+Front End
+- UI with HTML, CSS, Bootstrap, JQuery
+
+
+Ex: End to End
+
+1. Create a new Database "fakestore" in mongodb
+
+2. Create a collection "tblusers"
+
+    UserId, UserName, Password, Age, Email, Mobile
+
+3. Go to Server folder in your project and add
+            "app.js"
+
+4. Install following libraries
+        > npm install mongodb
+        > npm install express
+        > npm install cors
+        > npm instal jquery
+        > npm install jquery.cookie
+
+5. app.js  code
+
+var express = require("express");
+var mongoClient = require("mongodb").MongoClient;
+var cors = require("cors");
+
+var app = express();
+app.use(cors());
+
+app.use(express.urlencoded({
+    extended:true
+}));
+app.use(express.json());
+
+var connectionString  = "mongodb://127.0.0.1:27017";
+
+app.get("/getusers", (req, res)=>{
+    mongoClient.connect(connectionString,(err, clientObject)=>{
+        if(!err){
+            var dbo = clientObject.db("fakestore");
+            dbo.collection("tblusers").find({}).toArray((err,documents)=>{
+                if(!err) {
+                    res.send(documents);
+                }
+            })
+        }
+    })
+});
+
+app.post("/registeruser", (req, res)=>{
+    var user = {
+        "UserId": req.body.UserId,
+        "UserName": req.body.UserName,
+        "Password": req.body.Password,
+        "Age": parseInt(req.body.Age),
+        "Email": req.body.Email,
+        "Mobile": req.body.Mobile
+    };
+    mongoClient.connect(connectionString,(err, clientObject)=>{
+        if(!err){
+            var dbo = clientObject.db("fakestore");
+            dbo.collection("tblusers").insertOne(user,(err,result)=>{
+                if(!err){
+                    console.log("Record Inserted");
+                } else {
+                    console.log(err);
+                }
+            })
+        }
+    })
+});
+app.listen(4000);
+console.log("Server Started : http://localhost:4000&quot;);
+
+6. Create Front End
+
+7. Add following files into project folder
+    - index.html
+    - login.html
+    - register.html
+    - shop.html
+
+8. index.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+</head>
+<body>
+    <h2>Shopping Online</h2>
+    <a href="register.html">New User Register</a>
+    <span>|</span>
+    <a href="login.html">Existing User Login</a>
+    <span>|</span>
+    <a href="shop.html">Go to Shopping Home</a>
+</body>
+</html>
+
+register.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script>
+        $(function(){
+            $("#btnRegister").click(function(){
+                var user = {
+                    "UserId": $("#UserId").val(),
+                    "UserName": $("#UserName").val(),
+                    "Password": $("#Password").val(),
+                    "Age": parseInt($("#Age").val()),
+                    "Email": $("#Email").val(),
+                    "Mobile": $("#Mobile").val()
+                };
+                $.ajax({
+                    method: "POST",
+                    url: "http://localhost:4000/registeruser&quot;,
+                    data: user
+                });
+                alert("Registered Successfully..");
+                location.href="login.html";
+            })
+
+            $("#UserId").keyup(function(){
+                var userid = $("#UserId").val();
+                $.ajax({
+                    method: "GET",
+                    url: "http://localhost:4000/getusers&quot;,
+                    success: function(data){
+                        for(var user of data) {
+                            if(user.UserId==userid) {
+                                $("#UserMsg").html("User Id Taken - Try Another").css({'color':'red'});
+                                break;
+                            } else {
+                                $("#UserMsg").html("User ID Available").css({'color':'green'});
+                            }
+                        }
+                    }
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+    <h2>Register User</h2>
+    <dl>
+        <dt>User Id</dt>
+        <dd><input type="text" id="UserId"></dd>
+        <dd id="UserMsg"></dd>
+        <dt>User Name</dt>
+        <dd><input type="text" id="UserName"></dd>
+        <dt>Password</dt>
+        <dd><input type="password" id="Password"></dd>
+        <dt>Age</dt>
+        <dd><input type="number" id="Age"></dd>
+        <dt>Email</dt>
+        <dd><input type="email" id="Email"></dd>
+        <dt>Mobile</dt>
+        <dd><input type="text" id="Mobile"></dd>
+    </dl>
+    <button id="btnRegister">Register</button>
+    <br><br>
+    <a href="login.html">Existing User</a>
+</body>
+</html>
+
+login.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/jquery.cookie/jquery.cookie.js"></script>
+    <script>
+        $(function(){
+            $("#btnLogin").click(function(){
+                var userid = $("#UserId").val();
+                var password = $("#Password").val();
+                $.ajax({
+                    method: "GET",
+                    url: "http://localhost:4000/getusers&quot;,
+                    success: function(data){
+                        for(var user of data){
+                            if(user.UserId==userid && user.Password==password) {
+                                $.cookie("userid", userid);
+                                location.href = "shop.html";
+                            } else {
+                                $("#msg").html("Invalid User Name / Password").css({'color':'red'});
+                            }
+                        }
+                    }
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+    <h2>User Login</h2>
+    <dl>
+        <dt>User Id</dt>
+        <dd><input type="text" id="UserId"></dd>
+        <dt>Password</dt>
+        <dd><input type="password" id="Password"></dd>
+    </dl>
+    <button id="btnLogin">Login</button>
+    <h2 id="msg"></h2>
+    <br><br>
+    <a href="register.html">New User?</a>
+</body>
+</html>
+
+shop.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Home</title>
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/jquery.cookie/jquery.cookie.js"></script>
+    <script>
+        $(function(){
+            if($.cookie("userid")==undefined) {
+                location.href="login.html";
+            } else {
+                $("#user").html($.cookie("userid"));
+            }
+            $("#btnSignout").click(function(){
+                $.removeCookie("userid");
+                location.href="login.html";
+            })
+        })
+    </script>
+</head>
+<body>
+    <h2>Shopping Home  <span id="user"></span> <button id="btnSignout">Signout</button> </h2>
+</body>
+</html>

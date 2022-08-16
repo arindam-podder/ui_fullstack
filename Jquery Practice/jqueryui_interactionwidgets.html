@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Shopping</title>
+        <link rel="stylesheet" href="../node_modules/jquery-ui-1.13.2/jquery-ui.css">
+
+        <script src="../node_modules/jquery/dist/jquery.js"></script>
+        <script src="../node_modules/jquery-ui-1.13.2/jquery-ui.js"></script>
+        <script>
+            $(function(){
+                $("#topics").accordion();
+                $("#dob").datepicker();
+            })
+        </script>
+    </head>
+    <body>
+        Date of Birth :  <input type="text" id="dob">
+        <div id="topics">
+           
+                <h2>HTML</h2>
+                <div>
+                    It is a markup language.
+                </div>
+                <h2>CSS</h2>
+                <div>
+                    It configure styles for HTML.
+                </div>
+        </div>
+    </body>
+</html> 

@@ -1,0 +1,132 @@
+Hosting Project on GIT Hub Pages
+
+1. Create a new Project with index.html in root folder
+
+            D:\portfolio
+
+2. Open In VS Code
+   
+            > npm init -y
+
+3. Add folders
+            - public
+            - src
+            - index.html
+4. Always use CDN Links
+
+        index.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css&quot; rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js&quot; integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+</head>
+<body class="container-fluid">
+    <div class="bg-dark text-white p-2">
+        <h1 class="text-center">My Portfolio</h1>
+    <p class="text-center">I am a Fullstack Web Developer</p>
+    </div>
+    <div class="row mt-2">
+        <div class="col-3">
+            <img width="100%" height="200" border="1">
+        </div>
+        <div class="col-7">
+            <a href="public/template.html">My HTML Templates</a>
+            <a href="public/js.html">My JavaScript Widgets</a>
+        </div>
+    </div>
+</body>
+</html>
+
+5. Create an account of GIT hub and Login
+
+6. Create a new Respository for portfolio
+
+          Repostiory Name :  My-Portfolio
+          public [ yes ]
+          Click - Create Repository
+
+7. Download and Install GIT Desktop
+   [without desktop you have to run git commands]
+
+8. Open GIT Desktop and Login with your account
+
+
+9. Select Current Repository => Click Add => Clone Repository
+
+10. Select "Your Repository Name"
+
+        My-Portfolio
+
+11. Copy its Physical Path
+
+    C:\Users\Sudhakar Sharma\Documents\GitHub\my-portfolio
+
+12. Click Clone Button
+
+13. Copy all your project files into the repository physical path.
+
+14. Go to GIT desktop  and commit your first change
+
+15. Write description
+                "First Release"
+
+16. Click "Commit to Main"
+
+17.  Click  "Push Branch"
+
+18. Go to GIT hub Website
+
+        Code        : It is the location where you can find project repository
+                      You can add remove files or change.
+
+       
+19. Go to "Settings" in GIT hub webpage
+
+20. Select "Pages" tab
+
+        Branch        : Select "Main"
+        Folder        : "/" root
+
+21. Click "Save"
+
+22. Request From URL
+
+     https://your_account.github.io/my-portfolio/
+
+
+23. After Publishing , You can edit project in your VS-Code, Commit on GIT DeskTop => Publish Branch
+
+
+                             Firebase - Google Cloud
+- Open  firebase and login
+    https://firebase.google.com/
+
+- Go to Console
+
+- Add new Project
+
+    Project Name : fullstackdev-portfolio
+    Analytics : Continue
+    Account    : Default Account
+
+- Create Project
+
+- Download and Install Firebase CLI
+
+    C:\> npm install -g firebase-tools
+
+     C:\> firebase login
+
+- Open your project location and run the command
+
+    > firebase init
+
+    Feature : Hosting
+   
+    > firebase deploy
